@@ -1,8 +1,8 @@
 {
-    "id": "2d4747cf-be38-6cd4-2f53-0a91ffe677d1",
+    "id": "87840656-f20c-ed44-ec85-af507e5185fe",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "__lf_receive_packet_sendall",
+    "name": "sendall",
     "IsCompatibility": false,
     "IsDnD": false
 }

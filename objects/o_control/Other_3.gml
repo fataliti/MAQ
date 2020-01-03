@@ -4,5 +4,3 @@ if global.socket != -1
     
 if global.server != -1 
     network_destroy( global.server);
-
-    
