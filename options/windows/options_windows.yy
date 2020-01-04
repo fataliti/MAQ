@@ -4,11 +4,11 @@
     "mvc": "1.0",
     "name": "Windows",
     "option_windows_allow_fullscreen_switching": false,
-    "option_windows_borderless": false,
+    "option_windows_borderless": true,
     "option_windows_company_info": "YoYo Games Ltd",
-    "option_windows_copy_exe_to_dest": false,
-    "option_windows_copyright_info": "(c) 2018 CompanyName",
-    "option_windows_description_info": "A GameMaker Studio 2 Game",
+    "option_windows_copy_exe_to_dest": true,
+    "option_windows_copyright_info": "(c) 2020 NyafiTeam",
+    "option_windows_description_info": "Music Quiz",
     "option_windows_disable_sandbox": false,
     "option_windows_display_cursor": true,
     "option_windows_display_name": "Made in GameMaker Studio 2",
@@ -32,9 +32,9 @@
     "option_windows_use_splash": false,
     "option_windows_version": {
         "build": 0,
-        "major": 1,
+        "major": 0,
         "minor": 0,
-        "revision": 0
+        "revision": 1
     },
     "option_windows_vsync": false
 }

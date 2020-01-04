@@ -1,73 +1,75 @@
-
-//макрофункции
+// Макрофункции
 //!#mfunc trace {"args":["message"],"order":[0]}
-#macro trace_mf0  show_debug_message( 
+#macro trace_mf0 show_debug_message( 
 #macro trace_mf1 )
 //!#mfunc color {"args":["col"],"order":[0]}
-#macro color_mf0      draw_set_color( 
+#macro color_mf0 draw_set_color( 
 #macro color_mf1 )
-
-//макро
+// Макроперменные
 #macro localhost "127.0.0.1"
-#macro testport  10800
+#macro port 10800
+// todo: вынести размер лобби и отсчёт времени в настройки
+#macro size 32
+#macro countdownDefault 15
+#macro tickrate 3 // 1 запрос в n кадров
 
-#macro round_time   15
-#macro testfile     "https://vk.com/doc176753353_530976061?hash=382f32abc656a91266&dl=f6194d41504d2b3ff9"
-#macro tickrate     3 // 1 запрос в n кадров
-
-//енумератор для пакетов
-enum ENET {
-
-    message,
-    
-    about_player,
-    get_playerinfo,
-    send_all_new_player,
-    player_disconect,
-
-    add_point,
-    kick,
-    
-    answer,
-
-    game_round_prep,
-    game_round_start,
-    game_round_end,
-    game_round_answer,
-    game_round_next,
-    
-    game_round_preparing_perc,
-    /*
-    ping_chek, 
-    ping_get,
-    */
+// Действия
+enum ENet {
+	connected = 1,
+	information = 2,
+	announce = 3,
+	disconnected = 4,
+}
+enum EPing {
+	check = 10,
+	get = 11
+}
+enum ESong {
+	prepare = 20,
+	status = 21,
+	play = 22,
+	stop = 23,
+	answer = 24,
+	next = 25
+}
+enum EChat {
+	message = 31
+}
+enum EPlayer {
+	answer = 41,
+	point = 42,
+	kick = 43,
+    ban = 44,
+}
+enum EGame {
+	lobby = 51,
+	start = 52,
+	next = 53,
+	gameOver = 54
 }
 
-//хост
+// Настройки сервера/клиента
 global.server = -1;
 global.socket = -1;
-network_set_config( network_config_connect_timeout, 1000);
+network_set_config(network_config_connect_timeout, 999);
 
-is_host = false;
-connected_list = ds_list_create();
-players_map  = ds_map_create();
-players_ids = 0;
+connects = ds_list_create();
+players = ds_map_create();
 
-/// юзерские данные
-var def_nick = string( current_minute) + "_" + string( current_second);
-ini_open("game.sets");
-my_nickname = ini_read_string( "user", "nickname", def_nick);
+// Инициализация данных игрока запустившего игру
+_id = -1;
+avatar = sprite_add( "avatar.png", 1, false, 0, 0, 0);
+ini_open("player.conf");
+nickname = ini_read_string("user", "nickname", string(current_minute) + "_" + string(current_second));
 ini_close();
-my_avatar = sprite_add( "avatar.png", 1, false, 0, 0, 0);
-my_id     = -1;
 
-/// текущая игра
-game_round = 0;
-game_timer = 0;
-game_song = -1;
-
-song_link = -1;
-song_loaded = 0;
-song_stream = -1;
-
-//ping_time_send = -1;
+// Данные на хосте
+roundCurrent = 0;
+countdown = -1;
+mediaPlayer = -1;
+// Данные у всех
+songLink = "";
+songFile = "";
+songLoading = 0;
+// Ping игрока
+response = -1;

@@ -1,9 +1,7 @@
-/// @param buf
-var buf = argument0;
-
-_list = o_control.connected_list ;
-
-for( var a = 0; a < ds_list_size( _list); a++) {
-    network_send_packet( _list[| a], buf, buffer_tell(buf));
+/// @param buffer
+var buffer = argument0;
+for (var i = 0; i < ds_list_size(connects); i++) {
+    network_send_packet(connects[| a], buffer, buffer_tell(buffer));
 }
-buffer_delete( buf);
+
+buffer_delete(buffer);

@@ -1,8 +1,8 @@
 {
-    "id": "a947354b-e933-ab4f-ae3d-0a330c358de8",
+    "id": "ba731258-a2a3-819e-9be2-992eb7b1034b",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "senduser",
+    "name": "sendUser",
     "IsCompatibility": false,
     "IsDnD": false
 }

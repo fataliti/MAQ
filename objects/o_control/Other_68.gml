@@ -1,41 +1,46 @@
-
+// Статус подключения
 var type = async_load[? "type"];
 
-switch( type) {
+switch(type) {
     case network_type_connect:
-        var sock = async_load[? "socket"];
-        ds_list_add( connected_list, sock);
+        var indexSocket = async_load[? "socket"];
+		// Обновляем список подключенных у хоста
+        ds_list_add(connects, indexSocket);
+        // Инициализируем игрока и помещаем его на экран хоста
+        var player = instance_create_layer(650, 60 + 30 * indexSocket, "layer_game", o_player);
+		// Обновляем список игроков
+		ds_map_add(players, indexSocket, player);
+		player._id = indexSocket;
         
-        var ins = instance_create_layer( 650, 60 + 30 * sock, "layer_game", o_player);
-        ds_map_add( players_map, sock, ins);
-        ins._id = sock;
-        
-        var sendbuf = buffer_create( 8, buffer_grow, 1);
-        buffer_write( sendbuf, buffer_u8, ENET.get_playerinfo);
-        buffer_write( sendbuf, buffer_u8, sock);
-        network_send_packet( sock, sendbuf, buffer_tell( sendbuf));
-        buffer_delete( sendbuf);
-        
+        var exchangeInfo = buffer_create(8, buffer_grow, 1);
+		// Спрашиваем данные игрока
+        buffer_write(exchangeInfo, buffer_u8, ENet.information);
+		// Выдаём игроку идентификатор
+        buffer_write(exchangeInfo, buffer_u8, player._id);
+       
+        sendUser(indexSocket, exchangeInfo);
+
         break;
     case network_type_disconnect:
+        var indexSocket = async_load[? "socket"];
+        
+        ds_list_delete(connects, ds_list_find_index(connects, indexSocket));
+        
+        var player = players[? indexSocket];
+        ds_map_delete(players, indexSocket);
+        
+        var playerDisconnect = buffer_create( 16, buffer_grow, 1);
+        buffer_write(playerDisconnect, buffer_u8, ENet.disconnected);
+        buffer_write(playerDisconnect, buffer_u8, player._id);
+        
+        with (player) {
+        	instance_destroy();
+		}
+		
+		sendAll(playerDisconnect);
 
-        var sock = async_load[? "socket"];
-        ds_list_delete( connected_list, ds_list_find_index( connected_list, sock));
-        
-        var del_ins = players_map[? sock];
-        var del_id  = del_ins._id;
-        with( del_ins) {
-            instance_destroy();
-        }
-        ds_map_delete( players_map, sock);
-        
-        var sendbuf = buffer_create( 16, buffer_grow, 1);
-        buffer_write( sendbuf, buffer_u8, ENET.player_disconect);
-        buffer_write( sendbuf, buffer_u8, del_id);
-        sendall( sendbuf);
-        
         break;
     case network_type_data:
-        receive_packet( async_load[? "buffer"]);
+        handlingData(async_load[? "buffer"]);
         break;
 }

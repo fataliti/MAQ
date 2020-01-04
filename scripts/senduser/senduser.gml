@@ -1,6 +1,6 @@
-/// @param buf
-/// @param socket
-var buf = argument0, socket = argument1;
+/// @param buffer
+/// @param indexSocket
+var indexSocket = argument0, buffer = argument1;
 
-network_send_packet( socket, buf, buffer_tell(buf));
-buffer_delete( buf);
+network_send_packet(indexSocket, buffer, buffer_tell(buffer));
+buffer_delete(buffer);

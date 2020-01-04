@@ -1,12 +1,7 @@
-
 _id = -1;
-nick = "";
+nickname = "";
 points = 0;
-
 avatar = -1;
-
-current_answer = "";
-
-load_percent = 0;
-
-//ping = 0;
+answer = "";
+loading = 0;
+ping = -1;

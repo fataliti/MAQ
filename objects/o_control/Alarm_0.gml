@@ -1,11 +1,10 @@
-/// @description Загрузка ранунда
+/// @description Статус загрузки песни
+var status = buffer_create(24, buffer_grow, 1);
+buffer_write(status, buffer_u8, ESong.status);
+buffer_write(status, buffer_u8, _id);
+buffer_write(status, buffer_u8, round(songLoading * 100));
+sendHost(status);
 
-var sendbuf = buffer_create( 24, buffer_grow, 1);
-buffer_write( sendbuf, buffer_u8, ENET.game_round_preparing_perc);
-buffer_write( sendbuf, buffer_u8, my_id);
-buffer_write( sendbuf, buffer_u8, round( song_loaded * 100));
-sendhost( sendbuf);
-
-if song_loaded < 1
-    alarm[ 0] = tickrate;
-    
+if (songLoading < 1) {
+    alarm[0] = tickrate;
+}
