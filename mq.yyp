@@ -31,6 +31,14 @@
     },
     "resources": [
         {
+            "Key": "0c9ba1e5-0c49-795a-0571-2dffcb8803ed",
+            "Value": {
+                "id": "2b15a70d-badd-e9bd-7868-ea11845db2c0",
+                "resourcePath": "objects\\o_but_setavatar\\o_but_setavatar.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "1093c8dc-8f4e-408e-b346-0d11281e7218",
             "Value": {
                 "id": "6ee93d8c-d021-4b5c-a42b-7ed911f0b55d",
@@ -119,6 +127,14 @@
             }
         },
         {
+            "Key": "65a0912a-4b16-4794-adb3-4a504f7ca186",
+            "Value": {
+                "id": "e4cf4999-0366-4f7d-86e2-b8450c0db17d",
+                "resourcePath": "objects\\o_answer_field\\o_answer_field.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "6c2c8ed1-a070-41ce-831a-61aa1e50dbe8",
             "Value": {
                 "id": "81b4fdaf-4ae1-4c96-be76-f5a00b340ec3",
@@ -191,6 +207,14 @@
             }
         },
         {
+            "Key": "9042d82a-ad4b-4ad8-a3d8-f40cef4663f0",
+            "Value": {
+                "id": "05e6c5b2-002f-4dd8-b0fe-73d3701a2e2f",
+                "resourcePath": "objects\\o_but_menu\\o_but_menu.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "93d68916-4054-dba1-d933-12bfdf2848be",
             "Value": {
                 "id": "50f9503a-c9d1-94d7-da1b-c9dfdd09771f",
@@ -207,6 +231,14 @@
             }
         },
         {
+            "Key": "97eafb2a-05e2-466a-a01a-79769d65125a",
+            "Value": {
+                "id": "66345d72-4432-4060-9a81-4df9c0ed7cc5",
+                "resourcePath": "objects\\o_game_histroy\\o_game_histroy.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "98118660-fc5e-43c9-932a-273b1a2f158d",
             "Value": {
                 "id": "ec26a671-e556-4ed3-9047-b7e951898ac2",
@@ -220,6 +252,14 @@
                 "id": "cfb6857d-f2d5-4817-a152-6952623ac880",
                 "resourcePath": "options\\linux\\options_linux.yy",
                 "resourceType": "GMLinuxOptions"
+            }
+        },
+        {
+            "Key": "a947354b-e933-ab4f-ae3d-0a330c358de8",
+            "Value": {
+                "id": "124f755e-757d-6470-f478-5f0131a66077",
+                "resourcePath": "scripts\\senduser\\senduser.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -287,6 +327,14 @@
             }
         },
         {
+            "Key": "eed4911d-a05c-b33f-d8d4-d3cf3284212b",
+            "Value": {
+                "id": "12b02c98-6d31-bc6e-37b7-340c2c4bce7f",
+                "resourcePath": "scripts\\sendhost\\sendhost.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "ef9b1c8a-4ce3-4ecb-8557-a585ace5f6c7",
             "Value": {
                 "id": "7b88d26b-3df9-481b-bbee-e08b11bbf586",
@@ -313,7 +361,9 @@
     ],
     "script_order": [
         "2eee2c16-b9ba-0d2b-b365-ad5cef62a1ca",
-        "87840656-f20c-ed44-ec85-af507e5185fe"
+        "87840656-f20c-ed44-ec85-af507e5185fe",
+        "eed4911d-a05c-b33f-d8d4-d3cf3284212b",
+        "a947354b-e933-ab4f-ae3d-0a330c358de8"
     ],
     "tutorial": ""
 }

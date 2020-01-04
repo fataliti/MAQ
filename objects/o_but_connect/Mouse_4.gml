@@ -14,12 +14,8 @@ if ip != "" && port >= 0 {
         instance_activate_layer( "layer_game");
         instance_deactivate_layer( "layer_lobby");
         trace_mf0 "connected" trace_mf1;
-        /*
-        var sendbuf = buffer_create( 64, buffer_grow, 1);
-        buffer_write( sendbuf, buffer_u8, ENET.coonect_as_player);
-        buffer_write( sendbuf, buffer_string, o_control.my_nickname );
-        network_send_packet( global.socket, sendbuf, buffer_tell( sendbuf));
-        buffer_delete( sendbuf);
-        */
+        
+        with( o_game_histroy)   
+            instance_destroy();
     }
 }

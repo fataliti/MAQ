@@ -16,4 +16,9 @@ if global.server  >= 0 {
     o_control.is_host = true;
     instance_activate_layer( "layer_game");
     instance_deactivate_layer( "layer_lobby");
+    
+    with( o_answer_field) 
+        instance_destroy();
+    
+    
 }
