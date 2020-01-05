@@ -1,3 +1,8 @@
+
+if avatar != -1 {
+    draw_sprite( avatar, 0, x, y,);
+}
+
 // Прогресс загрузки песни игроком
 draw_set_color(c_green);
 draw_rectangle(x, y, x + 64, y + 20, true);

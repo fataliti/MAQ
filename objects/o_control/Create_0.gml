@@ -12,13 +12,18 @@
 #macro size 32
 #macro countdownDefault 15
 #macro tickrate 3 // 1 запрос в n кадров
+#macro avatarSize 32
+
 
 // Действия
 enum ENet {
 	connected = 1,
 	information = 2,
-	announce = 3,
-	disconnected = 4,
+	announceForNew = 3,
+	announceForAll = 4,
+	disconnected = 5,
+	
+	avatar = 6,
 }
 enum EPing {
 	check = 10,
@@ -59,6 +64,22 @@ players = ds_map_create();
 // Инициализация данных игрока запустившего игру
 _id = -1;
 avatar = sprite_add( "avatar.png", 1, false, 0, 0, 0);
+
+///СПЕЦИАЛЬНО ДЛЯ НЯФИ Я ПОЗАБОТИЛСЯ ОБ УМНИКАХ КОТОРЫЕ РЕШАТСЯ НАЙТИ ПАПКУ ФАЙЛОВ ИГРЫ И ПОДЛОЖИТЬ ФАЙЛ РУКАМИ (САСИТЕ)
+if avatar != -1 {
+	if sprite_get_width( avatar) != avatarSize && sprite_get_height( avatar) != avatarSize {
+		var surf = surface_create( avatarSize, avatarSize);
+        surface_set_target( surf);
+        draw_clear_alpha( c_black, 0);
+        draw_sprite_ext( avatar, 0, 0, 0, avatarSize / sprite_get_width( avatar), avatarSize / sprite_get_height( avatar), 0, c_white, 1);    
+        surface_reset_target();
+        surface_save( surf, "avatar.png");
+        surface_free( surf);
+        sprite_delete( avatar);
+        avatar = sprite_add( "avatar.png", 1, false, 0, 0, 0);
+	}
+}
+
 ini_open("player.conf");
 nickname = ini_read_string("user", "nickname", string(current_minute) + "_" + string(current_second));
 ini_close();

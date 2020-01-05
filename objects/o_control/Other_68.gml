@@ -7,19 +7,18 @@ switch(type) {
 		// Обновляем список подключенных у хоста
         ds_list_add(connects, indexSocket);
         // Инициализируем игрока и помещаем его на экран хоста
-        var player = instance_create_layer(650, 60 + 30 * indexSocket, "layer_game", o_player);
+        var player = instance_create_depth(650, 60 + 30 * indexSocket, 0, o_player); 
 		// Обновляем список игроков
 		ds_map_add(players, indexSocket, player);
 		player._id = indexSocket;
         
-        var exchangeInfo = buffer_create(8, buffer_grow, 1);
+        var exchangeInfo = buffer_create(16, buffer_grow, 1);
 		// Спрашиваем данные игрока
         buffer_write(exchangeInfo, buffer_u8, ENet.information);
 		// Выдаём игроку идентификатор
         buffer_write(exchangeInfo, buffer_u8, player._id);
        
         sendUser(indexSocket, exchangeInfo);
-
         break;
     case network_type_disconnect:
         var indexSocket = async_load[? "socket"];
