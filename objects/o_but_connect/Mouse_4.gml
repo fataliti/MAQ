@@ -1,3 +1,5 @@
+audio_play_sound(a_but_next, 10, false);
+
 var ip = localhost; //get_string( "IP: ", localhost);
 var _port = 10080;   //get_integer( "Порт: ", port);
 
