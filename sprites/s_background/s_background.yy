@@ -29,18 +29,18 @@
             },
             "images": [
                 {
-                    "id": "61ad5c30-ea8c-4990-85cc-005c5e9753cc",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "4fca0fe6-cf97-4b33-9066-6cd03de7aed7",
-                    "LayerId": "2a124915-8c0e-4996-9e8c-b4d44195ca30"
-                },
-                {
                     "id": "2060352a-b466-4b5f-a2c8-ae48b57a33b4",
                     "modelName": "GMSpriteImage",
                     "mvc": "1.0",
                     "FrameId": "4fca0fe6-cf97-4b33-9066-6cd03de7aed7",
                     "LayerId": "b2700ff2-7ecd-4909-9f4a-9f1d6982e444"
+                },
+                {
+                    "id": "b1324e7b-87ec-44e8-9e43-0040bd458303",
+                    "modelName": "GMSpriteImage",
+                    "mvc": "1.0",
+                    "FrameId": "4fca0fe6-cf97-4b33-9066-6cd03de7aed7",
+                    "LayerId": "2f7ce559-c6e3-43aa-9cec-2f1f2d4c5c8c"
                 }
             ]
         }
@@ -61,15 +61,29 @@
             "visible": true
         },
         {
-            "id": "2a124915-8c0e-4996-9e8c-b4d44195ca30",
-            "modelName": "GMImageLayer",
+            "__type": "GMImageFolderLayer_Model:#YoYoStudio.MVCFormat",
+            "id": "81507c33-fbeb-4373-aad5-e0d4ff5fb4bb",
+            "modelName": "GMImageFolderLayer",
             "mvc": "1.0",
             "SpriteId": "abf6f005-6051-44f6-9689-2bfc20e598a6",
             "blendMode": 0,
             "isLocked": false,
-            "name": "default",
+            "name": "Layer Group 1",
             "opacity": 100,
-            "visible": true
+            "visible": true,
+            "layers": [
+                {
+                    "id": "2f7ce559-c6e3-43aa-9cec-2f1f2d4c5c8c",
+                    "modelName": "GMImageLayer",
+                    "mvc": "1.0",
+                    "SpriteId": "abf6f005-6051-44f6-9689-2bfc20e598a6",
+                    "blendMode": 0,
+                    "isLocked": false,
+                    "name": "Layer 4",
+                    "opacity": 100,
+                    "visible": true
+                }
+            ]
         }
     ],
     "origin": 0,
