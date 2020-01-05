@@ -10,7 +10,7 @@ if (async_load[? "id"] == songLink) {
         songLink = -1;
         
         if (countdown > 0) {
-			// todo: вынести в настройки loop true/false
+			// todo: вынести в настройки loop: true/false
             mediaPlayer = audio_play_sound(songFile, 10, false);
         }
     }

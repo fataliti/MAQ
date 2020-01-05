@@ -20,56 +20,53 @@ switch (act) {
         buffer_write(me, buffer_u8, ENet.connected);
         buffer_write(me, buffer_u8, _id);
         buffer_write(me, buffer_string, o_control.nickname);
+        // Почему бы не передать и аватар сразу?
         sendHost(me);
         
-        
-        if avatar != -1 {
-            var surf = surface_create( avatarSize, avatarSize);
+        if (avatar != -1) {
+            var surf = surface_create(avatarSize, avatarSize);
             surface_set_target(surf);
-            draw_clear_alpha( c_black, 0);
-            draw_sprite( avatar, 0, 0, 0);
+            draw_clear_alpha(c_black, 0);
+            draw_sprite(avatar, 0, 0, 0);
             surface_reset_target();
             
-            var surfBuf = buffer_create( avatarSize * avatarSize * 4 + 4, buffer_grow, 1);
-            buffer_get_surface( surfBuf, surf, 0, 4, 0);
+            var surfBuf = buffer_create(avatarSize * avatarSize * 4 + 4, buffer_grow, 1);
+            buffer_get_surface(surfBuf, surf, 0, 4, 0);
             buffer_seek(surfBuf, buffer_seek_start, 0);
-            buffer_write( surfBuf, buffer_u8, ENet.avatar);
-            buffer_write( surfBuf, buffer_u8, _id);
-            buffer_seek( surfBuf, buffer_seek_end, 0);
-            sendHost( surfBuf);
+            buffer_write(surfBuf, buffer_u8, EPlayer.avatar);
+            buffer_write(surfBuf, buffer_u8, _id);
+            buffer_seek(surfBuf, buffer_seek_end, 0);
+            sendHost(surfBuf);
             surface_free(surf);
         }
         
         break;
-    
-    case ENet.avatar:
+    case EPlayer.avatar:
         var player = buffer_read(buffer, buffer_u8);
-        var surf = surface_create( avatarSize, avatarSize);
-        buffer_set_surface( buffer, surf, 0, 4, 0);
-        with( o_player) {
-            if player == _id {
-                avatar = sprite_create_from_surface( surf, 0, 0, avatarSize, avatarSize, 0, 0, 0, 0);
+        var surf = surface_create(avatarSize, avatarSize);
+        buffer_set_surface(buffer, surf, 0, 4, 0);
+        with (o_player) {
+            if (player == _id) {
+                avatar = sprite_create_from_surface(surf, 0, 0, avatarSize, avatarSize, 0, 0, 0, 0);
             }
         }
         surface_free(surf);   
-        
-        ///Разослать всем аватар новоподключенного
-        
+        // todo: Разослать всем аватар новоподключенного
         break;
     case ENet.connected:
-        var player = buffer_read( buffer, buffer_u8);
-        var nick = buffer_read( buffer, buffer_string);
+        var player = buffer_read(buffer, buffer_u8);
+        var nick = buffer_read(buffer, buffer_string);
         with (o_player) {
             if (player == _id) {
                 nickname = nick;
             }
         }
         
-        var playerNew = buffer_create( 16, buffer_grow, 1);
-        buffer_write( playerNew, buffer_u8, ENet.announceForAll);
-        buffer_write( playerNew, buffer_u8, player);
-        buffer_write( playerNew, buffer_string, nick);
-        sendAll( playerNew);
+        var playerNew = buffer_create(16, buffer_grow, 1);
+        buffer_write(playerNew, buffer_u8, ENet.announceForAll);
+        buffer_write(playerNew, buffer_u8, player);
+        buffer_write(playerNew, buffer_string, nick);
+        sendAll(playerNew);
         
         var players = buffer_create(128, buffer_grow, 1);
         buffer_write(players, buffer_u8, ENet.announceForNew);
@@ -81,17 +78,18 @@ switch (act) {
             buffer_write(players, buffer_u8, points);
             buffer_write(players, buffer_string, nickname);
         }
-        
-        ///зашить историю игры/текущее состояние
-        
+
+        // todo: Зашить историю игры/текущее состояние
+
         sendUser(player, players);
+        
         break;
     case ENet.announceForAll:
-        var newId = buffer_read( buffer, buffer_u8);
+        var newId = buffer_read(buffer, buffer_u8);
 
         var newPlayer = instance_create_depth(650, 60 + 30 * newId, 0, o_player);
         newPlayer._id = newId;
-        newPlayer.nickname = buffer_read( buffer, buffer_string);
+        newPlayer.nickname = buffer_read(buffer, buffer_string);
         
         break;
     case ENet.announceForNew:
@@ -103,7 +101,7 @@ switch (act) {
             new_point = buffer_read(buffer, buffer_u8);
             new_nick  = buffer_read(buffer, buffer_string);
             
-            if new_id != _id {
+            if (new_id != _id) {
                 new_player = instance_create_depth(650, 60 + 30 * new_id, 0, o_player);
                 new_player._id = new_id;
                 new_player.points = new_point;
@@ -197,7 +195,7 @@ switch (act) {
         
         break;
     case ESong.answer:
-        // Показывается ответ
+        // todo: показывается ответ
         break;
     case ESong.next:
         roundCurrent++;

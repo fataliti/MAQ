@@ -1,11 +1,11 @@
-if global.server != -1 {
-    if keyboard_check_pressed( vk_shift) {
-        var file = get_open_filename("txt|*.txt", "");
-        if file != ""{
-            file = file_text_open_read( file);
-            if file != -1 {
+if (global.server != -1) {
+    if (keyboard_check_pressed(vk_shift)) {
+        var file = get_open_filename("*.txt|*.txt", "");
+        if (file != "") {
+            file = file_text_open_read(file);
+            if (file != -1) {
                 trace_mf0 "file open" trace_mf1;
-                ds_list_clear( game_list);
+                ds_list_clear(game_list);
 
                 //  пример файла для чтения
                 /* 
@@ -31,13 +31,13 @@ if global.server != -1 {
                 var lineN = 0;
                 var parseStrings = false;
                 
-                while !file_text_eof(file) {
+                while (!file_text_eof(file)) {
                     line = file_text_read_string( file);
-                    if string_length( line) != 0 { /// госпади хоть бы просто пробелов в строке не было аъааъъаъа
+                    if (string_length(line) != 0) {
                         parseStrings = true;
                     } 
                     
-                    if parseStrings {
+                    if (parseStrings) {
                         lineN++;
                         switch( lineN){
                             case 1: 

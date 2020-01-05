@@ -13,12 +13,12 @@ if (countdown > 0) {
 if (global.server != -1) {
     var lmb = mouse_check_button_pressed(mb_left);
     
-    color_mf0  c_red color_mf1;
+    color_mf0 c_red color_mf1;
     draw_rectangle(x, y, x + 32, y + 16, false);
     draw_rectangle(x + 48, y, x + 80, y + 16, false);
     draw_rectangle(x + 96, y, x + 128, y + 16, false);
     draw_rectangle(x + 144, y, x + 176, y + 16, false);
-    color_mf0  c_white color_mf1;
+    color_mf0 c_white color_mf1;
     draw_text(x, y, "Prepare");
     draw_text(x + 48, y + 0, "Start");
     draw_text(x + 96, y + 0, "Answer");
@@ -55,12 +55,12 @@ if (global.server != -1) {
     }
     
 
-    color_mf0  c_green color_mf1;
+    color_mf0 c_green color_mf1;
     with(o_player) {
         draw_rectangle(x - 32, y, x, y+16, false);
     }
     
-    color_mf0  c_red color_mf1;
+    color_mf0 c_red color_mf1;
     with(o_player) {
         draw_rectangle(x - 64, y, x-33, y+16, false);
     }
@@ -83,10 +83,10 @@ if (global.server != -1) {
         }
         
         if (victimId != -1) {
-            var sendbuf = buffer_create(16, buffer_grow, 1);
-            buffer_write(sendbuf, buffer_u8, act);
-            buffer_write(sendbuf, buffer_u8, victimId);
-            sendAll(sendbuf);
+            var action = buffer_create(16, buffer_grow, 1);
+            buffer_write(action, buffer_u8, act);
+            buffer_write(action, buffer_u8, victimId);
+            sendAll(action);
         }
     }
     
