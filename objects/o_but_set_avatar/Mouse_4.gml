@@ -10,6 +10,12 @@ if (pic != "") {
         draw_sprite_ext(spr, 0, 0, 0, avatarSize / sprite_get_width(spr), avatarSize / sprite_get_height(spr), 0, c_white, 1);    
         surface_reset_target();
         surface_save(surf, "avatar.png");
+        
+        if o_control.avatar != -1{
+            sprite_delete(o_control.avatar);
+        }
+        o_control.avatar = sprite_create_from_surface(surf, 0, 0, avatarSize, avatarSize, 0, 0, 0, 0);
+        
         surface_free(surf);
         sprite_delete(spr);
     }

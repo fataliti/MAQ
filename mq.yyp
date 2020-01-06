@@ -55,6 +55,14 @@
             }
         },
         {
+            "Key": "269dcfee-0f9a-479b-883e-ce2de8033f67",
+            "Value": {
+                "id": "f306a0dd-efb7-4b14-9622-d8805f15f22a",
+                "resourcePath": "datafiles_yy\\im_here_for_test_dont_delete_me.txt.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "2a1a6715-3722-4dda-858b-30ebe2ad6051",
             "Value": {
                 "id": "fb8aec1f-bb6a-49ef-bc12-2077bd713d17",
@@ -295,6 +303,14 @@
             }
         },
         {
+            "Key": "9ee0e732-b51c-46ec-b799-a9439224beac",
+            "Value": {
+                "id": "21326b57-5df8-439a-87b8-ccd0c8282dab",
+                "resourcePath": "notes\\dev note.yy",
+                "resourceType": "GMNotes"
+            }
+        },
+        {
             "Key": "a9188620-a624-4a5a-83ae-a1b53faf038b",
             "Value": {
                 "id": "cfb6857d-f2d5-4817-a152-6952623ac880",
@@ -308,6 +324,14 @@
                 "id": "5d50c1e9-81c8-4db7-b309-0e66a795c965",
                 "resourcePath": "sprites\\s_background\\s_background.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "ac35493f-560f-f5ba-2c5d-aac739c9965b",
+            "Value": {
+                "id": "f898915d-6174-191e-f276-10be60965fcd",
+                "resourcePath": "scripts\\sendAllExceptOne\\sendAllExceptOne.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -410,6 +434,7 @@
     "script_order": [
         "2eee2c16-b9ba-0d2b-b365-ad5cef62a1ca",
         "87840656-f20c-ed44-ec85-af507e5185fe",
+        "ac35493f-560f-f5ba-2c5d-aac739c9965b",
         "eed4911d-a05c-b33f-d8d4-d3cf3284212b",
         "ba731258-a2a3-819e-9be2-992eb7b1034b"
     ],

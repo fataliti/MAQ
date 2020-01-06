@@ -13,6 +13,7 @@
 #macro countdownDefault 15
 #macro tickrate 3 // 1 запрос в n кадров
 #macro avatarSize 32
+#macro nickLengMax 12
 
 
 // Действия
@@ -80,6 +81,8 @@ if (avatar != -1) {
 
 ini_open("player.conf");
 nickname = ini_read_string("user", "nickname", string(current_minute) + "_" + string(current_second));
+if string_length(nickname) > nickLengMax
+	nickname = string_copy(nickname, 1, nickLengMax);
 ini_close();
 
 // Данные на хосте
