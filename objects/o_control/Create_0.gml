@@ -90,8 +90,13 @@ roundCurrent = 0;
 countdown = -1;
 mediaPlayer = -1;
 // Данные у всех
+
+gameState = -1; //Todo: стейт машина
+
 songLink = "";
-songFile = "";
+songFile = -1;
+songPic  = -1;
+songSprite = -1;
 songLoading = 0;
 // Ping игрока
 response = -1;

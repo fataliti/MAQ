@@ -4,8 +4,7 @@ if (global.server != -1) {
         if (file != "") {
             file = file_text_open_read(file);
             if (file != -1) {
-                trace_mf0 "file open" trace_mf1;
-                ds_list_clear(game_list);
+                //ds_list_clear(game_list);
 
                 //  пример файла для чтения
                 /* 
@@ -30,6 +29,7 @@ if (global.server != -1) {
                 var line;
                 var lineN = 0;
                 var parseStrings = false;
+                var arr_stroka;
                 
                 while (!file_text_eof(file)) {
                     line = file_text_read_string( file);
@@ -49,7 +49,10 @@ if (global.server != -1) {
                             case 3: 
                                 roundLink = line; 
                                 
-                                ds_list_add(game_list, string([roundName, roundPic, roundLink]));
+                                arr_stroka = array_height_2d(game_arr);
+                                game_arr[arr_stroka, EData.name]     = roundName;
+                                game_arr[arr_stroka, EData.pic]      = roundPic;
+                                game_arr[arr_stroka, EData.songLink] = roundLink;
                                 
                                 roundName = ""; 
                                 roundPic = ""; 
@@ -62,8 +65,6 @@ if (global.server != -1) {
                     file_text_readln(file);
                 }
                 file_text_close(file);
-                
-                trace_mf0 "close file" trace_mf1;
             }
         }
     }

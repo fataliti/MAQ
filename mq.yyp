@@ -127,6 +127,14 @@
             }
         },
         {
+            "Key": "4017c407-083f-9c27-2262-524835b7fff7",
+            "Value": {
+                "id": "9988c32d-9206-21f3-ed53-ec9e58cdaf0e",
+                "resourcePath": "objects\\o_right_answer\\o_right_answer.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "45176590-61f0-407e-8d4b-cfcf48009c02",
             "Value": {
                 "id": "719b7341-6cfd-43e1-8f8e-4d06c60f5879",

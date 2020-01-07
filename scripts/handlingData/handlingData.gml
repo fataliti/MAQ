@@ -59,8 +59,8 @@ switch (act) {
                 }
             }
         }
-        buffer_seek(buffer, buffer_seek_start, 0);
-        buffer_write(buffer, buffer_u8, ENet.announceForAll);
+        
+        buffer_poke(buffer, 0, buffer_u8, ENet.announceForAll);
         buffer_seek(buffer, buffer_seek_end, 0);
         sendAllExceptOne(buffer ,player);
         
@@ -74,9 +74,12 @@ switch (act) {
             }
         }
         //еще немного байтов на последовательность чтения сурфейса
+
         bufSize += 1 + array_length_1d(avatarQueue);
         var players = buffer_create(bufSize, buffer_grow, 1);
         buffer_write(players, buffer_u8, ENet.announceForNew);
+        
+        // todo: Зашить историю игры/текущее состояние 
         
         var count = instance_number(o_player);
         buffer_write(players, buffer_u8, count);
@@ -106,8 +109,7 @@ switch (act) {
             buffer_seek(players, buffer_seek_end, 0);
             surface_free(avatarMap);
         }
-        // todo: Зашить историю игры/текущее состояние
-        // Он кричал мама я не хочу считать байты
+        
         sendUser(player, players);
         break;
     case ENet.announceForAll:
@@ -217,16 +219,20 @@ switch (act) {
             if (_id == player)
                 answer = buffer_read(buffer, buffer_string);
         }
+        /*
         if (global.server != -1) {
             sendAll(buffer);
         }
+        */
         break;
     case ESong.prepare:
-        var url = "https://mp3-partys.ru/dl/files/Zivert_-_Life.mp3"; // todo: подгрузка ссылок
-        songLink = http_get_file(url, working_directory + "guess.song");
-
+        songName = buffer_read(buffer, buffer_string); 
+        linkToPic= buffer_read(buffer, buffer_string);
+        
+        trace_mf0 "piclink:"+linkToPic+"<" trace_mf1;
+        
+        songLink = http_get_file( buffer_read(buffer, buffer_string), "guess.song");
         alarm[0] = tickrate;
-
         break;
     case ESong.play:
         countdown = countdownDefault;
@@ -237,12 +243,14 @@ switch (act) {
 
         break;
     case ESong.stop:
+        if linkToPic != "" {
+            songPic = http_get_file( linkToPic, "guess.pic");
+        }
         audio_stop_sound(mediaPlayer);
         mediaPlayer = -1;
         audio_destroy_stream(songFile);
         songFile = -1;
         countdown = 0;
-
         break;
     case ESong.status:
         var player = buffer_read( buffer, buffer_u8);
@@ -259,11 +267,19 @@ switch (act) {
         
         break;
     case ESong.answer:
-        // todo: показывается ответ
+        o_history.game_arr[array_height_2d(o_history.game_arr), EData.name] = songName;
+        
+        var insAnswer = instance_create_depth(0, 0, 0, o_right_answer);
+        insAnswer.answerText   = songName;
+        insAnswer.answerSprite = songSprite;
         break;
     case ESong.next:
+        songSprite = -1;
         roundCurrent++;
-    
+        
+        with(o_right_answer){
+            instance_destroy();
+        }
         break;
     case EPing.check:
         var player = buffer_read(buffer, buffer_u8);
