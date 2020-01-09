@@ -64,6 +64,9 @@ if (global.server != -1) {
                     }
                     file_text_readln(file);
                 }
+                
+                o_control.roundTotal = arr_stroka;
+                
                 file_text_close(file);
             }
         }

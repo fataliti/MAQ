@@ -17,7 +17,32 @@ switch(type) {
         buffer_write(exchangeInfo, buffer_u8, ENet.information);
 		// Выдаём игроку идентификатор
         buffer_write(exchangeInfo, buffer_u8, player._id);
-       
+    	
+    	
+    	buffer_write(exchangeInfo, buffer_u8, roundCurrent);
+    	buffer_write(exchangeInfo, buffer_u8, roundTotal);
+    	if roundCurrent > 0 {
+	    	for( var r = 0; r < roundCurrent; r++) {
+	    		buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ r, EData.name]);
+	    	}
+    	}
+    	buffer_write(exchangeInfo, buffer_u8, global.gameState);
+
+    	switch(global.gameState) {
+    		case ESong.prepare:
+				buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ roundCurrent, EData.name]); 
+		    	buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ roundCurrent, EData.pic]); 
+		    	buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ roundCurrent, EData.songLink]); 
+		    case ESong.play:
+		    	buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ roundCurrent, EData.name]); 
+		    	buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ roundCurrent, EData.pic]); 
+		    	buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ roundCurrent, EData.songLink]); 
+		    	buffer_write(exchangeInfo, buffer_f16, countdown);
+    			break;
+    		//case ESong.answer:
+    		//	break;
+    	}
+    	
         sendUser(indexSocket, exchangeInfo);
         break;
     case network_type_disconnect:

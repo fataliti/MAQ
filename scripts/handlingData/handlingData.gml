@@ -15,11 +15,33 @@ switch (act) {
         break;
     case ENet.information:  
         _id = buffer_read(buffer, buffer_u8);
-
+        
+        roundCurrent = buffer_read(buffer, buffer_u8);
+        roundTotal = buffer_read(buffer, buffer_u8);
+        repeat(roundCurrent) {
+            o_history.game_arr[ array_height_2d(o_history.game_arr), EData.name] = buffer_read(buffer, buffer_string);
+        }
+        
+        switch(buffer_read(buffer, buffer_u8)){
+            case ESong.prepare:
+                songName = buffer_read(buffer, buffer_string); 
+                linkToPic= buffer_read(buffer, buffer_string);
+                songLink = http_get_file( buffer_read(buffer, buffer_string), "guess.song");
+                alarm[0] = tickrate;
+                break;
+            case ESong.play:
+                songName = buffer_read(buffer, buffer_string); 
+                linkToPic= buffer_read(buffer, buffer_string);
+                songLink = http_get_file( buffer_read(buffer, buffer_string), "guess.song");
+                alarm[0] = tickrate;
+                
+                countdown = buffer_read(buffer, buffer_f16);
+                break;
+        }
+        
         var offsetSurface = 4 + nickLengMax * 6;
         var hasAvatar = avatar == -1 ?  0 : 1;
         var me = buffer_create(offsetSurface + avatarSize * avatarSize * 4, buffer_grow, 1);
-        
         buffer_write(me, buffer_u8, ENet.connected);
         buffer_write(me, buffer_u8, _id);
         buffer_write(me, buffer_string, o_control.nickname);
@@ -232,6 +254,7 @@ switch (act) {
         trace_mf0 "piclink:"+linkToPic+"<" trace_mf1;
         
         songLink = http_get_file( buffer_read(buffer, buffer_string), "guess.song");
+        songLoading = 0;
         alarm[0] = tickrate;
         break;
     case ESong.play:
@@ -240,7 +263,7 @@ switch (act) {
         if (songFile != -1) {
             mediaPlayer = audio_play_sound(songFile, 10, false);
         }
-
+        
         break;
     case ESong.stop:
         if linkToPic != "" {

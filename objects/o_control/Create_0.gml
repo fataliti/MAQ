@@ -87,11 +87,11 @@ ini_close();
 
 // Данные на хосте
 roundCurrent = 0;
+roundTotal = 0;
 countdown = -1;
 mediaPlayer = -1;
+global.gameState = ESong.next;
 // Данные у всех
-
-gameState = -1; //Todo: стейт машина
 
 songLink = "";
 songFile = -1;
