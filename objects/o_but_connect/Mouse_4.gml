@@ -11,10 +11,6 @@ if (ip != "" && _port >= 0) {
         network_destroy(global.socket);
         global.socket = -1;
     } else {
-        room_goto(rm_game);
-        
-        with(o_history) {
-            instance_destroy();
-		}
+        room_goto(rm_gameclient);
     }
 }

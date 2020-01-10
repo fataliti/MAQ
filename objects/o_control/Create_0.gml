@@ -58,11 +58,8 @@ global.server = -1;
 global.socket = -1;
 network_set_config(network_config_connect_timeout, 999);
 
-connects = ds_list_create();
-players = ds_map_create();
-
 // Инициализация данных игрока запустившего игру
-_id = -1;
+
 avatar = sprite_add( "avatar.png", 1, false, 0, 0, 0);
 
 if (avatar != -1) {
@@ -86,17 +83,22 @@ if string_length(nickname) > nickLengMax
 ini_close();
 
 // Данные на хосте
+/// Искодящие от хоста
 roundCurrent = 0;
 roundTotal = 0;
 countdown = -1;
-mediaPlayer = -1;
 global.gameState = ESong.next;
-// Данные у всех
 
+/*
+// Данные у всех 
+///Кроме хоста
+mediaPlayer = -1;
 songLink = "";
 songFile = -1;
 songPic  = -1;
 songSprite = -1;
 songLoading = 0;
+
 // Ping игрока
 response = -1;
+*/

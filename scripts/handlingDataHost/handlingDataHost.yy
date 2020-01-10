@@ -1,8 +1,8 @@
 {
-    "id": "2eee2c16-b9ba-0d2b-b365-ad5cef62a1ca",
+    "id": "28af2f39-67f0-a504-560c-c55f8884d50b",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "handlingData",
+    "name": "handlingDataHost",
     "IsCompatibility": false,
     "IsDnD": false
 }

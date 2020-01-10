@@ -1,3 +1,4 @@
+
 if (async_load[? "id"] == songLink) {
     var songSize = async_load[? "contentLength"];  
     var songDownloaded = async_load[? "sizeDownloaded"]; 
@@ -9,7 +10,7 @@ if (async_load[? "id"] == songLink) {
         songFile = audio_create_stream(working_directory + "guess.song");
         songLink = -1;
         
-        if (countdown > 0) {
+        if (o_control.countdown > 0) {
 			// todo: вынести в настройки loop: true/false
             mediaPlayer = audio_play_sound(songFile, 10, false);
         }
@@ -18,8 +19,6 @@ if (async_load[? "id"] == songLink) {
 
 if async_load[? "id"] == songPic {
 	if async_load[? "result"] != undefined {
-		trace_mf0 "pic loaded" trace_mf1;
-		
 		songSprite = sprite_add("guess.pic", 1, 0, 0, 0, 0);
 		sprite_set_offset(songSprite, sprite_get_width(songSprite)/2, sprite_get_height(songSprite)/2);
 		songPic = -1;
