@@ -1,0 +1,3 @@
+
+nickname = "";
+avatar   = -1;

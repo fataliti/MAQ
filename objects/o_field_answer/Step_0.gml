@@ -13,10 +13,11 @@ if textfield_active {
     if keyboard_check_pressed(vk_enter) {
         if (textfield_string != "") {
             var answerBuf = buffer_create(64, buffer_grow,1);
-            buffer_write(answerBuf, buffer_u8, EPlayer.answerBuf);
+            buffer_write(answerBuf, buffer_u8, EPlayer.answer);
             buffer_write(answerBuf, buffer_u8, o_client._id);
             buffer_write(answerBuf, buffer_string, textfield_string);
             sendHost(answerBuf);
+            textfield_active = false;
         }
     }
 }

@@ -4,4 +4,6 @@ global.server = network_create_server(network_socket_tcp, port, size);
 
 if (global.server >= 0) {
     room_goto(rm_gamehost);
+} else {
+    show_message("Не удалось создать сервер");
 }

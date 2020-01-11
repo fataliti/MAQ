@@ -1,10 +1,12 @@
+draw_self();
 draw_set_color(c_white);
-draw_rectangle(x, y, x + 256, y + 192, false);
-draw_set_color(c_black);
-
 
 draw_set_halign(fa_left);
 for( var i = 0; i < array_height_2d(game_arr); i++ ) {
-    draw_text(x, y + 16 * i, game_arr[@ i,0]);
+    var name = game_arr[@ i, EData.name];
+    draw_text(x + 5, y + 10 + 16 * i, name);
+    if i == o_control.roundCurrent {
+        draw_text(x+5+string_width(name), y + 10 +16 * i, "<");
+    }
 }
 draw_set_halign(fa_middle);

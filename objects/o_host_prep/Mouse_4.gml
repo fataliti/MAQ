@@ -1,7 +1,9 @@
 
 if global.gameState == ESong.next {
     if o_history.game_arr == -1 {
-        trace_mf0 "ВСТАВЬ ТЕКСТОВИК С ССЫЛКАМИ" trace_mf1;
+        with(o_history){
+            script_execute(o_history.load_txt);
+        }
         exit;
     } 
     var sendbuf = buffer_create( 16, buffer_grow, 1);

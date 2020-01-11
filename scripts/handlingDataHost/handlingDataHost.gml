@@ -92,7 +92,7 @@ switch(act){
         sendAll(buffer);
         break;
     case EPlayer.answer:
-        if global.gameState == ESong.play {
+        if o_control.countdown > 0 {
             var player = buffer_read(buffer, buffer_u8);
             with (o_player) {
                 if (_id == player)

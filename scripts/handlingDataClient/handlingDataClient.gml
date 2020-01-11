@@ -28,6 +28,15 @@ switch (act) {
                 break;
         }
         
+        o_playerHost.nickname = buffer_read(buffer, buffer_string);
+        if buffer_read(buffer, buffer_u8){
+            var surf = surface_create(avatarSize,avatarSize);
+            buffer_set_surface(buffer, surf, 0, buffer_tell(buffer), 0);
+            o_playerHost.avatar = sprite_create_from_surface(surf, 0, 0, avatarSize, avatarSize, 0, 0, 0, 0);
+            surface_free(surf);
+        }
+        
+        
         var offsetSurface = 4 + nickLengMax * 6;
         var hasAvatar = o_control.avatar == -1 ?  0 : 1;
         var me = buffer_create(offsetSurface + avatarSize * avatarSize * 4, buffer_grow, 1);
@@ -51,7 +60,7 @@ switch (act) {
     case ENet.announceForAll:
         var newId = buffer_read(buffer, buffer_u8);
 
-        var newPlayer = instance_create_depth(650, 60 + 30 * newId, 0, o_player);
+        var newPlayer = instance_create_depth(672, 30 * newId, 0, o_player);
         newPlayer._id = newId;
         newPlayer.nickname = buffer_read(buffer, buffer_string);
         
@@ -71,7 +80,7 @@ switch (act) {
             new_point = buffer_read(buffer, buffer_u8);
             new_nick  = buffer_read(buffer, buffer_string);
 
-            new_player = instance_create_depth(650, 60 + 30 * new_id, 0, o_player);
+            new_player = instance_create_depth(672, 30 * new_id, 0, o_player);
             new_player._id = new_id;
             new_player.points = new_point;
             new_player.nickname = new_nick;
@@ -121,6 +130,22 @@ switch (act) {
             }
         }
         break;
+    case EPlayer.pointHalf:
+        var player = buffer_read(buffer, buffer_u8);
+        with (o_player) {
+            if (_id == player) {
+                points+=0.5;
+            }
+        }
+        break;
+    case EPlayer.pointMinus:
+        var player = buffer_read(buffer, buffer_u8);
+        with (o_player) {
+            if (_id == player) {
+                points--;
+            }
+        }
+        break;
     case EPlayer.kick:
         var player = buffer_read(buffer, buffer_u8);
         if (_id == player) {
@@ -129,6 +154,20 @@ switch (act) {
             show_message("Тебя кикнули из игры");
             game_restart();
         }
+        break;
+    case EPlayer.ban:
+        var player = buffer_read(buffer, buffer_u8);
+        if (_id == player) {
+            network_destroy(global.socket);
+            global.socket = -1;
+            show_message("Тебя забанили");
+            game_restart();
+        }
+        break;
+    case EPlayer.excepted:    
+        network_destroy(global.socket);
+        global.socket = -1;
+        show_message("Тебя исключили из игры");
         break;
     case ESong.status:
         var player = buffer_read( buffer, buffer_u8);
@@ -159,8 +198,6 @@ switch (act) {
         if awaitNextRound {
             break;
         }
-        
-        trace_mf0 "timer end" trace_mf1;
         audio_stop_sound(mediaPlayer);
         mediaPlayer = -1;
         audio_destroy_stream(songFile);
@@ -168,7 +205,6 @@ switch (act) {
         o_control.countdown = 0;
         break;
     case ESong.answer:
-        
         repeat(buffer_read( buffer, buffer_u8)){
             var playerId = buffer_read(buffer, buffer_u8);
             with(o_player){
@@ -208,6 +244,8 @@ switch (act) {
         buffer_write(pong, buffer_u8, _id);
         buffer_write(pong, buffer_u16, current_time - response);
         sendHost(pong);
+        
+        lastResponsePast = 0;
         break;
     case EPing.get:
         var player = buffer_read( buffer, buffer_u8);

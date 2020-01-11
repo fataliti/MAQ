@@ -45,6 +45,9 @@ enum EPlayer {
 	point = 42,
 	kick = 43,
     ban = 44,
+    pointHalf = 45,
+    pointMinus = 46,
+    excepted = 47,
 }
 enum EGame {
 	lobby = 51,

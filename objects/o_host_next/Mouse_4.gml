@@ -13,5 +13,6 @@ if global.gameState == ESong.answer {
     o_control.roundCurrent++;
     sendAll(sendbuf);
     with(o_player){answer = "";}
+    with(o_right_answer) {instance_destroy();}
     global.gameState = ESong.next;
 }

@@ -1,10 +1,9 @@
-
-draw_text( 150, 15, string(roundCurrent+1) +"/"+ string(roundTotal+1));
+draw_text( 480, 15, string(roundCurrent+1) +"/"+ string(roundTotal+1));
 
 if (countdown > 0) {
     countdown -= delta_time / 1000000;
     color_mf0  c_red color_mf1;
-    draw_text(60, 15, countdown);
+    draw_text(480, 40, ceil(countdown));
     
     if global.server != -1 {
 	    if (countdown <= 0) {
@@ -17,5 +16,11 @@ if (countdown > 0) {
     }
 }
 
-
-
+if room == rm_mainmenu {
+	if avatar != -1 {
+		draw_sprite(avatar, 0, 480 - avatarSize / 2, 145);
+	} else {
+		draw_sprite(s_noavatar, 0, 480 - avatarSize / 2, 145);
+	}
+	draw_text(480, 190, nickname);
+}
