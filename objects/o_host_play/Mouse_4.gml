@@ -1,3 +1,4 @@
+audio_play_sound(a_but_host, 10, false);
 
 if global.gameState == ESong.prepare {
 

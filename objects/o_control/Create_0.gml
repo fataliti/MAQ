@@ -12,7 +12,7 @@
 #macro size 32
 #macro countdownDefault 15
 #macro tickrate 3 // 1 запрос в n кадров
-#macro avatarSize 32
+#macro avatarSize 128
 #macro nickLengMax 12
 
 

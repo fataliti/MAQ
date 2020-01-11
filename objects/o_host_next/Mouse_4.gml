@@ -1,3 +1,5 @@
+audio_play_sound(a_but_host, 10, false);
+
 if o_control.roundCurrent == o_control.roundTotal{
     
     //Показывается пабедитель
