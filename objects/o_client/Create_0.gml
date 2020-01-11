@@ -8,6 +8,7 @@ songPic  = -1;
 songSprite = -1;
 songLoading = 0;
 songName = "";
+mediaPlayer = -1;
 
 // Ping игрока
 response = -1;
