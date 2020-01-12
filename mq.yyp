@@ -567,6 +567,14 @@
             }
         },
         {
+            "Key": "b38b4106-b2d1-4960-b41f-eca26227552d",
+            "Value": {
+                "id": "0b22c741-f6d4-4b15-9f57-297ef7d4b459",
+                "resourcePath": "objects\\o_slider_bgm_se_melody\\o_slider_bgm_se_melody.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "b5b7a476-bfa7-4bb9-aef0-6a329548e41d",
             "Value": {
                 "id": "ec4c474d-4765-41eb-9b53-dc488009e5a1",
