@@ -16,7 +16,7 @@ if (countdown > 0) {
     }
 }
 
-if (room == rm_mainmenu || room == rm_settings) {
+if (room == rm_mainmenu || room == rm_lobby || room == rm_settings) {
 	if (avatar != -1) {
 		draw_sprite(avatar, 0, 480 - avatarSize / 2, 50);
 	} else {

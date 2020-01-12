@@ -15,6 +15,18 @@
 #macro avatarSize 128
 #macro nickLengMax 12
 
+var bgms = [
+	bgm_mainmenu1,
+	bgm_mainmenu2,
+	bgm_mainmenu3,
+	bgm_mainmenu4,
+	bgm_mainmenu5,
+	bgm_mainmenu6,
+	bgm_mainmenu7,
+];
+randomize();
+global.bgm = bgms[random_range(0, 5)];
+audio_play_sound(global.bgm, 10, true);
 
 // Действия
 enum ENet {

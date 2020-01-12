@@ -12,6 +12,7 @@ if (ip != "" && _port >= 0) {
         global.socket = -1;
         show_message("Ну удалось подключиться");
     } else {
+		audio_stop_sound(global.bgm);
         room_goto(rm_gameclient);
     }
 }
