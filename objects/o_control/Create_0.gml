@@ -15,18 +15,24 @@
 #macro avatarSize 128
 #macro nickLengMax 12
 
-var bgms = [
+ini_open("game_sets.ini");
+global.gain_sfx = ini_read_real("game","gain_sfx",0.5);
+global.gain_snd = ini_read_real("game","gain_snd",0.5);
+global.gain_bgm = ini_read_real("game","gain_bgm",0.5);
+ini_close();
+
+randomize();
+var bgms = choose(
 	bgm_mainmenu1,
 	bgm_mainmenu2,
 	bgm_mainmenu3,
 	bgm_mainmenu4,
 	bgm_mainmenu5,
 	bgm_mainmenu6,
-	bgm_mainmenu7,
-];
-randomize();
-global.bgm = bgms[random_range(0, 5)];
-audio_play_sound(global.bgm, 10, true);
+	bgm_mainmenu7
+);
+global.bgm = audio_play_sound(bgms, 10, true);
+audio_sound_gain(global.bgm, global.gain_bgm, 0);
 
 // Действия
 enum ENet {
@@ -73,8 +79,9 @@ global.server = -1;
 global.socket = -1;
 network_set_config(network_config_connect_timeout, 999);
 
-// Инициализация данных игрока запустившего игру
 
+
+// Инициализация данных игрока запустившего игру
 avatar = sprite_add( "avatar.png", 1, false, 0, 0, 0);
 
 if (avatar != -1) {

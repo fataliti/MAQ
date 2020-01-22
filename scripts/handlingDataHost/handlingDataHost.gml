@@ -3,6 +3,8 @@ var buffer = argument0;
 buffer_seek(buffer, buffer_seek_start, 0);
 var act = buffer_read(buffer, buffer_u8);
 
+var avaSize = avatarSize / 4;
+
 switch(act){
     case EChat.message:
         ds_list_insert(o_chat.messages, 0, buffer_read(buffer, buffer_string));
@@ -14,12 +16,12 @@ switch(act){
         var hasAvatar = buffer_read(buffer, buffer_u8);
         
         if hasAvatar {
-            var surf = surface_create(avatarSize, avatarSize);
+            var surf = surface_create(avaSize, avaSize);
             buffer_set_surface(buffer, surf, 0, 4 + nickLengMax * 6, 0);
             
             with (o_player) {
                 if (player == _id) {
-                    avatar = sprite_create_from_surface(surf, 0, 0, avatarSize, avatarSize, 0, 0, 0, 0);
+                    avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 0, 0, 0);
                     nickname = nick;
                 }
             }
@@ -41,7 +43,7 @@ switch(act){
         var avatarQueue = [];
         with(o_player) {
             if avatar != -1 && _id != player {
-                bufSize += avatarSize * avatarSize * 4; //еще байтов на аватарки
+                bufSize += avaSize * avaSize * 4; //еще байтов на аватарки
                 avatarQueue[ array_length_1d(avatarQueue)] = id;
             }
         }
@@ -64,12 +66,12 @@ switch(act){
         var arrLeng = array_length_1d(avatarQueue);
         buffer_write(players, buffer_u8, arrLeng); 
         if arrLeng {
-            var avatarMap = surface_create(avatarSize * arrLeng, avatarSize);
+            var avatarMap = surface_create(avaSize * arrLeng, avaSize);
             surface_set_target(avatarMap);
             draw_clear_alpha(c_black, 0);
             var i = 0;
             repeat(arrLeng){
-                draw_sprite( avatarQueue[i].avatar, 0, avatarSize*i, 0);
+                draw_sprite( avatarQueue[i].avatar, 0, avaSize*i, 0);
                 buffer_write(players, buffer_u8, avatarQueue[i]._id);
                 i++;
             }

@@ -55,11 +55,12 @@ switch(type) {
 	    		buffer_write(exchangeInfo, buffer_u8, 0);
 	    	} else {
 	    		buffer_write(exchangeInfo, buffer_u8, 1);
-	    		buffer_resize(exchangeInfo, buffer_tell(exchangeInfo) + avatarSize*avatarSize*4);
-	    		var surf = surface_create(avatarSize, avatarSize);
+	    		var _avatarSize = avatarSize / 4;
+	    		buffer_resize(exchangeInfo, buffer_tell(exchangeInfo) + _avatarSize*_avatarSize*4); 
+	    		var surf = surface_create(_avatarSize, _avatarSize);
 	    		surface_set_target(surf);
 	    		draw_clear_alpha(c_black, 0);
-	    		draw_sprite(o_control.avatar, 0, 0, 0);
+	    		draw_sprite_ext(o_control.avatar, 0, 0, 0, _avatarSize / avatarSize, _avatarSize / avatarSize, 0, c_white, 1);
 	    		surface_reset_target();
 	    		buffer_get_surface(exchangeInfo, surf, 0, buffer_tell(exchangeInfo), 0);
 	    		surface_free(surf);

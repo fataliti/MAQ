@@ -3,6 +3,8 @@ var buffer = argument0;
 buffer_seek(buffer, buffer_seek_start, 0);
 var act = buffer_read(buffer, buffer_u8);
 
+var avaSize = avatarSize / 4;
+
 switch (act) {
     case EChat.message:
         ds_list_insert(o_chat.messages, 0, buffer_read(buffer, buffer_string));
@@ -30,25 +32,25 @@ switch (act) {
         
         o_playerHost.nickname = buffer_read(buffer, buffer_string);
         if buffer_read(buffer, buffer_u8){
-            var surf = surface_create(avatarSize,avatarSize);
+            var surf = surface_create(avaSize,avaSize);
             buffer_set_surface(buffer, surf, 0, buffer_tell(buffer), 0);
-            o_playerHost.avatar = sprite_create_from_surface(surf, 0, 0, avatarSize, avatarSize, 0, 0, 0, 0);
+            o_playerHost.avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 0, 0, 0);
             surface_free(surf);
         }
         
         
         var offsetSurface = 4 + nickLengMax * 6;
         var hasAvatar = o_control.avatar == -1 ?  0 : 1;
-        var me = buffer_create(offsetSurface + avatarSize * avatarSize * 4, buffer_grow, 1);
+        var me = buffer_create(offsetSurface + avaSize * avaSize * 4, buffer_grow, 1);
         buffer_write(me, buffer_u8, ENet.connected);
         buffer_write(me, buffer_u8, _id);
         buffer_write(me, buffer_string, o_control.nickname);
         buffer_write(me, buffer_u8, hasAvatar);
         if hasAvatar {
-            var surf = surface_create(avatarSize, avatarSize);
+            var surf = surface_create(avaSize, avaSize);
             surface_set_target(surf);
             draw_clear_alpha(c_black, 0);
-            draw_sprite(o_control.avatar, 0, 0, 0);
+            draw_sprite_ext(o_control.avatar, 0, 0, 0, avaSize / avatarSize, avaSize / avatarSize, 0, c_white, 1);
             surface_reset_target();
             buffer_get_surface(me, surf, 0, offsetSurface, 0);
             buffer_seek(me, buffer_seek_end, 0);
@@ -65,9 +67,9 @@ switch (act) {
         newPlayer.nickname = buffer_read(buffer, buffer_string);
         
         if buffer_read(buffer, buffer_u8) {
-            var surf = surface_create(avatarSize, avatarSize);
+            var surf = surface_create(avaSize, avaSize);
             buffer_set_surface(buffer, surf, 0, 4 + nickLengMax * 6, 0);
-            newPlayer.avatar = sprite_create_from_surface(surf, 0, 0, avatarSize, avatarSize, 0, 0, 0, 0);
+            newPlayer.avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 0, 0, 0);
             surface_free(surf);
         }
 
@@ -97,19 +99,26 @@ switch (act) {
                     }
                 }
             }
-            var avatarMap = surface_create(avatarSize * avatarCnt, avatarSize);
+            var avatarMap = surface_create(avaSize * avatarCnt, avaSize);
             buffer_set_surface(buffer, avatarMap, 0, buffer_tell(buffer), 0);
             var i = 0;
             repeat(avatarCnt){
-                avatarIns[i].avatar = sprite_create_from_surface(avatarMap, avatarSize * i, 0, avatarSize, avatarSize, 0, 0, 0, 0);
+                avatarIns[i].avatar = sprite_create_from_surface(avatarMap, avaSize * i, 0, avaSize, avaSize, 0, 0, 0, 0);
                 i++;
             }
             surface_free(avatarMap);
         }
         if o_control.avatar != -1 {
+            var myAvaSurf = surface_create(avaSize,avaSize);
+            surface_set_target(myAvaSurf);
+            draw_clear_alpha(c_black,0);
+            draw_sprite_ext(o_control.avatar, 0, 0, 0, avaSize/avatarSize, avaSize/avatarSize, 0, c_white, 1);
+            var _avatar = sprite_create_from_surface(myAvaSurf, 0, 0, avaSize, avaSize, 0, 0, 0, 0);
+            surface_reset_target();
+            surface_free(myAvaSurf);
             with(o_player){
                 if _id == other._id {
-                    avatar = sprite_duplicate(o_control.avatar);
+                    avatar = _avatar;
                 }
             }
         }
@@ -164,7 +173,7 @@ switch (act) {
             game_restart();
         }
         break;
-    case EPlayer.excepted:    
+    case EPlayer.excepted:
         network_destroy(global.socket);
         global.socket = -1;
         show_message("Тебя исключили из игры");
@@ -178,9 +187,15 @@ switch (act) {
         }
         break;
     case ESong.prepare:
+
+        trace_mf0 SetPath(working_directory+"media.ogg") trace_mf1;
+        GetMedia("https://mp3-partys.ru/dl/files/Zivert_-_Life.mp3", 20.0, 0.0);
+
+    	/*
         songLink = http_get_file( buffer_read(buffer, buffer_string), "guess.song");
         songLoading = 0;
         alarm[0] = tickrate;
+    	*/
         break;
     case ESong.play:
         o_control.countdown = countdownDefault;
