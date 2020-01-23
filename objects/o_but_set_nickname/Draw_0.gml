@@ -1,2 +1,2 @@
 draw_self();
-draw_text(x, y, "Никнейм");
+draw_text(x, y, o_control.nickname);

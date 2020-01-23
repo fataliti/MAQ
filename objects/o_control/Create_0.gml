@@ -21,6 +21,7 @@ global.gain_snd = ini_read_real("game","gain_snd",0.5);
 global.gain_bgm = ini_read_real("game","gain_bgm",0.5);
 ini_close();
 
+
 randomize();
 var bgms = choose(
 	bgm_mainmenu1,

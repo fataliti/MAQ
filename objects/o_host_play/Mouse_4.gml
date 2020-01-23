@@ -8,4 +8,8 @@ if global.gameState == ESong.prepare {
     sendAll(sendbuf);
 
     global.gameState = ESong.play;
+    
+    
+    instance_activate_object(o_host_answ);
+    instance_deactivate_object(self);
 }

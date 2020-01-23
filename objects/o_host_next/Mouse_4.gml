@@ -17,4 +17,7 @@ if global.gameState == ESong.answer {
     with(o_player){answer = "";}
     with(o_right_answer) {instance_destroy();}
     global.gameState = ESong.next;
+    
+    instance_activate_object(o_host_prep);
+    instance_deactivate_object(self);
 }

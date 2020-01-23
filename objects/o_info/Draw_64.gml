@@ -1,6 +1,6 @@
 
 var ctrl = o_control;
-draw_text( 480, 15, string(ctrl.roundCurrent+1) +"/"+ string(ctrl.roundTotal+1));
+draw_text( x, y, string(ctrl.roundCurrent+1) +"/"+ string(ctrl.roundTotal+1));
 
 if (ctrl.countdown > 0) {
     ctrl.countdown -= delta_time / 1000000;

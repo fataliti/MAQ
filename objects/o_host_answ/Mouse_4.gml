@@ -16,4 +16,8 @@ if global.gameState == ESong.play && o_control.countdown <= 0 {
     
     var insAnsw = instance_create_depth(0, 0, 0, o_right_answer);
     insAnsw.answerText = o_history.game_arr[@ o_control.roundCurrent, EData.name];
+    
+    
+    instance_activate_object(o_host_next);
+    instance_deactivate_object(self);
 }

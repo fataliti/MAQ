@@ -15,8 +15,12 @@ if (pic != "") {
             sprite_delete(o_control.avatar);
         }
         o_control.avatar = sprite_create_from_surface(surf, 0, 0, avatarSize, avatarSize, 0, 0, 0, 0);
-        
+        sprite_index = o_control.avatar;
         surface_free(surf);
         sprite_delete(spr);
     }
 }
+
+//#event draw
+//draw_self();
+//draw_text(x, y, "Аватар");
