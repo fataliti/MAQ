@@ -57,7 +57,7 @@
             "blendMode": 0,
             "isLocked": false,
             "name": "Layer 1",
-            "opacity": 100,
+            "opacity": 50,
             "visible": true
         },
         {
@@ -68,7 +68,7 @@
             "blendMode": 0,
             "isLocked": false,
             "name": "default",
-            "opacity": 75,
+            "opacity": 28,
             "visible": true
         }
     ],
