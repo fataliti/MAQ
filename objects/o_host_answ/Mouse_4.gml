@@ -1,5 +1,6 @@
 audio_play_sound(a_but_host, 10, false);
 
+/*
 if global.gameState == ESong.play && o_control.countdown <= 0 {
 
     var sendbuf = buffer_create( 128, buffer_grow, 1);
@@ -21,3 +22,12 @@ if global.gameState == ESong.play && o_control.countdown <= 0 {
     instance_activate_object(o_host_next);
     instance_deactivate_object(self);
 }
+*/
+
+if o_control.countdown > 0 {
+	var sendbuf = buffer_create( 128, buffer_grow, 1);
+	buffer_write(sendbuf, buffer_u8, ESong.hint);
+	buffer_write(timeOver, buffer_string, o_history.game_arr[@ ctrl.roundCurrent, EData.pic]);
+	sendAll(sendbuf);
+	o_control.hinted = true;
+} 

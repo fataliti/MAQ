@@ -7,7 +7,11 @@ var avaSize = avatarSize / 4;
 
 switch (act) {
     case EChat.message:
-        ds_list_insert(o_chat.messages, 0, buffer_read(buffer, buffer_string));
+        var msgIns = instance_create_depth(o_chat.x, o_chat.y+235, 0, o_chat_message);
+        msgIns.message = buffer_read(buffer, buffer_string);
+        with(msgIns) {
+        	script_execute(lambda_string_split);
+        }
         break;
     case ENet.information: 
         _id = buffer_read(buffer, buffer_u8);
@@ -182,14 +186,14 @@ switch (act) {
         var player = buffer_read(buffer, buffer_u8);
         with (o_player) {
             if (_id == player) {
-                loading = buffer_read(buffer, buffer_u8) / 100;
+                loading = buffer_read( buffer, buffer_u8) / 100;
             }
         }
         break;
     case ESong.prepare:
 
-        //trace(SetPath(working_directory+"media.ogg"));
-        //GetMedia("https://mp3-partys.ru/dl/files/Zivert_-_Life.mp3", 20.0, 0.0);
+        trace_mf0 SetPath(working_directory+"media.ogg") trace_mf1;
+        GetMedia("https://mp3-partys.ru/dl/files/Zivert_-_Life.mp3", 20.0, 0.0);
 
     	/*
         songLink = http_get_file( buffer_read(buffer, buffer_string), "guess.song");
@@ -204,11 +208,11 @@ switch (act) {
         }
         break;
     case ESong.stop:
-        var linkToPic = buffer_read(buffer, buffer_string);
-        if linkToPic != "" {
-            songPic = http_get_file( linkToPic, "guess.pic");
-        }
-        songName = buffer_read(buffer, buffer_string); 
+        // var linkToPic = buffer_read(buffer, buffer_string);
+        // if linkToPic != "" {
+        //     songPic = http_get_file( linkToPic, "guess.pic");
+        // }
+        // songName = buffer_read(buffer, buffer_string); 
         
         if awaitNextRound {
             break;
@@ -236,6 +240,7 @@ switch (act) {
             insAnswer.answerSprite = songSprite;
         }
         break;
+    
     case ESong.next:
         awaitNextRound = false;
 
@@ -253,6 +258,16 @@ switch (act) {
             textfield_active = false;
         }
         break;
+    /* Чому то не подхватывает
+    case ESong.hint:
+    	
+    	o_control.hinted = true;
+    	var linkToPic = buffer_read(buffer, buffer_string);
+		if linkToPic != "" {
+		    songPic = http_get_file( linkToPic, "guess.pic");
+		}
+    	break;
+    */
     case EPing.check:
         var pong = buffer_create(32, buffer_grow, 1);
         buffer_write(pong, buffer_u8, EPing.get);

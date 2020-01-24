@@ -19,10 +19,16 @@ if textfield_active {
                 buffer_write(msg, buffer_string, txt);
                 sendHost(msg);
             } else {
-                ds_list_insert(messages, 0, txt);
+                //ds_list_insert(messages, 0, txt);
                 buffer_write(msg, buffer_u8, EChat.message);
                 buffer_write(msg, buffer_string, txt);
                 sendAll(msg);
+                
+                var msgIns = instance_create_depth(x, y+235, 0, o_chat_message);
+                msgIns.message = txt;
+                with(msgIns) {
+                	script_execute(lambda_string_split);
+                }
             }
             keyboard_string = "";
         }

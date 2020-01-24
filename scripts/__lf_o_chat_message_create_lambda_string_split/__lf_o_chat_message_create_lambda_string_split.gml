@@ -1,10 +1,11 @@
-
-
-if first_frame {
-	var str = my_string;
+/// __lf_o_chat_message_create_lambda_string_split()
+//!#lambda lambda_string_split
+{
+	var str = message;
 	var len = string_length(str);
 	var single_word = "";
 	var wi = 0;
+	var widh = 250;
 	for(var a = 1; a != len; a++) {
 		if string_char_at(str, a) != " " {
 			for(var i = a; i != len; i++) {
@@ -39,20 +40,15 @@ if first_frame {
 			}
 		}
 	}
-	first_frame = false;
-	my_string = str;
-} else {
-	var str = my_string;
+	
+	var _yto = string_height(str);
+	with(o_chat_message){
+		if yto == -1 {
+			yto = y - _yto;
+		} else {
+			yto -= _yto;
+		}
+	}
+	
+	message = str;
 }
-
-
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-draw_text(0,0,widh);
-draw_line( 10,0,10,540);
-draw_line( 10+widh,0,10+widh,540);
-draw_text( 10,20,str);
-draw_line( 10, 20+string_height(str),10+widh,20+string_height(str));
-draw_line( 10, 20,10+widh,20);
-draw_set_halign(fa_center);
-draw_set_valign(fa_center);

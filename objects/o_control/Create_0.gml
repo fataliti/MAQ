@@ -53,7 +53,8 @@ enum ESong {
 	play = 22,
 	stop = 23,
 	answer = 24,
-	next = 25
+	next = 25,
+	hint = 26,
 }
 enum EChat {
 	message = 31
@@ -75,7 +76,7 @@ enum EGame {
 	gameOver = 54
 }
 
-// Создание сервера/клиента
+// Настройки сервера/клиента
 global.server = -1;
 global.socket = -1;
 network_set_config(network_config_connect_timeout, 999);
@@ -111,15 +112,14 @@ roundTotal = 0;
 countdown = -1;
 global.gameState = ESong.next;
 
-/*
-// Данные у всех, кроме хоста
-mediaPlayer = -1;
-songLink = "";
-songFile = -1;
-songPic  = -1;
-songSprite = -1;
-songLoading = 0;
 
-// Ping игрока
-response = -1;
-*/
+// Данные у всех
+songLink	= -1;
+songFile	= -1;
+songPic 	= -1;
+songSprite	= -1;
+songLoading = 0;
+songName	= "";
+mediaPlayer = -1;
+
+hinted = false;

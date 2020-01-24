@@ -7,7 +7,7 @@ if (avatar != -1) {
 // Прогресс загрузки песни игроком
 if (loading < 1) { draw_set_color(c_green); } else { draw_set_color(c_lime); }
 draw_rectangle(x + 148, y, x + 148+64, y + 10, true);
-draw_rectangle( + 148, y, x + 148+64 * loading, y + 10, false);
+draw_rectangle(x + 148, y, x + 148+64 * loading, y + 10, false);
 
 draw_set_halign(fa_left);
 // Ник и очки

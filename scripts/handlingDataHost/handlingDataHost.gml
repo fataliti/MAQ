@@ -7,7 +7,11 @@ var avaSize = avatarSize / 4;
 
 switch(act){
     case EChat.message:
-        ds_list_insert(o_chat.messages, 0, buffer_read(buffer, buffer_string));
+        var msgIns = instance_create_depth(o_chat.x, o_chat.y+235, 0, o_chat_message);
+        msgIns.message = buffer_read(buffer, buffer_string);
+        with(msgIns) {
+        	script_execute(lambda_string_split);
+        }
         sendAll(buffer);
         break;
     case ENet.connected:

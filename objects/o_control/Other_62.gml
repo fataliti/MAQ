@@ -17,6 +17,8 @@ if (async_load[? "id"] == songLink) {
     }
 }
 
+
+///сунуть хинт чек
 if async_load[? "id"] == songPic {
 	if async_load[? "result"] != undefined {
 		songSprite = sprite_add("guess.pic", 1, 0, 0, 0, 0);
@@ -28,3 +30,4 @@ if async_load[? "id"] == songPic {
 		}
 	}
 }
+
