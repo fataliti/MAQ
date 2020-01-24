@@ -5,5 +5,4 @@ avatar = -1;
 answer = "";
 loading = 0;
 ping = -1;
-
 ip = "";

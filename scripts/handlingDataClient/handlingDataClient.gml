@@ -30,11 +30,11 @@ switch (act) {
                 break;
         }
         
-        o_playerHost.nickname = buffer_read(buffer, buffer_string);
+        o_player_host.nickname = buffer_read(buffer, buffer_string);
         if buffer_read(buffer, buffer_u8){
             var surf = surface_create(avaSize,avaSize);
             buffer_set_surface(buffer, surf, 0, buffer_tell(buffer), 0);
-            o_playerHost.avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 0, 0, 0);
+            o_player_host.avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 0, 0, 0);
             surface_free(surf);
         }
         
@@ -198,7 +198,7 @@ switch (act) {
     	*/
         break;
     case ESong.play:
-        o_control.countdown = countdownDefault;
+        o_control.countdown = timer;
         if (songFile != -1) {
             mediaPlayer = audio_play_sound(songFile, 10, false);
         }

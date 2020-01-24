@@ -1,24 +1,24 @@
 // Макрофункции
 //!#mfunc trace {"args":["message"],"order":[0]}
-#macro trace_mf0 show_debug_message( 
+#macro trace_mf0  show_debug_message(
 #macro trace_mf1 )
 //!#mfunc color {"args":["col"],"order":[0]}
-#macro color_mf0 draw_set_color( 
+#macro color_mf0  draw_set_color(
 #macro color_mf1 )
 // Макроперменные
 #macro localhost "127.0.0.1"
 #macro port 10800
-// todo: вынести размер лобби и отсчёт времени в настройки
+// todo: вынести размер лобби и отсчёт времени в создание игры
 #macro size 32
-#macro countdownDefault 15
+#macro timer 15
 #macro tickrate 3 // 1 запрос в n кадров
 #macro avatarSize 128
 #macro nickLengMax 12
 
-ini_open("game_sets.ini");
-global.gain_sfx = ini_read_real("game","gain_sfx",0.5);
-global.gain_snd = ini_read_real("game","gain_snd",0.5);
-global.gain_bgm = ini_read_real("game","gain_bgm",0.5);
+ini_open("sound.conf");
+global.gain_se = ini_read_real("game", "gain_se", 0.5);
+global.gain_music = ini_read_real("game", "gain_music", 0.5);
+global.gain_bgm = ini_read_real("game", "gain_bgm", 0.5);
 ini_close();
 
 
@@ -83,7 +83,7 @@ network_set_config(network_config_connect_timeout, 999);
 
 
 // Инициализация данных игрока запустившего игру
-avatar = sprite_add( "avatar.png", 1, false, 0, 0, 0);
+avatar = sprite_add("avatar.png", 1, false, 0, 0, 0);
 
 if (avatar != -1) {
 	if (sprite_get_width(avatar) != avatarSize && sprite_get_height(avatar) != avatarSize) {
@@ -101,20 +101,18 @@ if (avatar != -1) {
 
 ini_open("player.conf");
 nickname = ini_read_string("user", "nickname", string(current_minute) + "_" + string(current_second));
-if string_length(nickname) > nickLengMax
+if (string_length(nickname) > nickLengMax)
 	nickname = string_copy(nickname, 1, nickLengMax);
 ini_close();
 
-// Данные на хосте
-/// Искодящие от хоста
+// Данные исходящие от хоста
 roundCurrent = 0;
 roundTotal = 0;
 countdown = -1;
 global.gameState = ESong.next;
 
 /*
-// Данные у всех 
-///Кроме хоста
+// Данные у всех, кроме хоста
 mediaPlayer = -1;
 songLink = "";
 songFile = -1;

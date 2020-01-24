@@ -6,8 +6,8 @@ if activ {
 	
 	if mouse_check_button_released(mb_left) {
 		activ = false;
-		ini_open("game_sets.ini");
-		ini_write_real("game","gain_bgm",global.gain_bgm);
+		ini_open("sound.conf");
+		ini_write_real("game", "gain_bgm", global.gain_bgm);
 		ini_close();
 	}
 }
