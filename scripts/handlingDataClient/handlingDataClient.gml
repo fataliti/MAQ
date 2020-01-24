@@ -160,7 +160,7 @@ switch (act) {
         if (_id == player) {
             network_destroy(global.socket);
             global.socket = -1;
-            show_message("Тебя кикнули из игры");
+            show_message("Тебя кикнули");
             game_restart();
         }
         break;
@@ -176,20 +176,20 @@ switch (act) {
     case EPlayer.excepted:
         network_destroy(global.socket);
         global.socket = -1;
-        show_message("Тебя исключили из игры");
+        show_message("Тебя исключили");
         break;
     case ESong.status:
-        var player = buffer_read( buffer, buffer_u8);
+        var player = buffer_read(buffer, buffer_u8);
         with (o_player) {
             if (_id == player) {
-                loading = buffer_read( buffer, buffer_u8) / 100;
+                loading = buffer_read(buffer, buffer_u8) / 100;
             }
         }
         break;
     case ESong.prepare:
 
-        trace_mf0 SetPath(working_directory+"media.ogg") trace_mf1;
-        GetMedia("https://mp3-partys.ru/dl/files/Zivert_-_Life.mp3", 20.0, 0.0);
+        //trace(SetPath(working_directory+"media.ogg"));
+        //GetMedia("https://mp3-partys.ru/dl/files/Zivert_-_Life.mp3", 20.0, 0.0);
 
     	/*
         songLink = http_get_file( buffer_read(buffer, buffer_string), "guess.song");

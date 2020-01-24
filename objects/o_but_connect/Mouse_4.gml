@@ -10,7 +10,7 @@ if (ip != "" && _port >= 0) {
     if (connected < 0) {
         network_destroy(global.socket);
         global.socket = -1;
-        show_message("Ну удалось подключиться");
+        show_message("Не удалось подключиться");
     } else {
 		audio_stop_sound(global.bgm);
         room_goto(rm_gameclient);

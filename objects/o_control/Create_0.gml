@@ -75,7 +75,7 @@ enum EGame {
 	gameOver = 54
 }
 
-// Настройки сервера/клиента
+// Создание сервера/клиента
 global.server = -1;
 global.socket = -1;
 network_set_config(network_config_connect_timeout, 999);
