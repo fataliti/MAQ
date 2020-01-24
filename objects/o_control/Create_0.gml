@@ -62,10 +62,9 @@ enum EChat {
 enum EPlayer {
 	avatar = 40,
 	answer = 41,
-	point = 42,
 	kick = 43,
     ban = 44,
-    pointHalf = 45,
+    pointPlus = 45,
     pointMinus = 46,
     excepted = 47,
 }
@@ -101,7 +100,7 @@ if (avatar != -1) {
 }
 
 ini_open("player.conf");
-nickname = ini_read_string("user", "nickname", string(current_minute) + "_" + string(current_second));
+nickname = ini_read_string("user", "nickname", "Noname_t"+string(current_minute)+"_"+string(current_second));
 if (string_length(nickname) > nickLengMax)
 	nickname = string_copy(nickname, 1, nickLengMax);
 ini_close();

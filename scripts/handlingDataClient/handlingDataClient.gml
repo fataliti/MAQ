@@ -135,19 +135,11 @@ switch (act) {
             }
         }
         break;
-    case EPlayer.point:
+    case EPlayer.pointPlus:
         var player = buffer_read(buffer, buffer_u8);
         with (o_player) {
             if (_id == player) {
-                points++;
-            }
-        }
-        break;
-    case EPlayer.pointHalf:
-        var player = buffer_read(buffer, buffer_u8);
-        with (o_player) {
-            if (_id == player) {
-                points+=0.5;
+                points-=0.5;
             }
         }
         break;
@@ -155,7 +147,7 @@ switch (act) {
         var player = buffer_read(buffer, buffer_u8);
         with (o_player) {
             if (_id == player) {
-                points--;
+                points-=0.5;
             }
         }
         break;

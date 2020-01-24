@@ -1,6 +1,6 @@
 /// @description 
 o_player_host.nickname = o_control.nickname;
-if o_control.avatar != -1 {
+if (o_control.avatar != -1) {
 	var surf = surface_create(32, 32);
     surface_set_target(surf);
     draw_clear_alpha(c_black, 0);
