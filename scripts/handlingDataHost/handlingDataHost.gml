@@ -90,6 +90,7 @@ switch(act){
         break;
     case ESong.status:
         var player = buffer_read( buffer, buffer_u8);
+
         with (o_player) {
             if (_id == player) {
                 loading = buffer_read( buffer, buffer_u8) / 100;
@@ -98,13 +99,13 @@ switch(act){
         sendAll(buffer);
         break;
     case EPlayer.answer:
-        if o_control.countdown > 0 {
-            var player = buffer_read(buffer, buffer_u8);
-            with (o_player) {
-                if (_id == player)
-                    answer = buffer_read(buffer, buffer_string);
-            }
+        
+        var player = buffer_read(buffer, buffer_u8);
+        with (o_player) {
+            if (_id == player)
+                answer = buffer_read(buffer, buffer_string);
         }
+        
         break;
     case EPing.check:
         var player = buffer_read(buffer, buffer_u8);

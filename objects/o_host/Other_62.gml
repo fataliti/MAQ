@@ -5,7 +5,11 @@ if (async_load[? "id"] == songLink) {
     
     if (async_load[? "result"] == undefined) {
         songLoading = songDownloaded / songSize;
+        
+        window_set_caption(songLoading);
+        
 	} else {
+		window_set_caption(1);
         songLoading = 1;
         songFile = audio_create_stream(working_directory + "guess.song");
         songLink = -1;
@@ -18,16 +22,16 @@ if (async_load[? "id"] == songLink) {
 }
 
 
-///сунуть хинт чек
+
 if async_load[? "id"] == songPic {
 	if async_load[? "result"] != undefined {
 		songSprite = sprite_add("guess.pic", 1, 0, 0, 0, 0);
 		sprite_set_offset(songSprite, sprite_get_width(songSprite)/2, sprite_get_height(songSprite)/2);
 		songPic = -1;
-		
-		if instance_exists(o_right_answer){
+	
+
+		if instance_exists(o_right_answer) {
 			o_right_answer.answerSprite = songSprite;
 		}
 	}
 }
-

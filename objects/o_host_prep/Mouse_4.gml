@@ -5,6 +5,8 @@ buffer_write(sendbuf, buffer_u8, ESong.prepare);
 buffer_write(sendbuf, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.songLink]); 
 sendAll(sendbuf);
 
+o_host.songLink = http_get_file( o_history.game_arr[@ o_control.roundCurrent, EData.songLink], "guess.song");
+
 global.gameState = ESong.prepare;
 
 instance_activate_object(o_host_play);

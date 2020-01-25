@@ -4,3 +4,4 @@ if (global.socket != -1 && room == rm_gameclient) {
 if (global.server != -1 && room == rm_gamehost) {
 	network_destroy(global.server);
 }
+

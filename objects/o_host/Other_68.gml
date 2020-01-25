@@ -17,7 +17,7 @@ switch(type) {
 			// Обновляем список подключенных у хоста
 	        ds_list_add(connects, indexSocket);
 	        // Инициализируем игрока и помещаем его на экран хоста
-	        var player = instance_create_depth(672, 30 * indexSocket, 0, o_player); 
+	        var player = instance_create_depth(672, -30 + 55 * indexSocket, 0, o_player); 
 			// Обновляем список игроков
 			ds_map_add(players, indexSocket, player);
 			player._id = indexSocket;
@@ -94,3 +94,4 @@ switch(type) {
         handlingDataHost(async_load[? "buffer"]);
         break;
 }
+

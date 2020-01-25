@@ -1,4 +1,5 @@
-
+draw_self();
+/*
 if o_control.countdown <= 0 {
     draw_self();
 } else {

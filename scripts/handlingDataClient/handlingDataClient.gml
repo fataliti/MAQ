@@ -66,7 +66,7 @@ switch (act) {
     case ENet.announceForAll:
         var newId = buffer_read(buffer, buffer_u8);
 
-        var newPlayer = instance_create_depth(672, 30 * newId, 0, o_player);
+        var newPlayer = instance_create_depth(672, -30 + 55 * newId, 0, o_player);
         newPlayer._id = newId;
         newPlayer.nickname = buffer_read(buffer, buffer_string);
         
@@ -86,7 +86,7 @@ switch (act) {
             new_point = buffer_read(buffer, buffer_u8);
             new_nick  = buffer_read(buffer, buffer_string);
 
-            new_player = instance_create_depth(672, 30 * new_id, 0, o_player);
+            new_player = instance_create_depth(672, -30 + 55 * new_id, 0, o_player);
             new_player._id = new_id;
             new_player.points = new_point;
             new_player.nickname = new_nick;
@@ -184,14 +184,14 @@ switch (act) {
         break;
     case ESong.prepare:
 
-        trace_mf0 SetPath(working_directory+"media.ogg") trace_mf1;
-        GetMedia("https://mp3-partys.ru/dl/files/Zivert_-_Life.mp3", 20.0, 0.0);
+        //trace(SetPath(working_directory+"media.ogg"));
+        //GetMedia("https://mp3-partys.ru/dl/files/Zivert_-_Life.mp3", 20.0, 0.0);
 
-    	/*
+    	
         songLink = http_get_file( buffer_read(buffer, buffer_string), "guess.song");
         songLoading = 0;
         alarm[0] = tickrate;
-    	*/
+    
         break;
     case ESong.play:
         o_control.countdown = timer;
@@ -200,12 +200,16 @@ switch (act) {
         }
         break;
     case ESong.stop:
-        // var linkToPic = buffer_read(buffer, buffer_string);
-        // if linkToPic != "" {
-        //     songPic = http_get_file( linkToPic, "guess.pic");
-        // }
-        // songName = buffer_read(buffer, buffer_string); 
-        
+    	/*
+        var linkToPic = buffer_read(buffer, buffer_string);
+        if linkToPic != "" && o_control.hinted == false {
+            songPic = http_get_file( linkToPic, "guess.pic");
+        }
+        songName = buffer_read(buffer, buffer_string); 
+        */
+        with(o_field_answer) {
+        	script_execute(lambda_answer_send);
+        }
         if awaitNextRound {
             break;
         }
@@ -216,6 +220,15 @@ switch (act) {
         o_control.countdown = 0;
         break;
     case ESong.answer:
+    	with(o_field_answer) {
+        	script_execute(lambda_answer_send);
+        }
+    	
+    	audio_stop_sound(mediaPlayer);
+    	mediaPlayer = -1;
+    	audio_destroy_stream(songFile);
+        songFile = -1;
+    	
         repeat(buffer_read( buffer, buffer_u8)){
             var playerId = buffer_read(buffer, buffer_u8);
             with(o_player){
@@ -225,15 +238,37 @@ switch (act) {
             }
         }
         
+
+        var linkToPic = buffer_read(buffer, buffer_string);
+        var sName = buffer_read(buffer, buffer_string); 
+        
+        o_history.game_arr[array_height_2d(o_history.game_arr), EData.name] = sName;
+        if linkToPic != "" && o_control.hinted == false {
+		    songPic = http_get_file( linkToPic, "guess.pic");
+		}
+        
+        if !o_control.hinted {
+	        var insAnswer = instance_create_depth(0, 0, 0, o_right_answer);
+	        insAnswer.answerText = sName;
+        } else {
+        	o_right_answer.answerText = sName;
+        }
+        
+        /*
         if songName != "" {
             o_history.game_arr[array_height_2d(o_history.game_arr), EData.name] = songName;
             var insAnswer = instance_create_depth(0, 0, 0, o_right_answer);
             insAnswer.answerText   = songName;
             insAnswer.answerSprite = songSprite;
         }
+        */
+        
+        
         break;
     
     case ESong.next:
+    	o_control.hinted = false;
+    	
         awaitNextRound = false;
 
         songSprite = -1;
@@ -249,17 +284,21 @@ switch (act) {
             textfield_string = "";
             textfield_active = false;
         }
+        
+        songLink = -1;
+
+        
         break;
-    /* Чому то не подхватывает
+    
     case ESong.hint:
-    	
     	o_control.hinted = true;
     	var linkToPic = buffer_read(buffer, buffer_string);
 		if linkToPic != "" {
-		    songPic = http_get_file( linkToPic, "guess.pic");
+		    songPic = http_get_file(linkToPic, "guess.pic");
 		}
+		instance_create_depth(0, 0, 0, o_right_answer);
+		
     	break;
-    */
     case EPing.check:
         var pong = buffer_create(32, buffer_grow, 1);
         buffer_write(pong, buffer_u8, EPing.get);

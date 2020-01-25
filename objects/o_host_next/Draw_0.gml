@@ -1,4 +1,5 @@
-
+draw_self();
+/*
 if global.gameState == ESong.answer {
     draw_self();
 } else {

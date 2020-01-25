@@ -15,6 +15,8 @@
 #macro avatarSize 128
 #macro nickLengMax 12
 
+#macro chatCol $81ADFF
+
 ini_open("sound.conf");
 global.gain_se = ini_read_real("game", "gain_se", 0.5);
 global.gain_music = ini_read_real("game", "gain_music", 0.5);
@@ -111,7 +113,7 @@ roundTotal = 0;
 countdown = -1;
 global.gameState = ESong.next;
 
-
+/*
 // Данные у всех
 songLink	= -1;
 songFile	= -1;
@@ -120,5 +122,6 @@ songSprite	= -1;
 songLoading = 0;
 songName	= "";
 mediaPlayer = -1;
+*/
 
 hinted = false;

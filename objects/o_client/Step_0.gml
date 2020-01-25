@@ -5,5 +5,5 @@ if lastResponsePast > room_speed * 30 {
 }
 
 
-if keyboard_check_pressed(vk_space)
-	trace_mf0 GetStatus() trace_mf1;
+//if keyboard_check_pressed(vk_space)
+//	trace(GetStatus());

@@ -10,3 +10,8 @@ global.gameState = ESong.play;
 instance_activate_object(o_host_answ);
 instance_activate_object(o_host_next);
 instance_deactivate_object(self);
+
+
+if (o_host.songFile != -1) {
+    o_host.mediaPlayer = audio_play_sound(o_host.songFile, 10, false);
+}

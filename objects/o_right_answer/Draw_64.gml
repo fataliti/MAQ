@@ -6,4 +6,6 @@ if answerSprite != -1 {
     draw_sprite(s_nopicture, 0, 480, 180);
 }
 
-draw_text_transformed_color(480, 260, answerText, 2, 2, 0, c_red, c_red, c_red, c_red, 1);
+draw_set_font(fnt_ru_15);
+draw_text(480, 280, answerText);
+draw_set_font(fnt_ru);
