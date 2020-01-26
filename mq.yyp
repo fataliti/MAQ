@@ -335,6 +335,14 @@
             }
         },
         {
+            "Key": "5d587675-7d6f-1b8f-e99f-86d23ce10400",
+            "Value": {
+                "id": "3515e7d8-35bf-59ab-289e-52ceb4a0777c",
+                "resourcePath": "scripts\\playMusic\\playMusic.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "5fde64c0-f716-4a56-b54f-e2ab3487e8ba",
             "Value": {
                 "id": "da53e900-9ef8-4e36-b41e-b835d9d1c87d",
@@ -644,6 +652,14 @@
                 "id": "fc867fba-5624-40ff-9df3-4f587848992a",
                 "resourcePath": "sprites\/s_speaker\/s_speaker.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "9e329759-1665-5f5c-eb4d-63055f7dc887",
+            "Value": {
+                "id": "b1b66743-1d3e-c19a-3252-dae1c7311a23",
+                "resourcePath": "scripts\/playSe\/playSe.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -962,7 +978,9 @@
         "53ad5d7e-3fc7-0a7c-8c20-707751b1efdf",
         "2f4c0e68-2cd0-2cc2-2f82-9a9ecca46dc8",
         "76158d41-eeb5-49cc-abed-936b43d4307d",
-        "ba95dafa-2075-2044-3bb1-9c1956db406a"
+        "ba95dafa-2075-2044-3bb1-9c1956db406a",
+        "9e329759-1665-5f5c-eb4d-63055f7dc887",
+        "5d587675-7d6f-1b8f-e99f-86d23ce10400"
     ],
     "tutorial": ""
 }

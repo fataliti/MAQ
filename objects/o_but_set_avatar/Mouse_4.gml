@@ -1,4 +1,4 @@
-audio_play_sound(a_but_mainmenu, 10, false);
+playSe(a_but_mainmenu);
 
 var pic = get_open_filename("*.png, *.jpg, *.jpeg|*.png;*.jpg;*.jpeg" ,"");
 if (pic != "") {

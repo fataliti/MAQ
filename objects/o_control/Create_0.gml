@@ -37,6 +37,7 @@ var bgms = choose(
 global.bgm = audio_play_sound(bgms, 10, true);
 audio_sound_gain(global.bgm, global.gain_bgm, 0);
 
+#region Енумераторы
 // Действия
 enum ENet {
 	connected = 1,
@@ -77,16 +78,16 @@ enum EGame {
 	gameOver = 54
 }
 
+#endregion
+
 // Настройки сервера/клиента
 global.server = -1;
 global.socket = -1;
 network_set_config(network_config_connect_timeout, 999);
 
 
-
 // Инициализация данных игрока запустившего игру
 avatar = sprite_add("avatar.png", 1, false, 0, 0, 0);
-
 if (avatar != -1) {
 	if (sprite_get_width(avatar) != avatarSize && sprite_get_height(avatar) != avatarSize) {
 		var surf = surface_create(avatarSize, avatarSize);
@@ -113,15 +114,16 @@ roundTotal = 0;
 countdown = -1;
 global.gameState = ESong.next;
 
-/*
+
 // Данные у всех
-songLink	= -1;
 songFile	= -1;
 songPic 	= -1;
 songSprite	= -1;
-songLoading = 0;
-songName	= "";
 mediaPlayer = -1;
-*/
+
+o_control.songPath = SetPath(working_directory+"media.ogg");
+//!#mfunc GetPath {"args":[],"order":[]}
+#macro GetPath_mf0  o_control.songPath
+trace_mf0 GetPath_mf0 trace_mf1;
 
 hinted = false;

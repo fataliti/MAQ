@@ -1,4 +1,4 @@
-audio_play_sound(a_but_mainmenu, 10, false);
+playSe(a_but_mainmenu);
 
 var newNickname = get_string("Как мне тебя называть?", o_control.nickname);
 

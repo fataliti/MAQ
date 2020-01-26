@@ -1,4 +1,4 @@
-audio_play_sound(a_but_create, 10, false);
+playSe(a_but_create);
 
 global.server = network_create_server(network_socket_tcp, port, size);
 

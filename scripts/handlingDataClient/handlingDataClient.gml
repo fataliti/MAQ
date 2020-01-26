@@ -25,8 +25,8 @@ switch (act) {
         
         switch(buffer_read(buffer, buffer_u8)){
             case ESong.prepare:
-                songLink = http_get_file( buffer_read(buffer, buffer_string), "guess.song");
-                alarm[0] = tickrate;
+        		GetMedia(buffer_read(buffer, buffer_string),buffer_read(buffer, buffer_u8), buffer_read(buffer, buffer_u8));
+        		alarm[0] = tickrate;
                 break;
             case ESong.play:
                 o_control.countdown = buffer_read(buffer, buffer_f32);
@@ -173,6 +173,7 @@ switch (act) {
         network_destroy(global.socket);
         global.socket = -1;
         show_message("Тебя исключили");
+        room_goto(rm_mainmenu);
         break;
     case ESong.status:
         var player = buffer_read(buffer, buffer_u8);
@@ -183,40 +184,27 @@ switch (act) {
         }
         break;
     case ESong.prepare:
-
-        //trace(SetPath(working_directory+"media.ogg"));
-        //GetMedia("https://mp3-partys.ru/dl/files/Zivert_-_Life.mp3", 20.0, 0.0);
-
-    	
-        songLink = http_get_file( buffer_read(buffer, buffer_string), "guess.song");
-        songLoading = 0;
+		GetMedia(buffer_read(buffer, buffer_string), buffer_read(buffer, buffer_u8), buffer_read(buffer, buffer_u8));
         alarm[0] = tickrate;
-    
         break;
     case ESong.play:
         o_control.countdown = timer;
-        if (songFile != -1) {
-            mediaPlayer = audio_play_sound(songFile, 10, false);
+        if (o_control.songFile != -1) {
+            o_control.mediaPlayer = playMusic(o_control.songFile);
+            //audio_play_sound(songFile, 10, false);
         }
         break;
     case ESong.stop:
-    	/*
-        var linkToPic = buffer_read(buffer, buffer_string);
-        if linkToPic != "" && o_control.hinted == false {
-            songPic = http_get_file( linkToPic, "guess.pic");
-        }
-        songName = buffer_read(buffer, buffer_string); 
-        */
         with(o_field_answer) {
         	script_execute(lambda_answer_send);
         }
         if awaitNextRound {
             break;
         }
-        audio_stop_sound(mediaPlayer);
-        mediaPlayer = -1;
-        audio_destroy_stream(songFile);
-        songFile = -1;
+        audio_stop_sound(o_control.mediaPlayer);
+        o_control.mediaPlayer = -1;
+        audio_destroy_stream(o_control.songFile);
+        o_control.songFile = -1;
         o_control.countdown = 0;
         break;
     case ESong.answer:
@@ -225,9 +213,10 @@ switch (act) {
         }
     	
     	audio_stop_sound(mediaPlayer);
-    	mediaPlayer = -1;
+    	o_control.mediaPlayer = -1;
     	audio_destroy_stream(songFile);
-        songFile = -1;
+        o_control.songFile = -1;
+    	o_control.countdown = 0;
     	
         repeat(buffer_read( buffer, buffer_u8)){
             var playerId = buffer_read(buffer, buffer_u8);
@@ -244,7 +233,7 @@ switch (act) {
         
         o_history.game_arr[array_height_2d(o_history.game_arr), EData.name] = sName;
         if linkToPic != "" && o_control.hinted == false {
-		    songPic = http_get_file( linkToPic, "guess.pic");
+		    o_control.songPic = http_get_file( linkToPic, "guess.pic");
 		}
         
         if !o_control.hinted {
@@ -253,19 +242,7 @@ switch (act) {
         } else {
         	o_right_answer.answerText = sName;
         }
-        
-        /*
-        if songName != "" {
-            o_history.game_arr[array_height_2d(o_history.game_arr), EData.name] = songName;
-            var insAnswer = instance_create_depth(0, 0, 0, o_right_answer);
-            insAnswer.answerText   = songName;
-            insAnswer.answerSprite = songSprite;
-        }
-        */
-        
-        
         break;
-    
     case ESong.next:
     	o_control.hinted = false;
     	
@@ -285,16 +262,13 @@ switch (act) {
             textfield_active = false;
         }
         
-        songLink = -1;
-
-        
+        o_control.songLink = -1;
         break;
-    
     case ESong.hint:
     	o_control.hinted = true;
     	var linkToPic = buffer_read(buffer, buffer_string);
 		if linkToPic != "" {
-		    songPic = http_get_file(linkToPic, "guess.pic");
+		    o_control.songPic = http_get_file(linkToPic, "guess.pic");
 		}
 		instance_create_depth(0, 0, 0, o_right_answer);
 		

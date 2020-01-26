@@ -14,8 +14,7 @@ if (activ) {
 		
 		
 	}
-	/*
-	if audio_is_playing(ЗВУК)
-		audio_sound_gain(ЗВУК, global.gain_snd, 0);
-	*/
+	
+	if audio_is_playing(o_control.mediaPlayer)
+		audio_sound_gain(o_control.mediaPlayer, global.gain_music, 0);
 }

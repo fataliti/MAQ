@@ -33,7 +33,7 @@ if (lmb) {
 	    if (point_in_rectangle(mouse_x, mouse_y, x + 158 + coef * 2 + 6, y + 1,  x + 158 + coef * 2 + 6 + coef, y + 1 + coef)) {
 	        victimId = _id;
 	        act = EPlayer.ban;
-	        //ds_list_add(other.banlist, ip);?
+	        ds_list_add(other.banslis, ip);
 	    }
     }
     

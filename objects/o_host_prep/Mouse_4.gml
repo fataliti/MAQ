@@ -1,12 +1,18 @@
-audio_play_sound(a_but_host, 10, false);
+playSe(a_but_host);
 
 var sendbuf = buffer_create( 16, buffer_grow, 1);
 buffer_write(sendbuf, buffer_u8, ESong.prepare);
 buffer_write(sendbuf, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.songLink]); 
+buffer_write(sendbuf, buffer_u8, o_history.game_arr[@ o_control.roundCurrent, EData.len]); 
+buffer_write(sendbuf, buffer_u8, o_history.game_arr[@ o_control.roundCurrent, EData.start]); 
 sendAll(sendbuf);
 
-o_host.songLink = http_get_file( o_history.game_arr[@ o_control.roundCurrent, EData.songLink], "guess.song");
 
+GetMedia(o_history.game_arr[@ o_control.roundCurrent, EData.songLink], 
+		 o_history.game_arr[@ o_control.roundCurrent, EData.len],
+		 o_history.game_arr[@ o_control.roundCurrent, EData.start],
+		 );
+o_host.alarm[0] = tickrate;
 global.gameState = ESong.prepare;
 
 instance_activate_object(o_host_play);

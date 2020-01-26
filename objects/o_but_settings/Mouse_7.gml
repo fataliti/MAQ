@@ -1,2 +1,2 @@
-audio_play_sound(a_but_mainmenu, 10, false);
+playSe(a_but_mainmenu);
 room_goto(rm_settings);
