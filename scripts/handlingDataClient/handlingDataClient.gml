@@ -25,7 +25,8 @@ switch (act) {
         
         switch(buffer_read(buffer, buffer_u8)){
             case ESong.prepare:
-        		GetMedia(buffer_read(buffer, buffer_string),buffer_read(buffer, buffer_u8), buffer_read(buffer, buffer_u8));
+            	//Почему два раза вызывается в этом файле? (ещё ниже, рабочая)
+        		//GetMedia(buffer_read(buffer, buffer_string),buffer_read(buffer, buffer_u8), buffer_read(buffer, buffer_u8));
         		alarm[0] = tickrate;
                 break;
             case ESong.play:
@@ -179,18 +180,22 @@ switch (act) {
         var player = buffer_read(buffer, buffer_u8);
         with (o_player) {
             if (_id == player) {
-                loading = buffer_read( buffer, buffer_u8) / 100;
+                loading = buffer_read(buffer, buffer_u8) / 100;
             }
         }
         break;
     case ESong.prepare:
-		GetMedia(buffer_read(buffer, buffer_string), buffer_read(buffer, buffer_u8), buffer_read(buffer, buffer_u8));
+		//Вот здесь что-то не то передаёшь в DLL:
+		//GetMedia(buffer_read(buffer, buffer_string), buffer_read(buffer, buffer_u8), buffer_read(buffer, buffer_u8));
+		GetMedia("https://sgi2.dataix-kz-akkol.vkuseraudio.net/p13/da4a254e129402.mp3?extra=0b9YXjZ2j9TrIg28dyCkgemkH9FQ5EzG-NfDu3YzHwclk-U5_u6Fsgabtf5czx9hnEQIA6bK5D_b-X5WNQtqE6uLTxCMneZDV0nJKdkB6Csoc-JKbSgzaPwDZWcnR6Aiipuh7FJ0nyupfXjNVxEvzyN3Sw", 
+		20, 40);
         alarm[0] = tickrate;
         break;
     case ESong.play:
         o_control.countdown = timer;
         if (o_control.songFile != -1) {
             o_control.mediaPlayer = playMusic(o_control.songFile);
+            //Зачем это здесь?
             //audio_play_sound(songFile, 10, false);
         }
         break;

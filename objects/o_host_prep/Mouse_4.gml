@@ -10,8 +10,7 @@ sendAll(sendbuf);
 
 GetMedia(o_history.game_arr[@ o_control.roundCurrent, EData.songLink], 
 		 o_history.game_arr[@ o_control.roundCurrent, EData.len],
-		 o_history.game_arr[@ o_control.roundCurrent, EData.start],
-		 );
+		 o_history.game_arr[@ o_control.roundCurrent, EData.start]);
 o_host.alarm[0] = tickrate;
 global.gameState = ESong.prepare;
 

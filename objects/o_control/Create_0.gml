@@ -6,7 +6,7 @@
 #macro color_mf0  draw_set_color(
 #macro color_mf1 )
 // Макроперменные
-#macro localhost "127.0.0.1"
+#macro localhost "192.168.0.3"
 #macro port 10800
 // todo: вынести размер лобби и отсчёт времени в создание игры
 #macro size 32
