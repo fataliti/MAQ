@@ -3,6 +3,8 @@ audio_play_sound(a_but_host, 10, false);
 if o_control.roundCurrent == o_control.roundTotal{
     //Показывается пабедитель
     //Наверное
+	ResetStatus();
+	trace_mf0 GetStatus() trace_mf1;
     trace_mf0 "ИГРА ЗАКОНЧЕНА" trace_mf1;
     exit;
 }
@@ -21,6 +23,6 @@ instance_activate_object(o_host_prep);
 instance_deactivate_object(o_host_next);
 instance_deactivate_object(self);
 
-Reset();
+ResetStatus();
 
 

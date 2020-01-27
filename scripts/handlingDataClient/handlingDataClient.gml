@@ -249,7 +249,7 @@ switch (act) {
     	o_control.hinted = false;
     	
     	if !awaitNextRound {
-    		Reset();
+    		ResetStatus();
     	}
     	
         awaitNextRound = false;

@@ -1,7 +1,7 @@
 
 window_set_caption(GetStatus());
 
-if GetStatus()<100
+if (GetStatus() < 100)
 	alarm[0] = tickrate;
 else  {
 	o_control.songFile = audio_create_stream(GetPath_mf0);

@@ -92,11 +92,11 @@
                     "args": [
                         
                     ],
-                    "externalName": "Reset",
+                    "externalName": "ResetStatus",
                     "help": "",
                     "hidden": false,
                     "kind": 1,
-                    "name": "Reset",
+                    "name": "ResetStatus",
                     "returnType": 2
                 }
             ],
