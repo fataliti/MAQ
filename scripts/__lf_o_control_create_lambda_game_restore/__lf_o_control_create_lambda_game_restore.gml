@@ -13,7 +13,7 @@
 	audio_destroy_stream(o_control.songFile);
 	o_control.songFile = -1;
 	
-	//ResetStatus();
+	ResetStatus();
 	
 	room_goto(rm_mainmenu);
 }

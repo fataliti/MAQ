@@ -198,7 +198,7 @@ switch (act) {
     	var link = buffer_read(buffer, buffer_string);
     	var len  = buffer_read(buffer, buffer_u8);
     	var start= buffer_read(buffer, buffer_u8);
-		//GetMedia(link, len, start);
+		GetMedia(link, len, start);
         alarm[0] = tickrate;
         break;
     case ESong.play:
@@ -247,7 +247,7 @@ switch (act) {
     	o_control.hinted = false;
     	
     	if !awaitNextRound {
-    		//ResetStatus();
+    		ResetStatus();
     	}
     	
         awaitNextRound = false;
@@ -269,7 +269,7 @@ switch (act) {
         o_control.songLink = -1;
         break;
     case ENet.gameOver:
-    	//ResetStatus();
+    	ResetStatus();
     	gameOverSort();
     	instance_activate_object(o_gameOver);
     	with(o_right_answer){instance_destroy();}
