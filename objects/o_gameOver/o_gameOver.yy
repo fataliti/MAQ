@@ -1,0 +1,48 @@
+{
+    "id": "f5081bae-febb-49c8-8d6e-4fbd1eedd0fe",
+    "modelName": "GMObject",
+    "mvc": "1.0",
+    "name": "o_gameOver",
+    "eventList": [
+        {
+            "id": "473b92c3-3d06-5d44-6909-f089888bdbcf",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 0,
+            "m_owner": "f5081bae-febb-49c8-8d6e-4fbd1eedd0fe"
+        },
+        {
+            "id": "bc7d9086-803c-04fd-d261-bd6699251819",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 6,
+            "m_owner": "f5081bae-febb-49c8-8d6e-4fbd1eedd0fe"
+        }
+    ],
+    "maskSpriteId": "00000000-0000-0000-0000-000000000000",
+    "overriddenProperties": null,
+    "parentObjectId": "00000000-0000-0000-0000-000000000000",
+    "persistent": false,
+    "physicsAngularDamping": 0.1,
+    "physicsDensity": 0.5,
+    "physicsFriction": 0.2,
+    "physicsGroup": 0,
+    "physicsKinematic": false,
+    "physicsLinearDamping": 0.1,
+    "physicsObject": false,
+    "physicsRestitution": 0.1,
+    "physicsSensor": false,
+    "physicsShape": 1,
+    "physicsShapePoints": null,
+    "physicsStartAwake": true,
+    "properties": null,
+    "solid": false,
+    "spriteId": "ad6bbea3-724e-4b24-8b02-4d6a2bf435fd",
+    "visible": true
+}

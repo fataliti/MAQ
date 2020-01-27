@@ -25,7 +25,10 @@ switch (act) {
         
         switch(buffer_read(buffer, buffer_u8)){
             case ESong.prepare:
-        		GetMedia(buffer_read(buffer, buffer_string),buffer_read(buffer, buffer_u8), buffer_read(buffer, buffer_u8));
+            	var link = buffer_read(buffer, buffer_string);
+		    	var len  = buffer_read(buffer, buffer_u8);
+		    	var start= buffer_read(buffer, buffer_u8);
+				GetMedia(link, len, start);
         		alarm[0] = tickrate;
                 break;
             case ESong.play:
@@ -139,7 +142,7 @@ switch (act) {
         var player = buffer_read(buffer, buffer_u8);
         with (o_player) {
             if (_id == player) {
-                points-=0.5;
+                points+=0.5;
             }
         }
         break;
@@ -157,7 +160,7 @@ switch (act) {
             network_destroy(global.socket);
             global.socket = -1;
             show_message("Тебя кикнули");
-            game_restart();
+            script_execute(o_control.lambda_game_restore);
         }
         break;
     case EPlayer.ban:
@@ -166,15 +169,23 @@ switch (act) {
             network_destroy(global.socket);
             global.socket = -1;
             show_message("Тебя забанили");
-            game_restart();
+            script_execute(o_control.lambda_game_restore);
         }
         break;
     case EPlayer.excepted:
         network_destroy(global.socket);
         global.socket = -1;
         show_message("Тебя исключили");
-        room_goto(rm_mainmenu);
+        script_execute(o_control.lambda_game_restore);
         break;
+    case EPlayer.answer:
+    	var player = buffer_read(buffer, buffer_u8);
+    	with(o_player){
+    		if _id == player{
+    			answer = buffer_read(buffer, buffer_string);
+    		}
+    	}
+    	break;
     case ESong.status:
         var player = buffer_read(buffer, buffer_u8);
         with (o_player) {
@@ -184,10 +195,10 @@ switch (act) {
         }
         break;
     case ESong.prepare:
-		//Вот здесь что-то не то передаёшь в DLL:
-		GetMedia(buffer_read(buffer, buffer_string), buffer_read(buffer, buffer_u8), buffer_read(buffer, buffer_u8));
-		//GetMedia("https://sgi2.dataix-kz-akkol.vkuseraudio.net/p13/da4a254e129402.mp3?extra=0b9YXjZ2j9TrIg28dyCkgemkH9FQ5EzG-NfDu3YzHwclk-U5_u6Fsgabtf5czx9hnEQIA6bK5D_b-X5WNQtqE6uLTxCMneZDV0nJKdkB6Csoc-JKbSgzaPwDZWcnR6Aiipuh7FJ0nyupfXjNVxEvzyN3Sw", 
-		//20, 40);
+    	var link = buffer_read(buffer, buffer_string);
+    	var len  = buffer_read(buffer, buffer_u8);
+    	var start= buffer_read(buffer, buffer_u8);
+		//GetMedia(link, len, start);
         alarm[0] = tickrate;
         break;
     case ESong.play:
@@ -196,19 +207,6 @@ switch (act) {
             o_control.mediaPlayer = playMusic(o_control.songFile);
         }
         break;
-    case ESong.stop:
-        with(o_field_answer) {
-        	script_execute(lambda_answer_send);
-        }
-        if awaitNextRound {
-            break;
-        }
-        audio_stop_sound(o_control.mediaPlayer);
-        o_control.mediaPlayer = -1;
-        audio_destroy_stream(o_control.songFile);
-        o_control.songFile = -1;
-        o_control.countdown = 0;
-        break;
     case ESong.answer:
     	with(o_field_answer) {
         	script_execute(lambda_answer_send);
@@ -216,7 +214,7 @@ switch (act) {
     
 	    audio_stop_sound(o_control.mediaPlayer);
 	    o_control.mediaPlayer = -1;
-	    audio_destroy_stream(songFile);
+	    audio_destroy_stream(o_control.songFile);
 	    o_control.songFile = -1;
     	o_control.countdown = 0;
     	
@@ -249,7 +247,7 @@ switch (act) {
     	o_control.hinted = false;
     	
     	if !awaitNextRound {
-    		ResetStatus();
+    		//ResetStatus();
     	}
     	
         awaitNextRound = false;
@@ -270,6 +268,12 @@ switch (act) {
         
         o_control.songLink = -1;
         break;
+    case ENet.gameOver:
+    	//ResetStatus();
+    	gameOverSort();
+    	instance_activate_object(o_gameOver);
+    	with(o_right_answer){instance_destroy();}
+    	break;
     case ESong.hint:
     	o_control.hinted = true;
     	var linkToPic = buffer_read(buffer, buffer_string);

@@ -1,4 +1,13 @@
 
+if gameOver {
+	with(o_player) {
+		y = lerp(yto, y, 0.70);
+		
+		if place != -1
+			draw_sprite(s_medals, place, x - 35, y + 1);
+	}
+}
+
 if room == rm_lobby {
 	draw_text(480, 25, "Время раунда");
 	draw_text(480, 40, roundTime);
@@ -12,7 +21,6 @@ if room == rm_lobby {
 		if point_in_rectangle(mouse_x, mouse_y, 495, 35, 505, 45)
 			roundTime += 5;
 			
-		roundTime = clamp(roundTime, timer, 60);
+		roundTime = clamp(roundTime, timer, 90);
 	}
-	
 }

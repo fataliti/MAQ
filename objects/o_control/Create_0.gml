@@ -45,6 +45,7 @@ enum ENet {
 	announceForNew = 3,
 	announceForAll = 4,
 	disconnected = 5,
+	gameOver = 6,
 }
 enum EPing {
 	check = 10,
@@ -71,12 +72,7 @@ enum EPlayer {
     pointMinus = 46,
     excepted = 47,
 }
-enum EGame {
-	lobby = 51,
-	start = 52,
-	next = 53,
-	gameOver = 54
-}
+
 
 #endregion
 
@@ -91,14 +87,14 @@ avatar = sprite_add("avatar.png", 1, false, 0, 0, 0);
 if (avatar != -1) {
 	if (sprite_get_width(avatar) != avatarSize && sprite_get_height(avatar) != avatarSize) {
 		var surf = surface_create(avatarSize, avatarSize);
-        surface_set_target(surf);
-        draw_clear_alpha(c_black, 0);
-        draw_sprite_ext(avatar, 0, 0, 0, avatarSize / sprite_get_width(avatar), avatarSize / sprite_get_height(avatar), 0, c_white, 1);    
-        surface_reset_target();
-        surface_save(surf, "avatar.png");
-        surface_free(surf);
-        sprite_delete(avatar);
-        avatar = sprite_add("avatar.png", 1, false, 0, 0, 0);
+	    surface_set_target(surf);
+	    draw_clear_alpha(c_black, 0);
+	    draw_sprite_ext(avatar, 0, 0, 0, avatarSize / sprite_get_width(avatar), avatarSize / sprite_get_height(avatar), 0, c_white, 1);    
+	    surface_reset_target();
+	    surface_save(surf, "avatar.png");
+	    surface_free(surf);
+	    sprite_delete(avatar);
+	    avatar = sprite_add("avatar.png", 1, false, 0, 0, 0);
 	}
 }
 
@@ -112,18 +108,25 @@ ini_close();
 roundCurrent = 0;
 roundTotal = 0;
 countdown = -1;
-global.gameState = ESong.next;
 roundTime = timer;
+global.gameState = ESong.next;
+gameOver = false;
 
 // Данные у всех
 songFile	= -1;
 songPic 	= -1;
 songSprite	= -1;
 mediaPlayer = -1;
-
+hinted		= false;
+/*
 o_control.songPath = SetPath(working_directory+"media.ogg");
-//!#mfunc GetPath {"args":[],"order":[]}
-#macro GetPath_mf0  o_control.songPath
-trace_mf0 GetPath_mf0 trace_mf1;
+#mfunc GetPath() o_control.songPath
+trace(GetPath());
+*/
 
-hinted = false;
+
+//удолить
+//!#mfunc GetPath {"args":[],"order":[]}
+#macro GetPath_mf0  1
+
+lambda_game_restore = __lf_o_control_create_lambda_game_restore;

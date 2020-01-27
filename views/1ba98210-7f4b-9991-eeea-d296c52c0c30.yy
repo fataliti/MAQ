@@ -9,7 +9,8 @@
         "079e00a1-b9da-42ea-9947-7f485e767329",
         "9611bebb-8457-47e8-b3c3-76de589e29a0",
         "6b3bffd4-b26e-416a-889a-5ffdbc5aedf3",
-        "e3b11d27-b96f-401a-ad9b-ba6d4629311d"
+        "e3b11d27-b96f-401a-ad9b-ba6d4629311d",
+        "f5081bae-febb-49c8-8d6e-4fbd1eedd0fe"
     ],
     "filterType": "GMObject",
     "folderName": "lobby",

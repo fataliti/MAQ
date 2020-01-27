@@ -8,10 +8,10 @@ buffer_write(sendbuf, buffer_u8, o_history.game_arr[@ o_control.roundCurrent, ED
 sendAll(sendbuf);
 
 
-GetMedia(o_history.game_arr[@ o_control.roundCurrent, EData.songLink], 
-		 o_control.roundTime,
-		 o_history.game_arr[@ o_control.roundCurrent, EData.start]);
-o_host.alarm[0] = tickrate;
+//GetMedia(o_history.game_arr[@ o_control.roundCurrent, EData.songLink], 
+//		 o_control.roundTime,
+//		 o_history.game_arr[@ o_control.roundCurrent, EData.start]);
+//o_host.alarm[0] = tickrate;
 global.gameState = ESong.prepare;
 
 instance_activate_object(o_host_play);

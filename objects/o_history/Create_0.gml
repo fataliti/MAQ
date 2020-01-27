@@ -6,7 +6,6 @@ enum EData{
     pic,
     songLink,
     start,
-    len
 }
 
 load_txt = __lf_o_history_create_lambda_load_txt;

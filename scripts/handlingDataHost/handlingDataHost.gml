@@ -99,13 +99,12 @@ switch(act){
         sendAll(buffer);
         break;
     case EPlayer.answer:
-        
         var player = buffer_read(buffer, buffer_u8);
         with (o_player) {
             if (_id == player)
                 answer = buffer_read(buffer, buffer_string);
         }
-        
+        sendAll(buffer);
         break;
     case EPing.check:
         var player = buffer_read(buffer, buffer_u8);

@@ -6,3 +6,6 @@ answer = "";
 loading = 0;
 ping = -1;
 ip = "";
+
+yto = -1;
+place = -1;

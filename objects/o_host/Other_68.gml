@@ -6,7 +6,7 @@ switch(type) {
     	var connect_break = false;
     
         var indexSocket = async_load[? "socket"];
-        if (ds_list_find_index(kiklist, async_load[? "ip"]) != -1 || ds_list_find_index(banslis, async_load[? "ip"]) != -1) {
+        if (ds_list_find_index(kiklist, async_load[? "ip"]) != -1 || ds_list_find_index(banlist, async_load[? "ip"]) != -1) {
         	connect_break = true;
         	var sendbuf = buffer_create(2, buffer_grow, 1);
 	        buffer_write(sendbuf, buffer_u8, EPlayer.excepted);
@@ -43,8 +43,8 @@ switch(type) {
 	    	switch(global.gameState) {
 	    		case ESong.prepare:
 			    	buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.songLink]);
-			    	buffer_write(exchangeInfo, buffer_string, o_control.roundTime); 
-			    	buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.start]); 
+			    	buffer_write(exchangeInfo, buffer_u8, o_control.roundTime); 
+			    	buffer_write(exchangeInfo, buffer_u8, o_history.game_arr[@ o_control.roundCurrent, EData.start]); 
 			    	break;
 			    case ESong.play:
 			        buffer_write(exchangeInfo, buffer_f32, o_control.countdown);

@@ -311,6 +311,14 @@
             }
         },
         {
+            "Key": "5527c0be-0214-ce57-746e-9bd93922f5c4",
+            "Value": {
+                "id": "9836855a-e237-dcce-3ffd-ce60f49f8dcb",
+                "resourcePath": "scripts\\__lf_o_control_create_lambda_game_restore\\__lf_o_control_create_lambda_game_restore.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "5555b982-b73c-6afc-42f0-ffaa6e871e58",
             "Value": {
                 "id": "5d8587db-335d-4295-2b1d-3d9344b4e113",
@@ -412,6 +420,14 @@
                 "id": "81b4fdaf-4ae1-4c96-be76-f5a00b340ec3",
                 "resourcePath": "objects\\o_control\\o_control.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "6d11e1a4-bcc3-6a9b-098f-a1321831b7c8",
+            "Value": {
+                "id": "2d58fe70-1272-d1ce-b559-b8bc39bdca8b",
+                "resourcePath": "scripts\\gameOverSort\\gameOverSort.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -631,6 +647,14 @@
             }
         },
         {
+            "Key": "9672d4cd-7532-482a-a963-b94b262a64e4",
+            "Value": {
+                "id": "0f3f159f-10a1-4d1c-b960-f5f382d503c6",
+                "resourcePath": "sprites\\s_medals\\s_medals.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "97eafb2a-05e2-466a-a01a-79769d65125a",
             "Value": {
                 "id": "66345d72-4432-4060-9a81-4df9c0ed7cc5",
@@ -716,6 +740,14 @@
                 "id": "f898915d-6174-191e-f276-10be60965fcd",
                 "resourcePath": "scripts\\sendAllExceptOne\\sendAllExceptOne.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "ad6bbea3-724e-4b24-8b02-4d6a2bf435fd",
+            "Value": {
+                "id": "8d4ed383-a9e0-4ba1-89f2-f69d9bb45c67",
+                "resourcePath": "sprites\\s_gameOver\\s_gameOver.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -959,6 +991,14 @@
             }
         },
         {
+            "Key": "f5081bae-febb-49c8-8d6e-4fbd1eedd0fe",
+            "Value": {
+                "id": "7337ea12-ab6d-47e8-ae9d-26796731bc92",
+                "resourcePath": "objects\\o_gameOver\\o_gameOver.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "f95452bb-65cd-d6fb-3d90-0556541bf1a9",
             "Value": {
                 "id": "3c723abf-fe72-76a2-e7a0-c0836287334d",
@@ -1005,7 +1045,8 @@
         "76158d41-eeb5-49cc-abed-936b43d4307d",
         "ba95dafa-2075-2044-3bb1-9c1956db406a",
         "9e329759-1665-5f5c-eb4d-63055f7dc887",
-        "5d587675-7d6f-1b8f-e99f-86d23ce10400"
+        "5d587675-7d6f-1b8f-e99f-86d23ce10400",
+        "6d11e1a4-bcc3-6a9b-098f-a1321831b7c8"
     ],
     "tutorial": ""
 }
