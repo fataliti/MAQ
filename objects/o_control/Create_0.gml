@@ -6,7 +6,7 @@
 #macro color_mf0  draw_set_color(
 #macro color_mf1 )
 // Макроперменные
-#macro localhost "192.168.0.3"
+#macro localhost "127.0.0.1" //"192.168.0.3"
 #macro port 10800
 // todo: вынести размер лобби и отсчёт времени в создание игры
 #macro size 32
@@ -113,7 +113,7 @@ roundCurrent = 0;
 roundTotal = 0;
 countdown = -1;
 global.gameState = ESong.next;
-
+roundTime = timer;
 
 // Данные у всех
 songFile	= -1;

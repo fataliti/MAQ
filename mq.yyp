@@ -111,6 +111,14 @@
             }
         },
         {
+            "Key": "28936f35-2d5c-42d8-9a86-873c59cd064f",
+            "Value": {
+                "id": "50f822d4-52e5-4272-babb-27604acd1f1d",
+                "resourcePath": "sprites\\s_answer\\s_answer.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "28af2f39-67f0-a504-560c-c55f8884d50b",
             "Value": {
                 "id": "cbaa06c6-d31d-2ecb-cd77-c44f2625d3cc",
@@ -218,7 +226,7 @@
             "Key": "3ddb5528-fe9b-4d27-a17d-f16211de7a92",
             "Value": {
                 "id": "eafa9301-e407-44c4-9f70-4074689c8c19",
-                "resourcePath": "sprites\\s_answ\\s_answ.yy",
+                "resourcePath": "sprites\\s_hint\\s_hint.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -618,7 +626,7 @@
             "Key": "9611bebb-8457-47e8-b3c3-76de589e29a0",
             "Value": {
                 "id": "3d36773c-3a93-4489-a16b-629d38663a07",
-                "resourcePath": "objects\\o_host_answ\\o_host_answ.yy",
+                "resourcePath": "objects\\o_host_hint\\o_host_hint.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -847,6 +855,14 @@
             }
         },
         {
+            "Key": "d86b5791-60bb-ec97-303c-944fac882a72",
+            "Value": {
+                "id": "6f295fae-23f3-18fa-925b-3e30bdf983c2",
+                "resourcePath": "scripts\\__lf_o_host_answer_create_lambda_show_answer\\__lf_o_host_answer_create_lambda_show_answer.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "d89d44e7-9a1a-4765-8fba-d200d510bca1",
             "Value": {
                 "id": "561f789c-3afc-44e5-a17f-c158baffbb87",
@@ -884,6 +900,14 @@
                 "id": "33463042-b28e-4ea3-a63e-988af4a9147b",
                 "resourcePath": "sprites\\s_prep\\s_prep.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "e3b11d27-b96f-401a-ad9b-ba6d4629311d",
+            "Value": {
+                "id": "2d344487-1546-4b27-a155-4292e2f5d68b",
+                "resourcePath": "objects\\o_host_answer\\o_host_answer.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -976,6 +1000,7 @@
         "7863ecd6-3d29-be9f-906d-f2d981e45d3b",
         "7b2ab004-27b1-e78c-3adf-f33d962c8410",
         "53ad5d7e-3fc7-0a7c-8c20-707751b1efdf",
+        "d86b5791-60bb-ec97-303c-944fac882a72",
         "2f4c0e68-2cd0-2cc2-2f82-9a9ecca46dc8",
         "76158d41-eeb5-49cc-abed-936b43d4307d",
         "ba95dafa-2075-2044-3bb1-9c1956db406a",

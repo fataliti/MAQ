@@ -83,6 +83,21 @@
                     "kind": 1,
                     "name": "GetMedia",
                     "returnType": 2
+                },
+                {
+                    "id": "7e1620c0-685d-4fe8-b7f7-55cefc1e5b46",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": 0,
+                    "args": [
+                        
+                    ],
+                    "externalName": "Reset",
+                    "help": "",
+                    "hidden": false,
+                    "kind": 1,
+                    "name": "Reset",
+                    "returnType": 2
                 }
             ],
             "init": "",
@@ -90,7 +105,8 @@
             "order": [
                 "164c9cbf-805d-4fe2-9edb-5980c21ab9b3",
                 "1e1b47af-6842-4a39-adf9-880aeeb33e76",
-                "54c35f73-9da4-49c9-b39d-6e4b89ecc3da"
+                "54c35f73-9da4-49c9-b39d-6e4b89ecc3da",
+                "7e1620c0-685d-4fe8-b7f7-55cefc1e5b46"
             ],
             "origname": "",
             "uncompress": false

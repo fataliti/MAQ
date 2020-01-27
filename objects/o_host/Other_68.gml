@@ -42,9 +42,9 @@ switch(type) {
 	
 	    	switch(global.gameState) {
 	    		case ESong.prepare:
-			    	buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.songLink]); 
+			    	buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.songLink]);
+			    	buffer_write(exchangeInfo, buffer_string, o_control.roundTime); 
 			    	buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.start]); 
-			    	buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.len]); 
 			    	break;
 			    case ESong.play:
 			        buffer_write(exchangeInfo, buffer_f32, o_control.countdown);

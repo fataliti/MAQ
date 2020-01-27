@@ -39,8 +39,7 @@
                             game_arr[arr_stroka, EData.name]     = roundName;
                             game_arr[arr_stroka, EData.pic]      = roundPic;
                             game_arr[arr_stroka, EData.songLink] = roundLink;
-                            game_arr[arr_stroka, EData.start]	 = real(string_copy(roundTime, 1, string_pos("(", roundTime)-1));
-                            game_arr[arr_stroka, EData.len] 	 = real(string_copy(roundTime, string_pos("(", roundTime)+1, string_pos(")", roundTime)-1));
+                            game_arr[arr_stroka, EData.start]	 = real(roundTime);
                             
                             roundName = ""; 
                             roundPic = ""; 

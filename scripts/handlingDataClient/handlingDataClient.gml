@@ -25,8 +25,7 @@ switch (act) {
         
         switch(buffer_read(buffer, buffer_u8)){
             case ESong.prepare:
-            	//Почему два раза вызывается в этом файле? (ещё ниже, рабочая)
-        		//GetMedia(buffer_read(buffer, buffer_string),buffer_read(buffer, buffer_u8), buffer_read(buffer, buffer_u8));
+        		GetMedia(buffer_read(buffer, buffer_string),buffer_read(buffer, buffer_u8), buffer_read(buffer, buffer_u8));
         		alarm[0] = tickrate;
                 break;
             case ESong.play:
@@ -186,17 +185,15 @@ switch (act) {
         break;
     case ESong.prepare:
 		//Вот здесь что-то не то передаёшь в DLL:
-		//GetMedia(buffer_read(buffer, buffer_string), buffer_read(buffer, buffer_u8), buffer_read(buffer, buffer_u8));
-		GetMedia("https://sgi2.dataix-kz-akkol.vkuseraudio.net/p13/da4a254e129402.mp3?extra=0b9YXjZ2j9TrIg28dyCkgemkH9FQ5EzG-NfDu3YzHwclk-U5_u6Fsgabtf5czx9hnEQIA6bK5D_b-X5WNQtqE6uLTxCMneZDV0nJKdkB6Csoc-JKbSgzaPwDZWcnR6Aiipuh7FJ0nyupfXjNVxEvzyN3Sw", 
-		20, 40);
+		GetMedia(buffer_read(buffer, buffer_string), buffer_read(buffer, buffer_u8), buffer_read(buffer, buffer_u8));
+		//GetMedia("https://sgi2.dataix-kz-akkol.vkuseraudio.net/p13/da4a254e129402.mp3?extra=0b9YXjZ2j9TrIg28dyCkgemkH9FQ5EzG-NfDu3YzHwclk-U5_u6Fsgabtf5czx9hnEQIA6bK5D_b-X5WNQtqE6uLTxCMneZDV0nJKdkB6Csoc-JKbSgzaPwDZWcnR6Aiipuh7FJ0nyupfXjNVxEvzyN3Sw", 
+		//20, 40);
         alarm[0] = tickrate;
         break;
     case ESong.play:
-        o_control.countdown = timer;
+        o_control.countdown = buffer_read(buffer, buffer_u8);
         if (o_control.songFile != -1) {
             o_control.mediaPlayer = playMusic(o_control.songFile);
-            //Зачем это здесь?
-            //audio_play_sound(songFile, 10, false);
         }
         break;
     case ESong.stop:
@@ -216,11 +213,11 @@ switch (act) {
     	with(o_field_answer) {
         	script_execute(lambda_answer_send);
         }
-    	
-    	audio_stop_sound(mediaPlayer);
-    	o_control.mediaPlayer = -1;
-    	audio_destroy_stream(songFile);
-        o_control.songFile = -1;
+    
+	    audio_stop_sound(o_control.mediaPlayer);
+	    o_control.mediaPlayer = -1;
+	    audio_destroy_stream(songFile);
+	    o_control.songFile = -1;
     	o_control.countdown = 0;
     	
         repeat(buffer_read( buffer, buffer_u8)){
@@ -250,6 +247,10 @@ switch (act) {
         break;
     case ESong.next:
     	o_control.hinted = false;
+    	
+    	if !awaitNextRound {
+    		Reset();
+    	}
     	
         awaitNextRound = false;
 

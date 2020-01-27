@@ -11,17 +11,27 @@ if (ctrl.countdown > 0) {
     
     if global.server != -1 {
 	    if (ctrl.countdown <= 0) {
-	    	
+	    	/*
 	    	audio_stop_sound(ctrl.mediaPlayer);
 	    	ctrl.mediaPlayer = -1;
 	    	audio_destroy_stream(ctrl.songFile);
 	        ctrl.songFile = -1;
 	    	
+	    	
 	        var timeOver = buffer_create(8, buffer_grow, 1);
 	        buffer_write(timeOver, buffer_u8, ESong.stop);
-	        //buffer_write(timeOver, buffer_string, o_history.game_arr[@ ctrl.roundCurrent, EData.pic]);
-	        //buffer_write(timeOver, buffer_string, o_history.game_arr[@ ctrl.roundCurrent, EData.name]);
+	        buffer_write(timeOver, buffer_string, o_history.game_arr[@ ctrl.roundCurrent, EData.pic]);
+	        buffer_write(timeOver, buffer_string, o_history.game_arr[@ ctrl.roundCurrent, EData.name]);
 	        sendAll(timeOver);
+	        */
+	        
+	        with(o_host_answer){
+	        	script_execute(lambda_show_answer);
+	        }
+	        
+	        instance_deactivate_object(o_host_hint);
+	        instance_deactivate_object(o_host_answer);
+	        instance_activate_object(o_host_next);
 	    }
     }
 }
