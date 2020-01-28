@@ -96,7 +96,7 @@ switch(act){
                 loading = buffer_read( buffer, buffer_u8) / 100;
             }
         }
-        sendAll(buffer);
+        //sendAll(buffer);
         break;
     case EPlayer.answer:
         var player = buffer_read(buffer, buffer_u8);

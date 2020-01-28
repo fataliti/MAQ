@@ -19,6 +19,7 @@ o_control.roundCurrent++;
 o_control.hinted = false;
 with(o_player)		 {answer = "";}
 with(o_right_answer) {instance_destroy();}
+o_player_host.loading = 0;
 
 global.gameState = ESong.next;
 

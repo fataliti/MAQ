@@ -7,7 +7,7 @@ var avaSize = avatarSize / 4;
 
 switch (act) {
     case EChat.message:
-        var msgIns = instance_create_depth(o_chat.x, o_chat.y+235, 0, o_chat_message);
+        var msgIns = instance_create_depth(o_chat.x, o_chat.y+235 + o_scroll_chat.scrolled, 0, o_chat_message);
         msgIns.message = buffer_read(buffer, buffer_string);
         with(msgIns) {
         	script_execute(lambda_string_split);
@@ -69,7 +69,7 @@ switch (act) {
     case ENet.announceForAll:
         var newId = buffer_read(buffer, buffer_u8);
 
-        var newPlayer = instance_create_depth(672, -30 + 55 * newId, 0, o_player);
+        var newPlayer = instance_create_depth(672, -30 + 55 * newId + o_scroll_player.scrolled , 0, o_player);
         newPlayer._id = newId;
         newPlayer.nickname = buffer_read(buffer, buffer_string);
         
@@ -187,12 +187,23 @@ switch (act) {
     	}
     	break;
     case ESong.status:
+        var player;
+        repeat(buffer_read(buffer, buffer_u8)) {
+        	player = buffer_read(buffer, buffer_u8);
+        	with(o_player){
+        		if _id == player
+        			loading = buffer_read(buffer, buffer_u8) / 100;
+        	}
+        }
+        o_player_host.loading = buffer_read(buffer, buffer_u8) / 100;
+        /*
         var player = buffer_read(buffer, buffer_u8);
         with (o_player) {
             if (_id == player) {
                 loading = buffer_read(buffer, buffer_u8) / 100;
             }
         }
+        */
         break;
     case ESong.prepare:
     	var link = buffer_read(buffer, buffer_string);
@@ -260,11 +271,13 @@ switch (act) {
         }
         with(o_player){
             answer = "";
+            loading = 0;
         }
         with(o_field_answer){
             textfield_string = "";
             textfield_active = false;
         }
+    	o_player_host.loading = 0;
         
         o_control.songLink = -1;
         break;

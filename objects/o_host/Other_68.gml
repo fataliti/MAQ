@@ -6,49 +6,49 @@ switch(type) {
     	var connect_break = false;
     
         var indexSocket = async_load[? "socket"];
-        if (ds_list_find_index(kiklist, async_load[? "ip"]) != -1 || ds_list_find_index(banlist, async_load[? "ip"]) != -1) {
+        if (ds_list_find_index(kiklist, async_load[? "ip"]) != -1 || ds_list_find_index(banlist, async_load[? "ip"]) != -1) || o_control.gameOver {
         	connect_break = true;
         	var sendbuf = buffer_create(2, buffer_grow, 1);
-	        buffer_write(sendbuf, buffer_u8, EPlayer.excepted);
-	        sendUser(indexSocket,sendbuf);
+			buffer_write(sendbuf, buffer_u8, EPlayer.excepted);
+			sendUser(indexSocket,sendbuf);
         }
         
         if (!connect_break) {
 			// Обновляем список подключенных у хоста
-	        ds_list_add(connects, indexSocket);
-	        // Инициализируем игрока и помещаем его на экран хоста
-	        var player = instance_create_depth(672, -30 + 55 * indexSocket, 0, o_player); 
+			ds_list_add(connects, indexSocket);
+			// Инициализируем игрока и помещаем его на экран хоста
+			var player = instance_create_depth(672, -30 + 55 * indexSocket + o_scroll_player.scrolled, 0, o_player); 
 			// Обновляем список игроков
 			ds_map_add(players, indexSocket, player);
 			player._id = indexSocket;
-	        player.ip  = async_load[? "ip"];
-	        
-	        var exchangeInfo = buffer_create(16, buffer_grow, 1);
+			player.ip  = async_load[? "ip"];
+			
+			var exchangeInfo = buffer_create(16, buffer_grow, 1);
 			// Спрашиваем данные игрока
-	        buffer_write(exchangeInfo, buffer_u8, ENet.information);
+			buffer_write(exchangeInfo, buffer_u8, ENet.information);
 			// Выдаём игроку идентификатор
 	        buffer_write(exchangeInfo, buffer_u8, player._id);
 	    	
 	    	
-	    	// Тут записывается текущее состояние игры
-	    	buffer_write(exchangeInfo, buffer_u8, o_control.roundCurrent);
-	    	buffer_write(exchangeInfo, buffer_u8, o_control.roundTotal);
-	    	if (o_control.roundCurrent > 0) {
-		    	for( var r = 0; r < o_control.roundCurrent; r++) {
-		    		buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ r, EData.name]);
-		    	}
+			// Тут записывается текущее состояние игры
+			buffer_write(exchangeInfo, buffer_u8, o_control.roundCurrent);
+			buffer_write(exchangeInfo, buffer_u8, o_control.roundTotal);
+			if (o_control.roundCurrent > 0) {
+				for( var r = 0; r < o_control.roundCurrent; r++) {
+					buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ r, EData.name]);
+				}
 	    	}
 	    	buffer_write(exchangeInfo, buffer_u8, global.gameState);
 	
 	    	switch(global.gameState) {
-	    		case ESong.prepare:
-			    	buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.songLink]);
-			    	buffer_write(exchangeInfo, buffer_u8, o_control.roundTime); 
-			    	buffer_write(exchangeInfo, buffer_u8, o_history.game_arr[@ o_control.roundCurrent, EData.start]); 
-			    	break;
-			    case ESong.play:
-			        buffer_write(exchangeInfo, buffer_f32, o_control.countdown);
-			        break;
+				case ESong.prepare:
+					buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.songLink]);
+					buffer_write(exchangeInfo, buffer_u8, o_control.roundTime); 
+					buffer_write(exchangeInfo, buffer_u8, o_history.game_arr[@ o_control.roundCurrent, EData.start]); 
+					break;
+				 case ESong.play:
+				     buffer_write(exchangeInfo, buffer_f32, o_control.countdown);
+				     break;
 	    	}
 	    	
 	    	// А еще хост записывает инфу о себе

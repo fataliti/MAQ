@@ -1,5 +1,6 @@
 
 game_arr = -1;
+scrollPoint = 0;
 
 enum EData{
     name,

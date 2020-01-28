@@ -7,5 +7,5 @@ loading = 0;
 ping = -1;
 ip = "";
 
-yto = -1;
+yto = undefined;
 place = -1;

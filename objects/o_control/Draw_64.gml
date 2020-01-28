@@ -1,12 +1,18 @@
 
-if gameOver {
-	with(o_player) {
+
+with(o_player) {
+	if yto != undefined {
 		y = lerp(yto, y, 0.70);
-		
-		if place != -1
-			draw_sprite(s_medals, place, x - 35, y + 1);
+		if abs(yto - y) < 1 {
+			y = yto;
+			yto = undefined;
+		}
 	}
+	
+	if place != -1
+		draw_sprite(s_medals, place, x - 35, y + 1);
 }
+
 
 if room == rm_lobby {
 	draw_text(480, 25, "Время раунда");

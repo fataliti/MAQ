@@ -1,4 +1,5 @@
 
+color_mf0 c_white color_mf1;
 var ctrl = o_control;
 draw_text(x, y + 3, string(ctrl.roundCurrent+1) +" / "+ string(ctrl.roundTotal+1));
 

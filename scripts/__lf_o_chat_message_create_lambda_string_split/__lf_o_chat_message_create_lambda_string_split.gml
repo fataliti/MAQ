@@ -5,7 +5,7 @@
 	var len = string_length(str);
 	var single_word = "";
 	var wi = 0;
-	var widh = 250;
+	var widh = 240;
 	for(var a = 1; a != len; a++) {
 		if string_char_at(str, a) != " " {
 			for(var i = a; i != len; i++) {
@@ -27,7 +27,7 @@
 							}
 						}
 						wi = wi_single;
-					} else if wi + string_width(single_word) > widh {
+					} else if wi + string_width(single_word+" ") > widh {
 						str = string_insert("\n", str, a);
 						wi = string_width(single_word+" ");
 						len += string_length("\n");
@@ -43,7 +43,7 @@
 	
 	var _yto = string_height(str);
 	with(o_chat_message){
-		if yto == -1 {
+		if yto == undefined {
 			yto = y - _yto;
 		} else {
 			yto -= _yto;
