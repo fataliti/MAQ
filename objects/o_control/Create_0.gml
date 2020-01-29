@@ -119,9 +119,9 @@ songSprite	= -1;
 mediaPlayer = -1;
 hinted		= false;
 
-
-o_control.songPath = SetPath(working_directory+"media.ogg");
-#mfunc GetPath() o_control.songPath
+songPath = SetPath(working_directory+"media.ogg");
+//!#mfunc GetPath {"args":[],"order":[]}
+#macro GetPath_mf0  o_control.songPath
 
 //#macro GetPath_mf0  1
 

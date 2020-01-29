@@ -5,6 +5,12 @@ if  y > o_scroll_player.bbox_bottom{
 	draw_set_alpha(alpha);
 }
 
+if  y < o_scroll_player.bbox_top{
+	alpha = 1 - (o_scroll_player.bbox_top - y) / 10;
+	draw_set_alpha(alpha);
+}
+
+
 if (avatar != -1) {
     draw_sprite(avatar, 0, x, y);
 } else {

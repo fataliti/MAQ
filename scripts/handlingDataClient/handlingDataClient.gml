@@ -22,6 +22,8 @@ switch (act) {
         repeat(o_control.roundCurrent) {
             o_history.game_arr[ array_height_2d(o_history.game_arr), EData.name] = buffer_read(buffer, buffer_string);
         }
+        with(o_history)
+        	script_execute(lambda_scroll_history, o_control.roundCurrent - scrollPoint - 1);
         
         switch(buffer_read(buffer, buffer_u8)){
             case ESong.prepare:
@@ -280,7 +282,7 @@ switch (act) {
     	o_player_host.loading = 0;
         
 		with(o_history)
-			script_execute(lambda_scroll_history, o_control.roundCurrent - scrollPoint);
+			script_execute(lambda_scroll_history, o_control.roundCurrent - scrollPoint - 1);
 		
         break;
     case ENet.gameOver:

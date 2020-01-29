@@ -1,3 +1,4 @@
+color_mf0 c_white color_mf1;
 
 if (avatar != -1) {
     draw_sprite(avatar, 0, x, y);
