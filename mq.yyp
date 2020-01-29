@@ -335,6 +335,14 @@
             }
         },
         {
+            "Key": "568f273c-e1f2-e868-f68d-ca100c12dfc2",
+            "Value": {
+                "id": "98237bf0-bc3e-6f73-d315-ed772985dfde",
+                "resourcePath": "scripts\\__lf_o_history_create_lambda_scroll_history\\__lf_o_history_create_lambda_scroll_history.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "58edecf4-c05b-4c89-b368-d2540919e6f5",
             "Value": {
                 "id": "da5f23c3-6b99-46fc-b386-8db6c30fe2d1",

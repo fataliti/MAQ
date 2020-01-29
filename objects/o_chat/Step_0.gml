@@ -24,7 +24,7 @@ if textfield_active {
                 buffer_write(msg, buffer_string, txt);
                 sendAll(msg);
                 
-                var msgIns = instance_create_depth(x, y+235 + o_scroll_chat.scrolled, 0, o_chat_message);
+                var msgIns = instance_create_depth(x, y + o_scroll_chat.scrolled, 0, o_chat_message);
                 msgIns.message = txt;
                 with(msgIns) {
                 	script_execute(lambda_string_split);

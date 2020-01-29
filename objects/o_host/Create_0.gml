@@ -4,12 +4,14 @@ players = ds_map_create();
 kiklist = ds_list_create();
 banlist = ds_list_create();
 
-ini_open("banlist.ini");
-var _ip;
-for(var a = 0; a < ini_read_real("ban","count",0); a++){
-	_ip = ini_read_string("ip_list", "ip_"+string(a), "");
-	if _ip != ""{
-		ds_list_add(banlist, _ip);
+
+if file_exists("banlist.txt") {
+	var file = file_text_open_read("banlist.txt");
+	var line = "";
+	while (!file_text_eof(file)) {
+		line = file_text_read_string(file);
+		ds_list_add(banlist, line);
+		file_text_readln(file);
 	}
+	file_text_close(file);
 }
-ini_close();

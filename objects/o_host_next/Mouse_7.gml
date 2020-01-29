@@ -23,6 +23,9 @@ o_player_host.loading = 0;
 
 global.gameState = ESong.next;
 
+with(o_history)
+	script_execute(lambda_scroll_history, o_control.roundCurrent - scrollPoint);
+
 sendAll(sendbuf);
 instance_activate_object(o_host_prep);
 instance_deactivate_object(o_host_next);

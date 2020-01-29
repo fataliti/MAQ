@@ -17,11 +17,11 @@ if string_width(msgCut) > maxWi {
 }
 
 if string_length(msgCut) > 0 || textfield_active{
-    draw_text(x+5, y+245, msgCut);
+    draw_text(x+5, y+9, msgCut);
 } else {
-    draw_text(x+5, y+245, "Написать в чат");
+    draw_text(x+5, y+9, "Написать в чат");
 }
 if textfield_active {
-    draw_text_color(x+5+string_width(msgCut), y+245, "|", c_white, c_white, c_white, c_white, round(abs(sin(get_timer()/500000))));
+    draw_text_color(x+5+string_width(msgCut), y+9, "|", c_white, c_white, c_white, c_white, round(abs(sin(get_timer()/500000))));
 }
 draw_set_halign(fa_center);

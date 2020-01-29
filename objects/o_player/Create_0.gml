@@ -9,3 +9,5 @@ ip = "";
 
 yto = undefined;
 place = -1;
+
+alpha = 1;

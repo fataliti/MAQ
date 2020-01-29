@@ -1,3 +1,10 @@
+
+alpha = 1;
+if  y > o_scroll_player.bbox_bottom{
+	alpha = 1 - (y - o_scroll_player.bbox_bottom)/ 10;
+	draw_set_alpha(alpha);
+}
+
 if (avatar != -1) {
     draw_sprite(avatar, 0, x, y);
 } else {
@@ -19,3 +26,6 @@ draw_text(x + 10, y + 43, answer);
 draw_set_color(c_green);
 draw_text(x + 168, y + 15, ping);
 draw_set_halign(fa_center);
+
+if alpha != 1
+	draw_set_alpha(1);	

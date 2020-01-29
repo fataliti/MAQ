@@ -7,7 +7,7 @@ var avaSize = avatarSize / 4;
 
 switch (act) {
     case EChat.message:
-        var msgIns = instance_create_depth(o_chat.x, o_chat.y+235 + o_scroll_chat.scrolled, 0, o_chat_message);
+        var msgIns = instance_create_depth(o_chat.x, o_chat.y + o_scroll_chat.scrolled, 0, o_chat_message);
         msgIns.message = buffer_read(buffer, buffer_string);
         with(msgIns) {
         	script_execute(lambda_string_split);
@@ -279,7 +279,9 @@ switch (act) {
         }
     	o_player_host.loading = 0;
         
-        o_control.songLink = -1;
+		with(o_history)
+			script_execute(lambda_scroll_history, o_control.roundCurrent - scrollPoint);
+		
         break;
     case ENet.gameOver:
     	ResetStatus();

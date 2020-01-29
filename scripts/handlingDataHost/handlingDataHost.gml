@@ -7,7 +7,7 @@ var avaSize = avatarSize / 4;
 
 switch(act){
     case EChat.message:
-        var msgIns = instance_create_depth(o_chat.x, o_chat.y+235, 0, o_chat_message);
+        var msgIns = instance_create_depth(o_chat.x, o_chat.y + o_scroll_chat.scrolled, 0, o_chat_message);
         msgIns.message = buffer_read(buffer, buffer_string);
         with(msgIns) {
         	script_execute(lambda_string_split);
