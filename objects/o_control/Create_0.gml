@@ -119,12 +119,10 @@ songSprite	= -1;
 mediaPlayer = -1;
 hinted		= false;
 
-/*
+
 o_control.songPath = SetPath(working_directory+"media.ogg");
 #mfunc GetPath() o_control.songPath
-trace(GetPath());
-*/
-//!#mfunc GetPath {"args":[],"order":[]}
-#macro GetPath_mf0  1
+
+//#macro GetPath_mf0  1
 
 lambda_game_restore = __lf_o_control_create_lambda_game_restore;

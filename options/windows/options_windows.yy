@@ -32,7 +32,7 @@
     "option_windows_use_splash": false,
     "option_windows_version": {
         "build": 1,
-        "major": 23,
+        "major": 29,
         "minor": 0,
         "revision": 20
     },
