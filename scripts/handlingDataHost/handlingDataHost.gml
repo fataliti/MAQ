@@ -104,7 +104,8 @@ switch(act){
             if (_id == player)
                 answer = buffer_read(buffer, buffer_string);
         }
-        sendAll(buffer);
+        if o_control.countdown <= 0
+        	sendAll(buffer);
         break;
     case EPing.check:
         var player = buffer_read(buffer, buffer_u8);

@@ -2,6 +2,10 @@
 game_arr = -1;
 scrollPoint = 0;
 
+
+scrolled = 0;
+scrolledLerp = 0;
+
 enum EData{
     name,
     pic,
@@ -11,4 +15,6 @@ enum EData{
 
 load_txt = __lf_o_history_create_lambda_load_txt;
 
-lambda_scroll_history = __lf_o_history_create_lambda_scroll_history;
+
+
+lambda_scroll_round = __lf_o_history_create_lambda_scroll_round;

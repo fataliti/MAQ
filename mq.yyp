@@ -271,6 +271,14 @@
             }
         },
         {
+            "Key": "43aa64d0-4606-9a1b-c37a-f318b1ab468f",
+            "Value": {
+                "id": "f5da23af-7777-bc78-3148-5ae1017f7829",
+                "resourcePath": "scripts\\__lf_o_history_create_lambda_scroll_round\\__lf_o_history_create_lambda_scroll_round.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "4608c105-e556-441e-90f2-5d7bf60b75ee",
             "Value": {
                 "id": "e2d138ad-d552-4dae-98dd-f11860bf36fd",
@@ -332,14 +340,6 @@
                 "id": "5d8587db-335d-4295-2b1d-3d9344b4e113",
                 "resourcePath": "objects\/o_slider_music_lobby\/o_slider_music_lobby.yy",
                 "resourceType": "GMObject"
-            }
-        },
-        {
-            "Key": "568f273c-e1f2-e868-f68d-ca100c12dfc2",
-            "Value": {
-                "id": "98237bf0-bc3e-6f73-d315-ed772985dfde",
-                "resourcePath": "scripts\\__lf_o_history_create_lambda_scroll_history\\__lf_o_history_create_lambda_scroll_history.yy",
-                "resourceType": "GMScript"
             }
         },
         {
@@ -1066,7 +1066,7 @@
         "53ad5d7e-3fc7-0a7c-8c20-707751b1efdf",
         "d86b5791-60bb-ec97-303c-944fac882a72",
         "5527c0be-0214-ce57-746e-9bd93922f5c4",
-        "568f273c-e1f2-e868-f68d-ca100c12dfc2",
+        "43aa64d0-4606-9a1b-c37a-f318b1ab468f",
         "2f4c0e68-2cd0-2cc2-2f82-9a9ecca46dc8",
         "76158d41-eeb5-49cc-abed-936b43d4307d",
         "ba95dafa-2075-2044-3bb1-9c1956db406a",
