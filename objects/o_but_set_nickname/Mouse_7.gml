@@ -1,6 +1,6 @@
 playSe(a_but_mainmenu);
 
-var newNickname = get_string("Как мне тебя называть?", o_control.nickname);
+var newNickname = get_string("Как тебя звать?", o_control.nickname);
 
 if (newNickname != "") {
     
