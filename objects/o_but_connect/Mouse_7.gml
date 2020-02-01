@@ -1,7 +1,6 @@
 
 playSe(a_but_connect);
 
-
 var ip = localhost; //get_string( "IP: ", localhost);
 var _port = port;   //get_integer( "Порт: ", port);
 
@@ -14,6 +13,7 @@ if (ip != "" && _port >= 0) {
         global.socket = -1;
         show_message("Не удалось подключиться");
     } else {
+    	o_control.audioOn = false;
 		audio_stop_sound(global.bgm);
         room_goto(rm_gameclient);
     }

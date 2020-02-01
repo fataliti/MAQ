@@ -34,6 +34,8 @@
                             break;
                         case 4:
 							roundTime = line;
+							if roundTime == ""
+								roundTime = 0;
 
 							arr_stroka = array_height_2d(game_arr);
                             game_arr[arr_stroka, EData.name]     = roundName;

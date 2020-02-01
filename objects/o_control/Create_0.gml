@@ -34,8 +34,9 @@ var bgms = choose(
 	bgm_mainmenu6,
 	bgm_mainmenu7
 );
-global.bgm = audio_play_sound(bgms, 10, true);
+global.bgm = audio_play_sound(bgms, 10, false);
 audio_sound_gain(global.bgm, global.gain_bgm, 0);
+audioOn = true;
 
 #region Енумераторы
 // Действия
