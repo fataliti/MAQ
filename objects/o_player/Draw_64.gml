@@ -1,4 +1,5 @@
 
+gpu_set_texfilter(1);
 alpha = 1;
 if  y > o_scroll_player.bbox_bottom{
 	alpha = 1 - (y - o_scroll_player.bbox_bottom)/ 10;
@@ -35,3 +36,5 @@ draw_set_halign(fa_center);
 
 if alpha != 1
 	draw_set_alpha(1);	
+
+gpu_set_texfilter(0);

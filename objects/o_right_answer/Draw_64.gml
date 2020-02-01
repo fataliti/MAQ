@@ -1,3 +1,4 @@
+gpu_set_texfilter(1);
 color_mf0 c_white color_mf1;
 if answerSprite != -1 {
     var scale = 180 / sprite_get_height(answerSprite);
@@ -7,10 +8,8 @@ if answerSprite != -1 {
 }
 
 draw_set_font(fnt_ru_15);
-
-var scl = 350 / string_width(answerText);
-if scl > 1 
-	scl = 1;
-
-draw_text_transformed(480, 280, answerText, scl, 1, 0);
+draw_set_valign(fa_top);
+draw_text_ext(480, 280, answerText, string_height("H"), 350);
 draw_set_font(fnt_ru);
+gpu_set_texfilter(0);
+draw_set_valign(fa_middle);

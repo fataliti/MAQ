@@ -25,7 +25,7 @@ switch(act){
             
             with (o_player) {
                 if (player == _id) {
-                    avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 0, 0, 0);
+                    avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 1, 0, 0);
                     nickname = nick;
                 }
             }

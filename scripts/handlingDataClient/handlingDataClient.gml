@@ -27,11 +27,11 @@ switch (act) {
         
         switch(buffer_read(buffer, buffer_u8)){
             case ESong.prepare:
-            	var link = buffer_read(buffer, buffer_string);
-		    	var len  = buffer_read(buffer, buffer_u8);
-		    	var start= buffer_read(buffer, buffer_u8);
+				var link = buffer_read(buffer, buffer_string);
+				var len  = buffer_read(buffer, buffer_u8);
+				var start= buffer_read(buffer, buffer_u8);
 				GetMedia(link, len, start);
-        		alarm[0] = tickrate;
+				alarm[0] = tickrate;
                 break;
             case ESong.play:
                 o_control.countdown = buffer_read(buffer, buffer_f32);
@@ -43,7 +43,7 @@ switch (act) {
         if buffer_read(buffer, buffer_u8){
             var surf = surface_create(avaSize,avaSize);
             buffer_set_surface(buffer, surf, 0, buffer_tell(buffer), 0);
-            o_player_host.avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 0, 0, 0);
+            o_player_host.avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 1, 0, 0);
             surface_free(surf);
         }
         
@@ -78,7 +78,7 @@ switch (act) {
         if buffer_read(buffer, buffer_u8) {
             var surf = surface_create(avaSize, avaSize);
             buffer_set_surface(buffer, surf, 0, 4 + nickLengMax * 6, 0);
-            newPlayer.avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 0, 0, 0);
+            newPlayer.avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 1, 0, 0);
             surface_free(surf);
         }
 
@@ -112,7 +112,7 @@ switch (act) {
             buffer_set_surface(buffer, avatarMap, 0, buffer_tell(buffer), 0);
             var i = 0;
             repeat(avatarCnt){
-                avatarIns[i].avatar = sprite_create_from_surface(avatarMap, avaSize * i, 0, avaSize, avaSize, 0, 0, 0, 0);
+                avatarIns[i].avatar = sprite_create_from_surface(avatarMap, avaSize * i, 0, avaSize, avaSize, 0, 1, 0, 0);
                 i++;
             }
             surface_free(avatarMap);
@@ -122,7 +122,7 @@ switch (act) {
             surface_set_target(myAvaSurf);
             draw_clear_alpha(c_black,0);
             draw_sprite_ext(o_control.avatar, 0, 0, 0, avaSize/avatarSize, avaSize/avatarSize, 0, c_white, 1);
-            var _avatar = sprite_create_from_surface(myAvaSurf, 0, 0, avaSize, avaSize, 0, 0, 0, 0);
+            var _avatar = sprite_create_from_surface(myAvaSurf, 0, 0, avaSize, avaSize, 0, 1, 0, 0);
             surface_reset_target();
             surface_free(myAvaSurf);
             with(o_player){

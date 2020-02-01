@@ -83,7 +83,7 @@ network_set_config(network_config_connect_timeout, 999);
 
 
 // Инициализация данных игрока запустившего игру
-avatar = sprite_add("avatar.png", 1, false, 0, 0, 0);
+avatar = sprite_add("avatar.png", 1, 0, 1, 0, 0);
 if (avatar != -1) {
 	if (sprite_get_width(avatar) != avatarSize && sprite_get_height(avatar) != avatarSize) {
 		var surf = surface_create(avatarSize, avatarSize);
@@ -94,7 +94,7 @@ if (avatar != -1) {
 	    surface_save(surf, "avatar.png");
 	    surface_free(surf);
 	    sprite_delete(avatar);
-	    avatar = sprite_add("avatar.png", 1, false, 0, 0, 0);
+	    avatar = sprite_add("avatar.png", 1, 0, 1, 0, 0);
 	}
 }
 

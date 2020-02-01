@@ -2,7 +2,7 @@ playSe(a_but_mainmenu);
 
 var pic = get_open_filename("*.png, *.jpg, *.jpeg|*.png;*.jpg;*.jpeg" ,"");
 if (pic != "") {
-    var spr = sprite_add(pic, 1, 0, 0, 0, 0);
+    var spr = sprite_add(pic, 1, 0, 1, 0, 0);
     if (spr != -1) {
         var surf = surface_create(avatarSize, avatarSize);
         surface_set_target(surf);
@@ -14,7 +14,7 @@ if (pic != "") {
         if o_control.avatar != -1{
             sprite_delete(o_control.avatar);
         }
-        o_control.avatar = sprite_create_from_surface(surf, 0, 0, avatarSize, avatarSize, 0, 0, 0, 0);
+        o_control.avatar = sprite_create_from_surface(surf, 0, 0, avatarSize, avatarSize, 0, 1, 0, 0);
         sprite_index = o_control.avatar;
         surface_free(surf);
         sprite_delete(spr);
