@@ -198,14 +198,6 @@ switch (act) {
         	}
         }
         o_player_host.loading = buffer_read(buffer, buffer_u8) / 100;
-        /*
-        var player = buffer_read(buffer, buffer_u8);
-        with (o_player) {
-            if (_id == player) {
-                loading = buffer_read(buffer, buffer_u8) / 100;
-            }
-        }
-        */
         break;
     case ESong.prepare:
     	var link = buffer_read(buffer, buffer_string);
@@ -219,6 +211,12 @@ switch (act) {
         if (o_control.songFile != -1) {
             o_control.mediaPlayer = playMusic(o_control.songFile);
         }
+        
+        var linkToPic = buffer_read(buffer, buffer_string);
+		if linkToPic != "" {
+		    o_control.songPic = http_get_file( linkToPic, "guess.pic");
+		}
+        
         break;
     case ESong.answer:
     	with(o_field_answer) {
@@ -239,16 +237,15 @@ switch (act) {
                 }
             }
         }
-        
-
-        var linkToPic = buffer_read(buffer, buffer_string);
+    	
+        //var linkToPic = buffer_read(buffer, buffer_string);
         var sName = buffer_read(buffer, buffer_string); 
-        
         o_history.game_arr[array_height_2d(o_history.game_arr), EData.name] = sName;
+        /*
         if linkToPic != "" && o_control.hinted == false {
 		    o_control.songPic = http_get_file( linkToPic, "guess.pic");
 		}
-        
+        */
         if !o_control.hinted {
 	        var insAnswer = instance_create_depth(0, 0, 0, o_right_answer);
 	        insAnswer.answerText = sName;
@@ -293,12 +290,11 @@ switch (act) {
     	break;
     case ESong.hint:
     	o_control.hinted = true;
-    	var linkToPic = buffer_read(buffer, buffer_string);
-		if linkToPic != "" {
-		    o_control.songPic = http_get_file(linkToPic, "guess.pic");
-		}
+    	// var linkToPic = buffer_read(buffer, buffer_string);
+		// if linkToPic != "" {
+		//     o_control.songPic = http_get_file(linkToPic, "guess.pic");
+		// }
 		instance_create_depth(0, 0, 0, o_right_answer);
-		
     	break;
     case EPing.check:
         var pong = buffer_create(32, buffer_grow, 1);

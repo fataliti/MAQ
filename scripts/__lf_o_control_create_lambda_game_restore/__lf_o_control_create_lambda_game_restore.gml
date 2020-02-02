@@ -12,6 +12,7 @@
 	o_control.mediaPlayer = -1;
 	audio_destroy_stream(o_control.songFile);
 	o_control.songFile = -1;
+	o_control.songSprite = -1;
 	
 	ResetStatus();
 	

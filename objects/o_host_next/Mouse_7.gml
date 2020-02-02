@@ -17,6 +17,7 @@ var sendbuf = buffer_create( 8, buffer_grow, 1);
 buffer_write(sendbuf, buffer_u8, ESong.next);
 o_control.roundCurrent++;
 o_control.hinted = false;
+o_control.songSprite = -1;
 with(o_player)		 {answer = "";}
 with(o_right_answer) {instance_destroy();}
 o_player_host.loading = 0;

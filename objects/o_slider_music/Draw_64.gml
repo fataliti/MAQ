@@ -17,6 +17,6 @@ if mouse_check_button_pressed(mb_left) && point_in_circle(mouse_x, mouse_y, xp +
 	activ = true;
 
 
-draw_set_halign(fa_left);
-draw_text(bbox_right + 10, y, "МУЗЫКА");
+draw_set_halign(fa_right);
+draw_text(bbox_left - 10, y, "МУЗЫКА");
 draw_set_halign(fa_center);
