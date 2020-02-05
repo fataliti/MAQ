@@ -1,5 +1,5 @@
 color_mf0 c_white color_mf1;
-draw_rectangle(bbox_left, bbox_top + 3, bbox_right, bbox_bottom -3, false);
+
 
 color_mf0 make_color_rgb(79, 93, 115) color_mf1;
 draw_circle(xp, y, 4, false);

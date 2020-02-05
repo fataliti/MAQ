@@ -1,8 +1,6 @@
 draw_self();
 
-
 if (see) {
-
 	color_mf0 make_color_rgb(79, 93, 115) color_mf1;
 	draw_circle(xp, y, 4, false);
 	draw_circle(xp+leng, y, 4, false);
