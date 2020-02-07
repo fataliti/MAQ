@@ -4,7 +4,7 @@ points = 0;
 avatar = -1;
 answer = "";
 loading = 0;
-ping = -1;
+ping = 0;
 ip = "";
 
 yto = undefined;

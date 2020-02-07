@@ -48,26 +48,25 @@ switch (act) {
         }
         
         
-        var offsetSurface = 4 + nickLengMax * 6;
         var hasAvatar = o_control.avatar == -1 ?  0 : 1;
-        var me = buffer_create(offsetSurface + avaSize * avaSize * 4, buffer_grow, 1);
+        var me = buffer_create(128, buffer_grow, 1);
         buffer_write(me, buffer_u8, ENet.connected);
         buffer_write(me, buffer_u8, _id);
         buffer_write(me, buffer_string, o_control.nickname);
         buffer_write(me, buffer_u8, hasAvatar);
         if hasAvatar {
+        	buffer_resize(me, buffer_tell(me) + avaSize * avaSize * 4);
             var surf = surface_create(avaSize, avaSize);
             surface_set_target(surf);
             draw_clear_alpha(c_black, 0);
             draw_sprite_ext(o_control.avatar, 0, 0, 0, avaSize / avatarSize, avaSize / avatarSize, 0, c_white, 1);
             surface_reset_target();
-            buffer_get_surface(me, surf, 0, offsetSurface, 0);
+            buffer_get_surface(me, surf, 0, buffer_tell(me), 0);
             buffer_seek(me, buffer_seek_end, 0);
             surface_free(surf);
         }
         sendHost(me);
         break;
-        
     case ENet.announceForAll:
         var newId = buffer_read(buffer, buffer_u8);
 
@@ -77,7 +76,7 @@ switch (act) {
         
         if buffer_read(buffer, buffer_u8) {
             var surf = surface_create(avaSize, avaSize);
-            buffer_set_surface(buffer, surf, 0, 4 + nickLengMax * 6, 0);
+            buffer_set_surface(buffer, surf, 0, buffer_tell(buffer), 0);
             newPlayer.avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 1, 0, 0);
             surface_free(surf);
         }
@@ -289,10 +288,6 @@ switch (act) {
     	break;
     case ESong.hint:
     	o_control.hinted = true;
-    	// var linkToPic = buffer_read(buffer, buffer_string);
-		// if linkToPic != "" {
-		//     o_control.songPic = http_get_file(linkToPic, "guess.pic");
-		// }
 		instance_create_depth(0, 0, 0, o_right_answer);
     	break;
     case EPing.check:
@@ -301,15 +296,17 @@ switch (act) {
         buffer_write(pong, buffer_u8, _id);
         buffer_write(pong, buffer_u16, current_time - response);
         sendHost(pong);
-        
         lastResponsePast = 0;
         break;
     case EPing.get:
-        var player = buffer_read( buffer, buffer_u8);
-        with (o_player){
-            if (_id == player) {
-                ping = buffer_read( buffer, buffer_u16);
-            }
+        repeat(buffer_read(buffer, buffer_u8)){
+			var player = buffer_read( buffer, buffer_u8);
+			with (o_player){
+				if (_id == player) {
+					ping = buffer_read( buffer, buffer_u16);
+				}
+			}
         }
+        
         break;
 }

@@ -15,3 +15,6 @@ if file_exists("banlist.txt") {
 	}
 	file_text_close(file);
 }
+
+
+alarm[1] = room_speed;
