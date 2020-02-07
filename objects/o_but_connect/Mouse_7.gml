@@ -1,7 +1,7 @@
 
 playSe(a_but_connect);
 
-var ip = localhost; //get_string( "IP: ", localhost);
+var ip = get_string("IP: ", localhost);
 var _port = port;   //get_integer( "Порт: ", port);
 
 if (ip != "" && _port >= 0) {

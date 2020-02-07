@@ -207,7 +207,12 @@ switch (act) {
         alarm[0] = tickrate;
         break;
     case ESong.play:
-        o_control.countdown = buffer_read(buffer, buffer_u8);
+    	var _countdown = buffer_read(buffer, buffer_u8);
+        if _countdown > 0
+        	o_control.countdown = _countdown;
+        else 
+        	o_control.countdown = infinity;
+        	
         if (o_control.songFile != -1) {
             o_control.mediaPlayer = playMusic(o_control.songFile);
         }
@@ -238,14 +243,8 @@ switch (act) {
             }
         }
     	
-        //var linkToPic = buffer_read(buffer, buffer_string);
         var sName = buffer_read(buffer, buffer_string); 
         o_history.game_arr[array_height_2d(o_history.game_arr), EData.name] = sName;
-        /*
-        if linkToPic != "" && o_control.hinted == false {
-		    o_control.songPic = http_get_file( linkToPic, "guess.pic");
-		}
-        */
         if !o_control.hinted {
 	        var insAnswer = instance_create_depth(0, 0, 0, o_right_answer);
 	        insAnswer.answerText = sName;

@@ -17,16 +17,17 @@ with(o_player) {
 if room == rm_lobby {
 	draw_text(480, 25, "Время раунда");
 	draw_text(480, 40, roundTime);
-	draw_rectangle(455, 35, 465, 45, false);
-	draw_rectangle(495, 35, 505, 45, false);
-	
+
+	draw_sprite(s_edit, 0, 495, 35);
 	if mouse_check_button_pressed(mb_left){
-		if point_in_rectangle(mouse_x, mouse_y, 455, 35, 465, 45)
-			roundTime -= 5;
+		if point_in_rectangle(mouse_x, mouse_y, 495, 35, 495+16, 35+16) {
+			var newTime = get_string(@"Вермя на раунда - Целое число
+0 = бесконечная длительность раунда
+250 = Максимальный отсчет для раунда", string(roundTime));
 			
-		if point_in_rectangle(mouse_x, mouse_y, 495, 35, 505, 45)
-			roundTime += 5;
-			
-		roundTime = clamp(roundTime, timer, 90);
+			newTime = round(real(string_digits(newTime)));
+			newTime = clamp(newTime, 0, 250);
+			roundTime = newTime;
+		}
 	}
 }

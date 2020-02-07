@@ -4,7 +4,12 @@ var sendbuf = buffer_create( 8, buffer_grow, 1);
 buffer_write(sendbuf, buffer_u8, ESong.play);
 buffer_write(sendbuf, buffer_u8, o_control.roundTime);
 buffer_write(sendbuf, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.pic]);
-o_control.countdown = o_control.roundTime;
+
+if o_control.roundTime > 0
+	o_control.countdown = o_control.roundTime;
+else 
+	o_control.countdown = infinity;
+
 sendAll(sendbuf);
 
 global.gameState = ESong.play;
