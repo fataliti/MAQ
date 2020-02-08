@@ -6,4 +6,6 @@
     buffer_write(answerBuf, buffer_u8, o_client._id);
     buffer_write(answerBuf, buffer_string, textfield_string);
     sendHost(answerBuf);
+    
+    textfield_active = false;
 }

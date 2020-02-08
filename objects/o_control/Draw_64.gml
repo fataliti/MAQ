@@ -27,7 +27,7 @@ if room == rm_lobby {
 			
 			newTime = string_digits(newTime);
 			
-			if newTime != ""{
+			if newTime != "" {
 				newTime = round(real(newTime));
 				newTime = clamp(newTime, 0, 250);
 				roundTime = newTime;

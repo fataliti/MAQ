@@ -11,8 +11,8 @@ with(o_player) {
 	draw_sprite(s_player_control, 1, x - coef - 3, y + 1);
 	draw_sprite(s_player_control, 0, x - coef * 2 - 6, y + 1);
 	// Справа от пинга	
-	draw_sprite(s_player_control, 2, x + 158 + coef + 3, y + 1);
-	draw_sprite(s_player_control, 3, x + 158 + coef * 2 + 6, y + 1);
+	draw_sprite(s_player_control, 2, x + 163 + coef + 3, y + 1);
+	draw_sprite(s_player_control, 3, x + 163 + coef * 2 + 6, y + 1);
 	draw_set_alpha(1);
 }
 
@@ -33,12 +33,12 @@ if (lmb) {
 				act = EPlayer.pointMinus;
 				points -= 0.5;
 			}
-			if (point_in_rectangle(mouse_x, mouse_y, x + 158 + coef + 3, y + 1,  x + 158 + coef + 3 + coef, y + 1 + coef)) {
+			if (point_in_rectangle(mouse_x, mouse_y, x + 163 + coef + 3, y + 1,  x + 163 + coef + 3 + coef, y + 1 + coef)) {
 				victimId = _id;
 				act = EPlayer.kick;
 				ds_list_add(other.kiklist, ip);
 			}
-			if (point_in_rectangle(mouse_x, mouse_y, x + 158 + coef * 2 + 6, y + 1,  x + 158 + coef * 2 + 6 + coef, y + 1 + coef)) {
+			if (point_in_rectangle(mouse_x, mouse_y, x + 163 + coef * 2 + 6, y + 1,  x + 163 + coef * 2 + 6 + coef, y + 1 + coef)) {
 				victimId = _id;
 				act = EPlayer.ban;
 				ds_list_add(other.banlist, ip);

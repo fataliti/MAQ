@@ -37,6 +37,7 @@ var bgms = choose(
 global.bgm = audio_play_sound(bgms, 10, false);
 audio_sound_gain(global.bgm, global.gain_bgm, 0);
 audioOn = true;
+snowOn  = true;
 
 #region Енумераторы
 // Действия

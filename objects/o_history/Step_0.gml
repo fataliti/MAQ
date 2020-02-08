@@ -1,6 +1,6 @@
 
 if coursorCollision() {
-	var scroll = (mouse_wheel_down() - mouse_wheel_up()) * 10;
+	var scroll = (mouse_wheel_up() - mouse_wheel_down()) * 10;
 	
 	if scroll == 0 
 		exit;

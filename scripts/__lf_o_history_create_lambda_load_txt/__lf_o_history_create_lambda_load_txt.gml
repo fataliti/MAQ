@@ -60,5 +60,7 @@
             
             file_text_close(file);
         }
+    } else {
+    	script_execute(o_control.lambda_game_restore);
     }
 }

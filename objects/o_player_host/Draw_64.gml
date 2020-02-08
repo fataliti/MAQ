@@ -13,5 +13,5 @@ draw_set_halign(fa_center);
 
 
 if (loading < 1) { draw_set_color(c_green); } else { draw_set_color(c_lime); }
-draw_rectangle(x + 148, y, x + 158, y + 29, true);
-draw_rectangle(x + 148, y + 29 - 29 * loading, x + 158, y + 29 , false);
+draw_rectangle(x + 168, y, x + 178, y + 29, true);
+draw_rectangle(x + 168, y + 29 - 29 * loading, x + 178, y + 29 , false);
