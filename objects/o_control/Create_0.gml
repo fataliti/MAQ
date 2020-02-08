@@ -127,3 +127,4 @@ songPath = SetPath(working_directory+"media.ogg");
 //#macro GetPath_mf0  1
 
 lambda_game_restore = __lf_o_control_create_lambda_game_restore;
+

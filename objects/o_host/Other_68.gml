@@ -96,4 +96,3 @@ switch(type) {
         handlingDataHost(async_load[? "buffer"]);
         break;
 }
-

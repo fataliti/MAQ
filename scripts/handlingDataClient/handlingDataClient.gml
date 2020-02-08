@@ -89,7 +89,7 @@ switch (act) {
             new_id = buffer_read(buffer, buffer_u8);
             new_point = buffer_read(buffer, buffer_u8);
             new_nick  = buffer_read(buffer, buffer_string);
-
+            
             new_player = instance_create_depth(672, -30 + 55 * new_id, 0, o_player);
             new_player._id = new_id;
             new_player.points = new_point;
