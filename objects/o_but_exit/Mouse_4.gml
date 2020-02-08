@@ -1,2 +1,1 @@
-    
-game_end();
+image_index = 1;

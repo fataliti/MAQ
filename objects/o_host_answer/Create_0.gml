@@ -1,0 +1,3 @@
+instance_deactivate_object(self);
+
+lambda_show_answer = __lf_o_host_answer_create_lambda_show_answer;
