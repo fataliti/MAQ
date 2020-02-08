@@ -294,7 +294,7 @@ switch (act) {
         var pong = buffer_create(32, buffer_grow, 1);
         buffer_write(pong, buffer_u8, EPing.get);
         buffer_write(pong, buffer_u8, _id);
-        buffer_write(pong, buffer_u16, current_time - response);
+        buffer_write(pong, buffer_u16, round((current_time - response) / 2));
         sendHost(pong);
         lastResponsePast = 0;
         break;
