@@ -46,7 +46,7 @@
                         1
                     ],
                     "externalName": "SetPath",
-                    "help": "",
+                    "help": "Return: new path",
                     "hidden": false,
                     "kind": 1,
                     "name": "SetPath",
@@ -61,7 +61,7 @@
                         
                     ],
                     "externalName": "GetStatus",
-                    "help": "",
+                    "help": "Return: 0-100(%)",
                     "hidden": false,
                     "kind": 1,
                     "name": "GetStatus",
@@ -78,7 +78,7 @@
                         2
                     ],
                     "externalName": "GetMedia",
-                    "help": "",
+                    "help": "Load media. Return: 0 (success)",
                     "hidden": false,
                     "kind": 1,
                     "name": "GetMedia",
@@ -93,10 +93,25 @@
                         
                     ],
                     "externalName": "ResetStatus",
-                    "help": "",
+                    "help": "Status = 0. Return: status",
                     "hidden": false,
                     "kind": 1,
                     "name": "ResetStatus",
+                    "returnType": 2
+                },
+                {
+                    "id": "8f45fe46-7537-404d-93d6-c7d3bda26d51",
+                    "modelName": "GMExtensionFunction",
+                    "mvc": "1.0",
+                    "argCount": 0,
+                    "args": [
+                        
+                    ],
+                    "externalName": "ResetMedia",
+                    "help": "Cancel load media. Return: status",
+                    "hidden": false,
+                    "kind": 1,
+                    "name": "ResetMedia",
                     "returnType": 2
                 }
             ],
@@ -106,7 +121,8 @@
                 "164c9cbf-805d-4fe2-9edb-5980c21ab9b3",
                 "1e1b47af-6842-4a39-adf9-880aeeb33e76",
                 "54c35f73-9da4-49c9-b39d-6e4b89ecc3da",
-                "7e1620c0-685d-4fe8-b7f7-55cefc1e5b46"
+                "7e1620c0-685d-4fe8-b7f7-55cefc1e5b46",
+                "8f45fe46-7537-404d-93d6-c7d3bda26d51"
             ],
             "origname": "",
             "uncompress": false
