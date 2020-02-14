@@ -15,6 +15,9 @@
 	o_control.songSprite = -1;
 	
 	ResetStatus();
+	ResetMedia();
 	
 	room_goto(rm_mainmenu);
+	
+	
 }

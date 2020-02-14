@@ -33,3 +33,4 @@ instance_deactivate_object(o_host_next);
 instance_deactivate_object(self);
 
 ResetStatus();
+ResetMedia();

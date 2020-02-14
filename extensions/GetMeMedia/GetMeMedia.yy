@@ -46,7 +46,7 @@
                         1
                     ],
                     "externalName": "SetPath",
-                    "help": "Return: new path",
+                    "help": "",
                     "hidden": false,
                     "kind": 1,
                     "name": "SetPath",
@@ -61,7 +61,7 @@
                         
                     ],
                     "externalName": "GetStatus",
-                    "help": "Return: 0-100(%)",
+                    "help": "",
                     "hidden": false,
                     "kind": 1,
                     "name": "GetStatus",
@@ -78,7 +78,7 @@
                         2
                     ],
                     "externalName": "GetMedia",
-                    "help": "Load media. Return: 0 (success)",
+                    "help": "",
                     "hidden": false,
                     "kind": 1,
                     "name": "GetMedia",
@@ -93,7 +93,7 @@
                         
                     ],
                     "externalName": "ResetStatus",
-                    "help": "Status = 0. Return: status",
+                    "help": "",
                     "hidden": false,
                     "kind": 1,
                     "name": "ResetStatus",
@@ -108,7 +108,7 @@
                         
                     ],
                     "externalName": "ResetMedia",
-                    "help": "Cancel load media. Return: status",
+                    "help": "",
                     "hidden": false,
                     "kind": 1,
                     "name": "ResetMedia",
