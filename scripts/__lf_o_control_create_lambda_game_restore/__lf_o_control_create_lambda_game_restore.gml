@@ -1,6 +1,16 @@
 /// __lf_o_control_create_lambda_game_restore()
 //!#lambda lambda_game_restore
 {
+	if (global.socket != -1) {
+		network_destroy(global.socket);
+		global.socket = -1;
+	}
+	
+	if (global.server != -1) {
+		network_destroy(global.server);
+		global.server = -1;
+	}
+
 	o_control.roundCurrent = 0;
 	o_control.roundTotal = 0;
 	o_control.countdown = -1;
