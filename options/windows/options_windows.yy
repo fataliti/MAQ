@@ -7,7 +7,7 @@
     "option_windows_borderless": false,
     "option_windows_company_info": "YoYo Games Ltd",
     "option_windows_copy_exe_to_dest": true,
-    "option_windows_copyright_info": "(c) 2020 Nyafi&Reif",
+    "option_windows_copyright_info": "(c) Nyafi & Reif",
     "option_windows_description_info": "Музыкальная викторина по сети",
     "option_windows_disable_sandbox": true,
     "option_windows_display_cursor": true,

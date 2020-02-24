@@ -121,7 +121,7 @@ songSprite	= -1;
 mediaPlayer = -1;
 hinted		= false;
 
-songPath = SetPath(working_directory+"media.ogg");
+songPath = SetPath(working_directory + "guess.ogg");
 //!#mfunc GetPath {"args":[],"order":[]}
 #macro GetPath_mf0  o_control.songPath
 
