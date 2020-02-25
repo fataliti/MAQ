@@ -6,7 +6,7 @@
     "For3D": false,
     "HTile": false,
     "VTile": false,
-    "bbox_bottom": 15,
+    "bbox_bottom": 14,
     "bbox_left": 0,
     "bbox_right": 15,
     "bbox_top": 0,
@@ -16,24 +16,24 @@
     "edgeFiltering": false,
     "frames": [
         {
-            "id": "08683013-21c7-4135-b230-e6de014febf9",
+            "id": "a096b1d6-c545-49fd-b43f-60f4c44e4b1f",
             "modelName": "GMSpriteFrame",
             "mvc": "1.0",
             "SpriteId": "6de3353b-fd87-4e83-a887-ada0ad4d2118",
             "compositeImage": {
-                "id": "8a609155-6f2c-409f-8a18-95cdc1f105f0",
+                "id": "02ec627b-bf57-460c-bf59-aedb9373a345",
                 "modelName": "GMSpriteImage",
                 "mvc": "1.0",
-                "FrameId": "08683013-21c7-4135-b230-e6de014febf9",
+                "FrameId": "a096b1d6-c545-49fd-b43f-60f4c44e4b1f",
                 "LayerId": "00000000-0000-0000-0000-000000000000"
             },
             "images": [
                 {
-                    "id": "f308dd6b-d051-4bb5-b79c-7ac446fe82b8",
+                    "id": "68bd3338-2fe2-4c1f-a5ac-4eede1d61b4c",
                     "modelName": "GMSpriteImage",
                     "mvc": "1.0",
-                    "FrameId": "08683013-21c7-4135-b230-e6de014febf9",
-                    "LayerId": "7678f793-bf99-47f1-8cd1-3a0b2b0c00f2"
+                    "FrameId": "a096b1d6-c545-49fd-b43f-60f4c44e4b1f",
+                    "LayerId": "929f078c-e597-4e7e-b59d-ed6bdd80500b"
                 }
             ]
         }
@@ -43,7 +43,7 @@
     "height": 16,
     "layers": [
         {
-            "id": "7678f793-bf99-47f1-8cd1-3a0b2b0c00f2",
+            "id": "929f078c-e597-4e7e-b59d-ed6bdd80500b",
             "modelName": "GMImageLayer",
             "mvc": "1.0",
             "SpriteId": "6de3353b-fd87-4e83-a887-ada0ad4d2118",
@@ -55,7 +55,7 @@
         }
     ],
     "origin": 4,
-    "originLocked": false,
+    "originLocked": true,
     "playbackSpeed": 15,
     "playbackSpeedType": 0,
     "premultiplyAlpha": false,

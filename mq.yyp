@@ -122,7 +122,7 @@
             "Key": "269dcfee-0f9a-479b-883e-ce2de8033f67",
             "Value": {
                 "id": "f306a0dd-efb7-4b14-9622-d8805f15f22a",
-                "resourcePath": "datafiles_yy\\listSongsTest.txt.yy",
+                "resourcePath": "datafiles_yy\\listSongs.txt.yy",
                 "resourceType": "GMIncludedFile"
             }
         },
