@@ -1,5 +1,4 @@
-
-playSe(a_but_connect);
+playSe(a_but_mainmenu);
 
 var ip = get_string("IP: ", localhost);
 var _port = port; //get_integer( "Порт: ", port);

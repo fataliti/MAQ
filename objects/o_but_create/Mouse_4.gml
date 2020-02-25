@@ -1,4 +1,4 @@
-playSe(a_but_create);
+playSe(a_but_mainmenu);
 
 global.server = network_create_server(network_socket_tcp, port, size);
 

@@ -207,14 +207,6 @@
             }
         },
         {
-            "Key": "3395ffa5-44e2-446f-b471-8ad76511a1f3",
-            "Value": {
-                "id": "619c59d7-f058-40d1-87ee-822cef32aacc",
-                "resourcePath": "sounds\\bgm_mainmenu6\\bgm_mainmenu6.yy",
-                "resourceType": "GMSound"
-            }
-        },
-        {
             "Key": "33ba7d5b-e3e5-4b34-90d1-76b64b443d50",
             "Value": {
                 "id": "57581234-c498-4f3f-a61e-079caf46d9ae",
@@ -287,6 +279,14 @@
             }
         },
         {
+            "Key": "45790f3a-d242-425e-a07e-73f2cbcfdcd3",
+            "Value": {
+                "id": "a8ae6ec2-8840-4385-bb8a-120f8e90a677",
+                "resourcePath": "sounds\\vol_test1\\vol_test1.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "4608c105-e556-441e-90f2-5d7bf60b75ee",
             "Value": {
                 "id": "e2d138ad-d552-4dae-98dd-f11860bf36fd",
@@ -298,7 +298,7 @@
             "Key": "4a8cdbb6-ba1c-401b-b9d1-e85b2a3da086",
             "Value": {
                 "id": "3782b396-22ef-49ab-b771-70c6585f54c8",
-                "resourcePath": "sounds\\bgm_mainmenu3\\bgm_mainmenu3.yy",
+                "resourcePath": "sounds\\bgm_mainmenu2\\bgm_mainmenu2.yy",
                 "resourceType": "GMSound"
             }
         },
@@ -351,14 +351,6 @@
             }
         },
         {
-            "Key": "58edecf4-c05b-4c89-b368-d2540919e6f5",
-            "Value": {
-                "id": "da5f23c3-6b99-46fc-b386-8db6c30fe2d1",
-                "resourcePath": "sounds\\a_but_create\\a_but_create.yy",
-                "resourceType": "GMSound"
-            }
-        },
-        {
             "Key": "5addef0f-c183-4e33-a98c-07924753301a",
             "Value": {
                 "id": "209e845c-6afa-4794-80dd-25efd40474ce",
@@ -372,6 +364,14 @@
                 "id": "68f727de-3d23-7665-517d-c7d8c239a0b9",
                 "resourcePath": "objects\\o_slider_bgm\\o_slider_bgm.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "5c59b98c-6aa9-4d38-9ab3-be505298beff",
+            "Value": {
+                "id": "fa85d53f-3fb9-41d9-8975-5a0279e75add",
+                "resourcePath": "sounds\\vol_test2\\vol_test2.yy",
+                "resourceType": "GMSound"
             }
         },
         {
@@ -415,14 +415,6 @@
             }
         },
         {
-            "Key": "68849b86-ad8c-426c-a788-f9ac3e9a552e",
-            "Value": {
-                "id": "adc8445d-a0d4-4ef6-8cbf-0280eb0642b3",
-                "resourcePath": "sounds\\bgm_mainmenu4\\bgm_mainmenu4.yy",
-                "resourceType": "GMSound"
-            }
-        },
-        {
             "Key": "69502c20-35e2-409f-8558-ff19c9bea378",
             "Value": {
                 "id": "ff77557f-c9c4-4e50-a159-07e79c607b41",
@@ -460,14 +452,6 @@
                 "id": "cc2b39bc-c589-45dc-83d1-89efe9334deb",
                 "resourcePath": "views\\6d4a46fd-f1dd-4322-b2a5-3f6226bf9862.yy",
                 "resourceType": "GMFolder"
-            }
-        },
-        {
-            "Key": "6d859f04-7dd3-4c37-ae16-895a6641dca5",
-            "Value": {
-                "id": "0cb3ae40-d79c-46c5-a734-912662bf3f95",
-                "resourcePath": "sounds\\a_but_connect\\a_but_connect.yy",
-                "resourceType": "GMSound"
             }
         },
         {
@@ -535,14 +519,6 @@
             }
         },
         {
-            "Key": "7a105859-6ccf-4243-9a7d-df695ff421ae",
-            "Value": {
-                "id": "8a7b3241-a862-480a-9909-7d982316e804",
-                "resourcePath": "sounds\\a_but_no\\a_but_no.yy",
-                "resourceType": "GMSound"
-            }
-        },
-        {
             "Key": "7aba666f-c3b4-4b0f-9ce2-76f2505eaef5",
             "Value": {
                 "id": "6bc32db6-4d46-4c6b-b1c3-37d125546c7c",
@@ -572,14 +548,6 @@
                 "id": "5e6828f8-c466-47d6-a8a5-c32c134c7cb0",
                 "resourcePath": "rooms\\rm_mainmenu\\rm_mainmenu.yy",
                 "resourceType": "GMRoom"
-            }
-        },
-        {
-            "Key": "808b21fc-6b62-42b3-8ddc-221473be705a",
-            "Value": {
-                "id": "e47fc794-120f-41ed-b097-298e5de727bd",
-                "resourcePath": "sounds\\bgm_mainmenu2\\bgm_mainmenu2.yy",
-                "resourceType": "GMSound"
             }
         },
         {
@@ -730,7 +698,7 @@
             "Key": "a46447a6-21a3-4df7-bea9-1d5315c6da17",
             "Value": {
                 "id": "e1ce1b6d-2cc8-4d2f-9fff-38c0f06cefa3",
-                "resourcePath": "sounds\\bgm_mainmenu5\\bgm_mainmenu5.yy",
+                "resourcePath": "sounds\\bgm_mainmenu3\\bgm_mainmenu3.yy",
                 "resourceType": "GMSound"
             }
         },
@@ -871,14 +839,6 @@
             }
         },
         {
-            "Key": "ca91bdb9-db71-46af-977c-0c5002a4a169",
-            "Value": {
-                "id": "195ee929-a116-4e01-a35a-0e529ed8f36f",
-                "resourcePath": "sounds\\a_but_yes\\a_but_yes.yy",
-                "resourceType": "GMSound"
-            }
-        },
-        {
             "Key": "cc91a449-4d00-481a-a300-02266e0350c2",
             "Value": {
                 "id": "5c87f195-23d1-4f90-a32c-5908f47f4e38",
@@ -907,6 +867,14 @@
             "Value": {
                 "id": "14203784-2c73-4c4b-90a7-7a23a07ab6d6",
                 "resourcePath": "views\\d0892196-b3e8-4881-8fe3-48167f2e0170.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "d305849e-b3b8-4250-b4dd-bbedce096156",
+            "Value": {
+                "id": "4f973a5c-471e-46ff-9787-f0b1fee2e37f",
+                "resourcePath": "views\\d305849e-b3b8-4250-b4dd-bbedce096156.yy",
                 "resourceType": "GMFolder"
             }
         },
@@ -1052,14 +1020,6 @@
                 "id": "0d53fd53-81e5-3766-a6d6-bf00a3abb57a",
                 "resourcePath": "objects\/o_text_splitter\/o_text_splitter.yy",
                 "resourceType": "GMObject"
-            }
-        },
-        {
-            "Key": "fc9bef2e-90df-4f06-adea-14701eeee235",
-            "Value": {
-                "id": "d870a8a5-efb4-4f72-9dd8-98c9a1de3979",
-                "resourcePath": "sounds\\bgm_mainmenu7\\bgm_mainmenu7.yy",
-                "resourceType": "GMSound"
             }
         },
         {
