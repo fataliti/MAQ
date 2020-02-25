@@ -1,3 +1,4 @@
+SOUND = -1;
 
 var dif = 65;
 xp = x - dif;

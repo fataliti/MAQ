@@ -1,4 +1,4 @@
-
+// var sound = playSe?
 if coursorCollision(){
 	var inc = (mouse_wheel_up() - mouse_wheel_down()) / 50;
 	global.gain_music += inc;

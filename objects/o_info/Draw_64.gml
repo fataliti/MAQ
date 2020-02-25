@@ -1,7 +1,6 @@
 
 color_mf0 c_white color_mf1;
 var ctrl = o_control;
-draw_text(x, y + 13, string(ctrl.roundCurrent+1) +" / "+ string(ctrl.roundTotal+1));
 
 if (ctrl.countdown > 0) {
     ctrl.countdown -= delta_time / 1000000;

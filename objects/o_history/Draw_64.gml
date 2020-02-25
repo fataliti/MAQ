@@ -4,6 +4,8 @@ draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 
+draw_text(x + 20, y - 20, string(o_control.roundCurrent+1) +" / "+ string(o_control.roundTotal+1));
+
 var top = bbox_top + 5;
 var bot = bbox_bottom - 20;
 
