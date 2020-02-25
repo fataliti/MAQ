@@ -3,7 +3,7 @@ if !point_in_rectangle(mouse_x, mouse_y, bbox_left, bbox_top, xp+leng+20, bbox_b
 }
 
 if see {
-	var inc = (mouse_wheel_up() - mouse_wheel_down()) / 100;
+	var inc = (mouse_wheel_up() - mouse_wheel_down()) / 50;
 	global.gain_music += inc;
 	global.gain_music = clamp(global.gain_music, 0.03, 1);
 	if inc != 0 {

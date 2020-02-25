@@ -25,6 +25,8 @@ switch (act) {
         with(o_history)
         	script_execute(lambda_scroll_round, o_control.roundCurrent - 1);
         
+        o_control.roundTime = buffer_read(buffer, buffer_u8);
+        
         switch(buffer_read(buffer, buffer_u8)){
             case ESong.prepare:
 				var link = buffer_read(buffer, buffer_string);

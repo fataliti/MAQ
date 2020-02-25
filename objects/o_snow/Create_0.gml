@@ -1,4 +1,6 @@
 
+global.pt_snow = -1;
+
 exist = true;
 if (!variable_global_exists("ps") || !part_type_exists(global.ps)) && o_control.snowOn
 {

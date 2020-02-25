@@ -1,6 +1,6 @@
 
 if coursorCollision(){
-	var inc = (mouse_wheel_up() - mouse_wheel_down()) / 100;
+	var inc = (mouse_wheel_up() - mouse_wheel_down()) / 50;
 	
 	global.gain_bgm  += inc;
 	global.gain_bgm = clamp(global.gain_bgm, 0, 1);

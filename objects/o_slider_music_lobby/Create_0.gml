@@ -1,4 +1,4 @@
 xp = x + 30;
-leng = 100;
+leng = 110;
 activ = false;
 see = false;

@@ -32,8 +32,13 @@ var bgms = choose(
 );
 global.bgm = audio_play_sound(bgms, 10, false);
 audio_sound_gain(global.bgm, global.gain_bgm, 0);
+
+BGMenable = true;
 audioOn = true;
 snowOn  = true;
+
+if current_month >= 3 && current_month <= 11
+	snowOn = false;
 
 #region Енумераторы
 // Действия

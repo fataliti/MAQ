@@ -1,6 +1,6 @@
 
 if coursorCollision(){
-	var inc = (mouse_wheel_up() - mouse_wheel_down()) / 100;
+	var inc = (mouse_wheel_up() - mouse_wheel_down()) / 50;
 	global.gain_se += inc;
 	global.gain_se = clamp(global.gain_se, 0, 1);
 	if inc != 0 {

@@ -33,11 +33,14 @@ switch(type) {
 			// Тут записывается текущее состояние игры
 			buffer_write(exchangeInfo, buffer_u8, o_control.roundCurrent);
 			buffer_write(exchangeInfo, buffer_u8, o_control.roundTotal);
+			
 			if (o_control.roundCurrent > 0) {
 				for( var r = 0; r < o_control.roundCurrent; r++) {
 					buffer_write(exchangeInfo, buffer_string, o_history.game_arr[@ r, EData.name]);
 				}
 	    	}
+	    	
+	    	buffer_write(exchangeInfo, buffer_u8, o_control.roundTime);
 	    	buffer_write(exchangeInfo, buffer_u8, global.gameState);
 	
 	    	switch(global.gameState) {
