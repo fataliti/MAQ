@@ -7,7 +7,7 @@ if (ctrl.countdown > 0) {
     color_mf0  c_red color_mf1;
     draw_text(480, 48, ceil(ctrl.countdown));
     
-    draw_text(480, 515, "Голосование на скип\n" + string(ctrl.skipPlayers)+ "/" +string(instance_number(o_player)));
+    draw_text(480, 515, "Пропустить?\n" + string(ctrl.skipPlayers)+ "/" +string(instance_number(o_player)));
     	
 	if !surface_exists(timerSurf)
 		timerSurf = surface_create(60, 60);

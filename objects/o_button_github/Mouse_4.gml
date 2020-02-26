@@ -1,2 +1,2 @@
 
-url_open("https://github.com/NyafiRawr/MQ");
+url_open("https://github.com/NyafiRawr/MAQ");

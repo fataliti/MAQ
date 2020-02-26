@@ -1,4 +1,5 @@
-nameForFile = "List_" + string(current_hour) + "_" + string(current_minute) + ".txt";
+nameForFile = "ListSongs" + string(current_year) + "-" + string(current_month) + "-" + 
+string(current_day) + "-" + string(current_hour) + "-" + string(current_minute) + ".txt";
 
 constNum  = 0;
 constList = [];
