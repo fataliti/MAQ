@@ -34,3 +34,5 @@ instance_deactivate_object(self);
 
 ResetStatus();
 ResetMedia();
+
+o_control.skipPlayers = 0;

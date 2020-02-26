@@ -223,12 +223,17 @@ switch (act) {
 		    o_control.songPic = http_get_file( linkToPic, "guess.pic");
 		}
         
+        instance_activate_object(o_button_skip);
         break;
     case ESong.answer:
     	with(o_field_answer) {
         	script_execute(lambda_answer_send);
         }
-    
+    	
+    	with(o_button_skip){
+    		instance_deactivate_object(self);
+    	}
+    	
 	    audio_stop_sound(o_control.mediaPlayer);
 	    o_control.mediaPlayer = -1;
 	    audio_destroy_stream(o_control.songFile);
@@ -254,6 +259,8 @@ switch (act) {
         }
         break;
     case ESong.next:
+    
+    	o_control.skipPlayers = 0;
     	o_control.hinted = false;
     	
     	if !awaitNextRound {
@@ -280,17 +287,19 @@ switch (act) {
         
 		with(o_history)
 			script_execute(lambda_scroll_round, o_control.roundCurrent - 1);
-		
         break;
+	case ESong.hint:
+    	o_control.hinted = true;
+		instance_create_depth(0, 0, 0, o_right_answer);
+    	break; 	
+    case ESong.skip:
+    	o_control.skipPlayers++;
+    	break;	
     case ENet.gameOver:
     	ResetStatus();
     	gameOverSort();
     	instance_activate_object(o_gameOver);
     	with(o_right_answer){instance_destroy();}
-    	break;
-    case ESong.hint:
-    	o_control.hinted = true;
-		instance_create_depth(0, 0, 0, o_right_answer);
     	break;
     case EPing.check:
         var pong = buffer_create(32, buffer_grow, 1);

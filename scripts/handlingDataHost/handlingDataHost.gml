@@ -100,5 +100,13 @@ switch(act){
             }
         }
         break;
+    case ESong.skip:
+    	o_control.skipPlayers++;
+    	sendAll(buffer);
+    	
+    	if o_control.skipPlayers >= instance_number(o_player)
+    		o_control.countdown = 0.1;
+    	
+    	break;
     
 }

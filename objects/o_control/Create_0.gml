@@ -5,6 +5,15 @@
 //!#mfunc color {"args":["col"],"order":[0]}
 #macro color_mf0  draw_set_color(
 #macro color_mf1 )
+//!#mfunc inRect {"args":["x1"," y1"," x2"," y2"],"order":[0,1,2,3]}
+#macro inRect_mf0  point_in_rectangle(mouse_x, mouse_y, 
+#macro inRect_mf1 , 
+#macro inRect_mf2 , 
+#macro inRect_mf3 , 
+#macro inRect_mf4 )
+//!#mfunc LMB {"args":[],"order":[]}
+#macro LMB_mf0  mouse_check_button_pressed(mb_left)
+
 // Макроперменные
 #macro localhost "127.0.0.1" //"192.168.0.3"
 #macro port 10800
@@ -62,6 +71,7 @@ enum ESong {
 	answer = 24,
 	next = 25,
 	hint = 26,
+	skip = 27,
 }
 enum EChat {
 	message = 31
@@ -83,7 +93,6 @@ enum EPlayer {
 global.server = -1;
 global.socket = -1;
 network_set_config(network_config_connect_timeout, 999);
-
 
 // Инициализация данных игрока запустившего игру
 avatar = sprite_add("avatar.png", 1, 0, 1, 0, 0);
@@ -121,6 +130,7 @@ songPic 	= -1;
 songSprite	= -1;
 mediaPlayer = -1;
 hinted		= false;
+skipPlayers = 0;
 
 songPath = SetPath(working_directory + "guess.ogg");
 //!#mfunc GetPath {"args":[],"order":[]}

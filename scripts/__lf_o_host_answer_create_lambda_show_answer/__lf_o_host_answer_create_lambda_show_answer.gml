@@ -1,6 +1,11 @@
 /// __lf_o_host_answer_create_lambda_show_answer()
 //!#lambda lambda_show_answer
 {
+	
+	with(o_button_skip){
+		instance_deactivate_object(self);
+	}
+
 	var sendbuf = buffer_create( 8, buffer_grow, 1);
 	buffer_write(sendbuf, buffer_u8, ESong.answer);
 	
@@ -11,14 +16,8 @@
 		buffer_write(sendbuf, buffer_string, answer);
 	}
 	
-	//buffer_write(sendbuf, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.pic]);
 	buffer_write(sendbuf, buffer_string, o_history.game_arr[@ o_control.roundCurrent, EData.name]);
-	
-	
-	//if !o_control.hinted {
-	//	o_control.songPic = http_get_file(o_history.game_arr[@ o_control.roundCurrent, EData.pic], "guess.pic");
-	//}
-	
+
 	if !o_control.hinted  {
 		instance_create_depth(0, 0, 0, o_right_answer);
 		if o_control.songSprite != -1 {

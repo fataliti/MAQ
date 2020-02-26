@@ -1,4 +1,7 @@
 
+if keyboard_check_pressed(vk_f1) && room == rm_mainmenu
+	room_goto(rm_listcreate);
+
 if audioOn {
 	if !audio_is_playing(global.bgm) {
 		var bgms = choose(
