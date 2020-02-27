@@ -19,7 +19,7 @@
 
 // Макроперменные
 #macro localhost "127.0.0.1" //"192.168.0.3"
-#macro port 10800
+#macro port 10801
 // todo: вынести размер лобби и отсчёт времени в создание игры
 #macro size 32
 #macro timer 15

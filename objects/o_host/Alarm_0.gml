@@ -9,16 +9,6 @@ with(o_player){
 
 if !allReady || GetStatus() < 100 {
 	alarm[0] = tickrate;
-	
-	var sendbuf = buffer_create(128, buffer_grow, 1);
-	buffer_write(sendbuf, buffer_u8, ESong.status);
-	buffer_write(sendbuf, buffer_u8, instance_number(o_player));
-	with (o_player) {
-        buffer_write(sendbuf, buffer_u8, _id);
-        buffer_write(sendbuf, buffer_u8, round(loading * 100));
-    }
-    buffer_write(sendbuf, buffer_u8, GetStatus());
-	sendAll(sendbuf);
 } else {
 	o_control.songFile = audio_create_stream(GetPath_mf0);
 	if o_control.countdown > 0 {
@@ -26,3 +16,14 @@ if !allReady || GetStatus() < 100 {
 	}
 	trace_mf0 "loaded" trace_mf1;	
 }
+
+
+var sendbuf = buffer_create(128, buffer_grow, 1);
+buffer_write(sendbuf, buffer_u8, ESong.status);
+buffer_write(sendbuf, buffer_u8, instance_number(o_player));
+with (o_player) {
+    buffer_write(sendbuf, buffer_u8, _id);
+    buffer_write(sendbuf, buffer_u8, round(loading * 100));
+}
+buffer_write(sendbuf, buffer_u8, GetStatus());
+sendAll(sendbuf);
