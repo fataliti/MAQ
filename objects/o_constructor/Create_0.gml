@@ -15,3 +15,7 @@ enum EConstruct {
 roundExec = __lf_o_constructor_create_roundExec;
 
 roundAdd = __lf_o_constructor_create_roundAdd;
+
+roundsOpen = __lf_o_constructor_create_roundsOpen;
+
+roundsClear = __lf_o_constructor_create_roundsClear;

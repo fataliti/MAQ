@@ -1,2 +1,2 @@
 
-timerSurf = surface_create(60, 60);
+timerSurf = surface_create(80, 80);

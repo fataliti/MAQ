@@ -23,4 +23,3 @@ if (o_control.songFile != -1) {
 }
 
 o_control.songPic = http_get_file(o_history.game_arr[@ o_control.roundCurrent, EData.pic], "guess.pic");
-instance_activate_object(o_button_skip);

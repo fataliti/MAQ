@@ -47,6 +47,14 @@
             }
         },
         {
+            "Key": "028fe63c-5400-2de2-da0f-87c62d7687ce",
+            "Value": {
+                "id": "ed0513a5-59d4-4d0a-de6e-7c4b68c2f56e",
+                "resourcePath": "objects\\o_text_autocomplete\\o_text_autocomplete.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "04273142-3e98-49ba-b6be-daf9d8448adf",
             "Value": {
                 "id": "0a3dde00-4ce8-493f-b42d-4f35b389ead9",
@@ -60,6 +68,14 @@
                 "id": "91b3a899-b858-4f3b-a7f9-eca6b61ef852",
                 "resourcePath": "objects\\o_host_play\\o_host_play.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "08741c45-eefc-4310-ac97-ffbf5af5237e",
+            "Value": {
+                "id": "e6f592ca-3248-4a77-8e5f-210ba2122d23",
+                "resourcePath": "datafiles_yy\\Unboxed-README.txt.yy",
+                "resourceType": "GMIncludedFile"
             }
         },
         {
@@ -487,6 +503,14 @@
             }
         },
         {
+            "Key": "5e738ac1-7629-e591-af1d-e15916f4966e",
+            "Value": {
+                "id": "235c5934-40a3-b945-19bb-65c7073cfaaf",
+                "resourcePath": "views\\5e738ac1-7629-e591-af1d-e15916f4966e.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "5fde64c0-f716-4a56-b54f-e2ab3487e8ba",
             "Value": {
                 "id": "da53e900-9ef8-4e36-b41e-b835d9d1c87d",
@@ -708,6 +732,14 @@
                 "id": "38dd5380-9c3a-44d7-bea5-daa00cf3c0e5",
                 "resourcePath": "options\\ios\\options_ios.yy",
                 "resourceType": "GMiOSOptions"
+            }
+        },
+        {
+            "Key": "86ae60ed-a929-182a-7b30-a528f351a968",
+            "Value": {
+                "id": "f52e388f-f73e-3e0e-6aa3-4d7c763e7d0e",
+                "resourcePath": "scripts\\__lf_o_constructor_create_roundsClear\\__lf_o_constructor_create_roundsClear.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -1031,6 +1063,14 @@
             }
         },
         {
+            "Key": "c709504b-000e-46db-926f-384d5f20f5c9",
+            "Value": {
+                "id": "0bd5aaa6-6743-4150-a924-0bc95ad4c7f9",
+                "resourcePath": "extensions\\UnboxedGMS2\\UnboxedGMS2.yy",
+                "resourceType": "GMExtension"
+            }
+        },
+        {
             "Key": "c7220023-7a50-4ffa-b7c4-ab65c0f0a270",
             "Value": {
                 "id": "62cd975d-4bfe-4075-8ff1-5c99433b5bd2",
@@ -1183,11 +1223,27 @@
             }
         },
         {
+            "Key": "e728a98c-0b11-fc31-59ec-cdda274dc692",
+            "Value": {
+                "id": "da95439f-5a05-686a-c4d8-3ad9b404b445",
+                "resourcePath": "scripts\\__lf_o_constructor_create_roundsOpen\\__lf_o_constructor_create_roundsOpen.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "e9abbab9-bb57-4ae9-94b3-9a8c9b043cc9",
             "Value": {
                 "id": "ca67bb6f-e6eb-401e-aa33-772fc602bd36",
                 "resourcePath": "sprites\\s_open\\s_open.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "eab1f8ba-2d68-4a81-8e1c-7e3638335abb",
+            "Value": {
+                "id": "bc886402-bf6a-4c6d-b6ce-8df153d5a458",
+                "resourcePath": "datafiles_yy\\Unboxed-Code snippets.txt.yy",
+                "resourceType": "GMIncludedFile"
             }
         },
         {
@@ -1293,6 +1349,8 @@
         "43aa64d0-4606-9a1b-c37a-f318b1ab468f",
         "4fc9924e-7d55-4136-345f-aa7acc57eeac",
         "8dee4e36-9978-2561-5c48-2c6fe820a928",
+        "e728a98c-0b11-fc31-59ec-cdda274dc692",
+        "86ae60ed-a929-182a-7b30-a528f351a968",
         "2f4c0e68-2cd0-2cc2-2f82-9a9ecca46dc8",
         "76158d41-eeb5-49cc-abed-936b43d4307d",
         "ba95dafa-2075-2044-3bb1-9c1956db406a",

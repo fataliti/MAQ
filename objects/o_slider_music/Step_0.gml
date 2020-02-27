@@ -30,3 +30,6 @@ if activ {
 		audio_sound_gain(sound, global.gain_music, 0);
 	
 }
+
+if !activ && !coursorCollision() 
+	audio_stop_sound(sound);

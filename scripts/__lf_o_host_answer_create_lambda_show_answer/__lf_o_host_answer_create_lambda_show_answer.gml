@@ -1,10 +1,6 @@
 /// __lf_o_host_answer_create_lambda_show_answer()
 //!#lambda lambda_show_answer
 {
-	
-	with(o_button_skip){
-		instance_deactivate_object(self);
-	}
 
 	var sendbuf = buffer_create( 8, buffer_grow, 1);
 	buffer_write(sendbuf, buffer_u8, ESong.answer);

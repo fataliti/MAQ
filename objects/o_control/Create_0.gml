@@ -1,3 +1,6 @@
+
+//instance_create_depth(0, 0, 0, o_text_autocomplete);
+
 // Макрофункции
 //!#mfunc trace {"args":["message"],"order":[0]}
 #macro trace_mf0  show_debug_message(
