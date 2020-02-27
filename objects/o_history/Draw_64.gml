@@ -12,7 +12,7 @@ var bot = bbox_bottom - 23;
 var str, alpha = 1;
 var yy = y + 10 + scrolled;
 for(var a = 0; a < array_height_2d(game_arr); a++){
-	str = string(a+1)+"."+ game_arr[@ a, EData.name];
+	str = string(a+1)+". "+ game_arr[@ a, EData.name];
 	
 	if a == o_control.roundCurrent
 		str = "> " + str;
