@@ -3,9 +3,6 @@
 testBD = [
 "call",
 "cat",
-"ca",
-"c",
-/*
 "gatari",
 "naruto",
 "fait",
@@ -14,7 +11,6 @@ testBD = [
 "boruto",
 "clover",
 "initialD",
-*/
 ];
 
 /*
@@ -82,3 +78,5 @@ for (i = 0; i < array_length_1d(testBD); i++) {
 	
 	trace_mf0 "----------------------------------------" trace_mf1;
 }
+
+my_string = "";

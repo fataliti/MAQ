@@ -10,8 +10,10 @@ with(o_player){
 if !allReady || GetStatus() < 100 {
 	alarm[0] = tickrate;
 } else {
-	o_control.songFile = audio_create_stream(GetPath_mf0);
-	if o_control.countdown > 0 {
+	if o_control.songFile == -1
+		o_control.songFile = audio_create_stream(GetPath_mf0);
+	
+	if o_control.countdown > 0 && !audio_is_playing(o_control.mediaPlayer) {
 		o_control.mediaPlayer = playMusic(o_control.songFile);
 	}
 	trace_mf0 "loaded" trace_mf1;	

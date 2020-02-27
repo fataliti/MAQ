@@ -71,8 +71,11 @@ switch(act){
         sendUser(player, players);
         break;
     case ESong.status:
+    	if !alarm[0]
+    		alarm[0] = tickrate;
+    	
+    	
         var player = buffer_read( buffer, buffer_u8);
-
         with (o_player) {
             if (_id == player) {
                 loading = buffer_read( buffer, buffer_u8) / 100;

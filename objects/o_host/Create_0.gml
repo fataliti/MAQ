@@ -5,15 +5,14 @@ kiklist = ds_list_create();
 banlist = ds_list_create();
 
 
-if file_exists("banlist.txt") {
-	var file = file_text_open_read("banlist.txt");
+if file_exists_ue(program_directory + "banlist.txt") {
+	var file = file_text_open_read_ue(program_directory + "banlist.txt");
 	var line = "";
-	while (!file_text_eof(file)) {
-		line = file_text_read_string(file);
+	while (!file_text_eof_ue(file)) {
+		line = file_text_readln_ue(file);
 		ds_list_add(banlist, line);
-		file_text_readln(file);
 	}
-	file_text_close(file);
+	file_text_close_ue(file);
 }
 
 
