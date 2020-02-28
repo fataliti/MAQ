@@ -1,6 +1,17 @@
 
 //instance_create_depth(0, 0, 0, o_text_autocomplete);
 
+
+if !file_exists("sound.conf"){
+	ini_open("sound.conf");
+	ini_write_real("game", "gain_se", 0.5);
+	ini_write_real("game", "gain_music", 0.5);
+	ini_write_real("game", "gain_bgm", 0.5);
+	ini_close();
+}
+var wDir = filename_path("sound.conf");
+
+
 // Макрофункции
 //!#mfunc trace {"args":["message"],"order":[0]}
 #macro trace_mf0  show_debug_message(
@@ -135,11 +146,11 @@ mediaPlayer = -1;
 hinted		= false;
 skipPlayers = 0;
 
-songPath = SetPath(working_directory + "guess.ogg");
+songPath = SetPath(wDir + "guess.ogg");
 //!#mfunc GetPath {"args":[],"order":[]}
 #macro GetPath_mf0  o_control.songPath
-
 //#macro GetPath_mf0  1
+
 
 lambda_game_restore = __lf_o_control_create_lambda_game_restore;
 
