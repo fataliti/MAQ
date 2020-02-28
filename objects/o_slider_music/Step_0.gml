@@ -1,7 +1,7 @@
 if coursorCollision(){
 	var inc = (mouse_wheel_up() - mouse_wheel_down()) / 50;
 	global.gain_music += inc;
-	global.gain_music = clamp(global.gain_music, 0.03, 1);
+	global.gain_music = clamp(global.gain_music, 0, 1);
 	if inc != 0 {
 	
 		if !audio_is_playing(sound)
@@ -15,7 +15,7 @@ if coursorCollision(){
 
 if activ {
 	global.gain_music = (mouse_x - xp) / leng;
-	global.gain_music = clamp(global.gain_music, 0.03, 1);
+	global.gain_music = clamp(global.gain_music, 0, 1);
 	
 	if mouse_check_button_released(mb_left){
 		activ = false;

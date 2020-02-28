@@ -36,3 +36,4 @@ ResetStatus();
 ResetMedia();
 
 o_control.skipPlayers = 0;
+o_host.alarm[0] = 0;
