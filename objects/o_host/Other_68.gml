@@ -4,14 +4,27 @@ var type = async_load[? "type"];
 switch(type) {
     case network_type_connect:
     	var connect_break = false;
-    
+    	var newIp = async_load[? "ip"];
+    	
         var indexSocket = async_load[? "socket"];
-        if (ds_list_find_index(kiklist, async_load[? "ip"]) != -1 || ds_list_find_index(banlist, async_load[? "ip"]) != -1) || o_control.gameOver {
+        if (ds_list_find_index(kiklist, newIp) != -1 || ds_list_find_index(banlist, newIp) != -1) || o_control.gameOver {
         	connect_break = true;
+        }
+        
+        if !multiUser {
+        	with(o_player) {
+        		if newIp == ip
+        			connect_break = true;
+        	}
+        }
+        
+        if connect_break {
         	var sendbuf = buffer_create(2, buffer_grow, 1);
 			buffer_write(sendbuf, buffer_u8, EPlayer.excepted);
 			sendUser(indexSocket,sendbuf);
         }
+        
+        
         
         if (!connect_break) {
 			// Обновляем список подключенных у хоста
@@ -21,7 +34,7 @@ switch(type) {
 			// Обновляем список игроков
 			ds_map_add(players, indexSocket, player);
 			player._id = indexSocket;
-			player.ip  = async_load[? "ip"];
+			player.ip  = newIp;
 			
 			var exchangeInfo = buffer_create(16, buffer_grow, 1);
 			// Спрашиваем данные игрока

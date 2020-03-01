@@ -1,7 +1,23 @@
 
+if global.gameState == ESong.prepare {
+	var readyCount = 0;
+	with (o_player) {
+		if loading == 1
+			readyCount++;
+	}
+	
+	if o_player_host.loading == 1 
+		readyCount++;
+	
+	var players = instance_number(o_player)+1;
+	
+	var col = players == readyCount ? c_green : c_white;
+	color_mf0 col color_mf1;
+	draw_text(480, 53, "Готовы\n" + string(readyCount) +"/"+ string(players));
+}
+
 color_mf0 c_white color_mf1;
 var ctrl = o_control;
-
 if (ctrl.countdown > 0) {
     ctrl.countdown -= delta_time / 1000000;
     color_mf0  c_red color_mf1;

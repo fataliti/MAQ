@@ -33,9 +33,10 @@ var wDir = filename_path("sound.conf");
 // todo: вынести размер лобби и отсчёт времени в создание игры
 #macro size 32
 #macro timer 15
-#macro tickrate 3 // 1 запрос в n кадров
+#macro tickrate 3
 #macro avatarSize 128
 #macro nickLengMax 12
+#macro multiUser true
 
 #macro chatCol $81ADFF
 
@@ -148,9 +149,6 @@ skipPlayers = 0;
 songPath = SetPath(wDir + "guess.ogg");
 //!#mfunc GetPath {"args":[],"order":[]}
 #macro GetPath_mf0  o_control.songPath
-//#macro GetPath_mf0  1
-
-
 
 lambda_game_restore = __lf_o_control_create_lambda_game_restore;
 

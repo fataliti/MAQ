@@ -2,7 +2,7 @@
 if coursorCollision() {
 	var scroll = (mouse_wheel_up() - mouse_wheel_down()) * 10;
 	
-	if scroll == 0 
+	if scroll == 0 || array_height_2d(game_arr) == 0
 		exit;
 		
 	var top = bbox_top + 5;

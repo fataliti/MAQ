@@ -9,11 +9,11 @@ if mouse_check_button_pressed(mb_left){
 }
 
 if textfield_active {
-    textfield_string = keyboard_string;
-    if keyboard_check_pressed(vk_enter) {
-        if (textfield_string != "") {
-        	script_execute(lambda_answer_send);
-            textfield_active = false;
-        }
+    if textfield_string != keyboard_string {
+    	textfield_string = keyboard_string;
+    	script_execute(lambda_answer_send);
     }
+    	
+    if keyboard_check_pressed(vk_enter)
+    	textfield_active = false;
 }

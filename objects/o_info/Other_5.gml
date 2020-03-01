@@ -1,2 +1,1 @@
 surface_free(timerSurf);
-

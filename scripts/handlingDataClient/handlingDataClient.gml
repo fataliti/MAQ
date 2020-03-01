@@ -27,7 +27,8 @@ switch (act) {
         
         o_control.roundTime = buffer_read(buffer, buffer_u8);
         
-        switch(buffer_read(buffer, buffer_u8)){
+        global.gameState = buffer_read(buffer, buffer_u8);
+        switch(global.gameState){
             case ESong.prepare:
 				var link = buffer_read(buffer, buffer_string);
 				var len  = buffer_read(buffer, buffer_u8);
@@ -160,8 +161,6 @@ switch (act) {
     case EPlayer.kick:
         var player = buffer_read(buffer, buffer_u8);
         if (_id == player) {
-            network_destroy(global.socket);
-            global.socket = -1;
             show_message("Тебя кикнули");
             script_execute(o_control.lambda_game_restore);
         }
@@ -169,15 +168,11 @@ switch (act) {
     case EPlayer.ban:
         var player = buffer_read(buffer, buffer_u8);
         if (_id == player) {
-            network_destroy(global.socket);
-            global.socket = -1;
             show_message("Тебя забанили");
             script_execute(o_control.lambda_game_restore);
         }
         break;
     case EPlayer.excepted:
-        network_destroy(global.socket);
-        global.socket = -1;
         show_message("Тебя исключили");
         script_execute(o_control.lambda_game_restore);
         break;
@@ -201,6 +196,7 @@ switch (act) {
         o_player_host.loading = buffer_read(buffer, buffer_u8) / 100;
         break;
     case ESong.prepare:
+    	global.gameState = ESong.prepare;
     	var link = buffer_read(buffer, buffer_string);
     	var len  = buffer_read(buffer, buffer_u8);
     	var start= buffer_read(buffer, buffer_u8);
@@ -208,6 +204,7 @@ switch (act) {
         alarm[0] = tickrate;
         break;
     case ESong.play:
+    	global.gameState = ESong.play
     	var _countdown = buffer_read(buffer, buffer_u8);
         if _countdown > 0
         	o_control.countdown = _countdown;
@@ -226,6 +223,7 @@ switch (act) {
         instance_activate_object(o_button_skip);
         break;
     case ESong.answer:
+    	global.gameState = ESong.answer;
     	with(o_field_answer) {
         	script_execute(lambda_answer_send);
         }
@@ -254,12 +252,16 @@ switch (act) {
         if !o_control.hinted {
 	        var insAnswer = instance_create_depth(0, 0, 0, o_right_answer);
 	        insAnswer.answerText = sName;
+	        
+	        if sprite_exists(o_control.songSprite) 
+				insAnswer.answerSprite = o_control.songSprite;
+			
         } else {
         	o_right_answer.answerText = sName;
         }
         break;
     case ESong.next:
-    
+    	global.gameState = ESong.next;
     	o_control.skipPlayers = 0;
     	o_control.hinted = false;
     	
@@ -291,6 +293,10 @@ switch (act) {
 	case ESong.hint:
     	o_control.hinted = true;
 		instance_create_depth(0, 0, 0, o_right_answer);
+		
+		if sprite_exists(o_control.songSprite) {
+			o_right_answer.answerSprite = o_control.songSprite;
+		}
     	break; 	
     case ESong.skip:
     	o_control.skipPlayers++;
