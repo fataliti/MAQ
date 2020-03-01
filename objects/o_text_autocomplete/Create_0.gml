@@ -7,7 +7,6 @@ testBD = [
 "cat",
 "ca",
 "cam",
-/*
 "gatari",
 "naruto",
 "fait",
@@ -16,7 +15,7 @@ testBD = [
 "boruto",
 "clover",
 "initialD",
-*/
+
 ];
 
 /*
