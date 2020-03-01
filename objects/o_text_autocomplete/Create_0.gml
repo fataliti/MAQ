@@ -1,8 +1,13 @@
 
-
 testBD = [
+"cal",
 "call",
+"calll",
+"callll",
 "cat",
+"ca",
+"cam",
+/*
 "gatari",
 "naruto",
 "fait",
@@ -11,6 +16,7 @@ testBD = [
 "boruto",
 "clover",
 "initialD",
+*/
 ];
 
 /*
@@ -21,6 +27,7 @@ testBD = [
 	надо что-то другое наверное придумать
 	ето штука тока разбивает слова для структуры
 */
+
 
 titleMap = ds_map_create();
 var get, i, j, k, char, map, mapget, wordlen, _mapget;
@@ -39,12 +46,12 @@ for (i = 0; i < array_length_1d(testBD); i++) {
 		mapget = map[? char];
 		if mapget == undefined {
 			if j == wordlen {
-				trace_mf0 "simple word create" trace_mf1;
 				map[? char] = [get];
+				trace_mf0 ["simple word create", map[? char]] trace_mf1;
 			} else {
-				trace_mf0 "map create" trace_mf1;
 				var _map = ds_map_create();
 				map[? char] = [_map];
+				trace_mf0 ["map create", map[? char]] trace_mf1;
 				map = _map;
 			}
 		} else {
@@ -52,25 +59,26 @@ for (i = 0; i < array_length_1d(testBD); i++) {
 			if j == wordlen {
 				mapget[array_length_1d(mapget)] = get;
 				map[? char] = mapget;
-				trace_mf0 "word add" trace_mf1;
+				trace_mf0 ["word add", mapget] trace_mf1;
 			} else {
 				var find = false;
 				for(k = 0; k < array_length_1d(mapget); k++) {
 					_mapget = mapget[@ k];
 					if !is_string(_mapget) {
 						if _mapget[? string_char_at(get, j+1)] != undefined {
-							trace_mf0 "map found" trace_mf1;
 							map = _mapget;
 							find = true;
+							trace_mf0 ["map found", mapget] trace_mf1;
 							break;
 						}
 					}
 				}
 				if !find {
-					map = ds_map_create();
-					mapget[array_length_1d(mapget)] = map;
+					_map = ds_map_create();
+					mapget[array_length_1d(mapget)] = _map;
 					map[? char] = mapget;
-					trace_mf0 "map not found" trace_mf1;
+					map = _map;
+					trace_mf0 ["map not found", mapget] trace_mf1;
 				}
 			}
 		}

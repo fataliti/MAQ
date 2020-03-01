@@ -1,6 +1,4 @@
-
 //instance_create_depth(0, 0, 0, o_text_autocomplete);
-
 
 if !file_exists("sound.conf"){
 	ini_open("sound.conf");
@@ -28,9 +26,10 @@ var wDir = filename_path("sound.conf");
 //!#mfunc LMB {"args":[],"order":[]}
 #macro LMB_mf0  mouse_check_button_pressed(mb_left)
 
+
 // Макроперменные
 #macro localhost "127.0.0.1" //"192.168.0.3"
-#macro port 10801
+#macro port 10800
 // todo: вынести размер лобби и отсчёт времени в создание игры
 #macro size 32
 #macro timer 15
@@ -150,6 +149,7 @@ songPath = SetPath(wDir + "guess.ogg");
 //!#mfunc GetPath {"args":[],"order":[]}
 #macro GetPath_mf0  o_control.songPath
 //#macro GetPath_mf0  1
+
 
 
 lambda_game_restore = __lf_o_control_create_lambda_game_restore;
