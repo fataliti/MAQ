@@ -9,13 +9,13 @@ testBD = [
 "cam",
 "gatari",
 "naruto",
+"nana",
 "fait",
 "anime",
 "anata",
 "boruto",
 "clover",
 "initialD",
-
 ];
 
 /*
@@ -87,3 +87,5 @@ for (i = 0; i < array_length_1d(testBD); i++) {
 }
 
 my_string = "";
+
+getVariants = __lf_o_text_autocomplete_create_lamblda_getVariants;

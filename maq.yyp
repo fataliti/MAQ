@@ -439,6 +439,14 @@
             }
         },
         {
+            "Key": "53d1cded-7790-4542-f3be-5e95f0a20df6",
+            "Value": {
+                "id": "c74b6e7d-1e61-494f-02de-17e64e61db79",
+                "resourcePath": "scripts\\__lf_o_text_autocomplete_create_lamblda_getVariants\\__lf_o_text_autocomplete_create_lamblda_getVariants.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "54ad995a-ae27-428e-8652-dab91288b246",
             "Value": {
                 "id": "96f93a37-e882-4db7-b83b-06aa799c16d0",

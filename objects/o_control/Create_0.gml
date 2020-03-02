@@ -9,8 +9,12 @@ if !file_exists("sound.conf"){
 }
 var wDir = filename_path("sound.conf");
 
-
 // Макрофункции
+//!#mfunc log {"args":["msg"],"order":[[2,"__FILE__"],[2,"__LINE_STR__"],0]}
+#macro log_mf0  show_debug_message("[" + 
+#macro log_mf1  + ":" + 
+#macro log_mf2  + "] " + string(
+#macro log_mf3 ))
 //!#mfunc trace {"args":["message"],"order":[0]}
 #macro trace_mf0  show_debug_message(
 #macro trace_mf1 )
