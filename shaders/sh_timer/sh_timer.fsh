@@ -26,6 +26,9 @@ void main()
     //  https://stackoverflow.com/questions/1311049/how-to-map-atan2-to-degrees-0-360
     angle = (angle >= 0.0 ? angle : (2. * 3.14 + angle)) * 360.0 / (2.0 * 3.14);
     
-    color += smoothstep(0.32, 0.32-0.01, d) * step(360.0 * (timeCur / timeMax), angle);
-    gl_FragColor = vec4( vec3(color), 1.0);
+    color += smoothstep(0.33, 0.33-0.01, d) * step(360.0 * (timeCur / timeMax), angle);
+    color -= smoothstep(0.26, 0.26-0.01, d);
+    
+    
+    gl_FragColor = vec4( color);
 }
