@@ -32,7 +32,7 @@ titleMap = ds_map_create();
 var get, i, j, k, char, map, mapget, wordlen, _mapget;
 for (i = 0; i < array_length_1d(testBD); i++) {
 
-	trace_mf0 "====================================" trace_mf1;
+	//trace("====================================");
 	get = testBD[@ i];
 	map = titleMap;
 	wordlen = string_length(get);
@@ -46,11 +46,11 @@ for (i = 0; i < array_length_1d(testBD); i++) {
 		if mapget == undefined {
 			if j == wordlen {
 				map[? char] = [get];
-				trace_mf0 ["simple word create", map[? char]] trace_mf1;
+				//trace(["simple word create", map[? char]]);
 			} else {
 				var _map = ds_map_create();
 				map[? char] = [_map];
-				trace_mf0 ["map create", map[? char]] trace_mf1;
+				//trace(["map create", map[? char]]);
 				map = _map;
 			}
 		} else {
@@ -58,7 +58,7 @@ for (i = 0; i < array_length_1d(testBD); i++) {
 			if j == wordlen {
 				mapget[array_length_1d(mapget)] = get;
 				map[? char] = mapget;
-				trace_mf0 ["word add", mapget] trace_mf1;
+				//trace(["word add", mapget]);
 			} else {
 				var find = false;
 				for(k = 0; k < array_length_1d(mapget); k++) {
@@ -67,7 +67,7 @@ for (i = 0; i < array_length_1d(testBD); i++) {
 						if _mapget[? string_char_at(get, j+1)] != undefined {
 							map = _mapget;
 							find = true;
-							trace_mf0 ["map found", mapget] trace_mf1;
+							//trace(["map found", mapget]);
 							break;
 						}
 					}
@@ -77,13 +77,13 @@ for (i = 0; i < array_length_1d(testBD); i++) {
 					mapget[array_length_1d(mapget)] = _map;
 					map[? char] = mapget;
 					map = _map;
-					trace_mf0 ["map not found", mapget] trace_mf1;
+					//trace(["map not found", mapget]);
 				}
 			}
 		}
 	}
 	
-	trace_mf0 "----------------------------------------" trace_mf1;
+	//trace("----------------------------------------");
 }
 
 my_string = "";

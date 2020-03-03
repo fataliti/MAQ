@@ -27,31 +27,38 @@ if (ctrl.countdown > 0) {
     	
 	if !surface_exists(timerSurf)
 		timerSurf = surface_create(80, 80);
+	if !shaderCompiled {
+		color_mf0 c_white color_mf1;
+		surface_set_target(timerSurf);
+		draw_clear_alpha(c_black, 0);
+		
+		var _xx = 40;
+		var _yy = 40;
+		
+		draw_circle(_xx, _yy, 32, false);
+		gpu_set_blendmode(bm_subtract);
+		draw_circle(_xx, _yy, 30, false);
+		gpu_set_blendmode(bm_normal);
+		
+		draw_primitive_begin(pr_trianglefan);
+		draw_vertex(_xx, _yy);
+		var angle = 360 * (ctrl.countdown / ctrl.roundTime);
+		for(var a = 0; a < angle; a += 2)
+			draw_vertex(_xx+1 + lengthdir_x(28, a + 90), _yy+1 + lengthdir_y(28, a + 90));
+		draw_primitive_end();
+		gpu_set_blendmode(bm_subtract);
+		draw_circle(_xx, _yy, 22, false);
+		gpu_set_blendmode(bm_normal);
+		surface_reset_target();
 	
-	color_mf0 c_white color_mf1;
-	surface_set_target(timerSurf);
-	draw_clear_alpha(c_black, 0);
-	
-	var _xx = 40;
-	var _yy = 40;
-	
-	draw_circle(_xx, _yy, 32, false);
-	gpu_set_blendmode(bm_subtract);
-	draw_circle(_xx, _yy, 30, false);
-	gpu_set_blendmode(bm_normal);
-	
-	draw_primitive_begin(pr_trianglefan);
-	draw_vertex(_xx, _yy);
-	var angle = 360 * (ctrl.countdown / ctrl.roundTime);
-	for(var a = 0; a < angle; a += 2)
-		draw_vertex(_xx+1 + lengthdir_x(28, a + 90), _yy+1 + lengthdir_y(28, a + 90));
-	draw_primitive_end();
-	gpu_set_blendmode(bm_subtract);
-	draw_circle(_xx, _yy, 22, false);
-	gpu_set_blendmode(bm_normal);
-	surface_reset_target();
-
-	draw_surface(timerSurf, 480 - 40, 10);
+		draw_surface(timerSurf, 480 - 40, 10);
+	} else {
+		shader_set(sh_timer);
+		shader_set_uniform_f(_timeMax, ctrl.roundTime);
+		shader_set_uniform_f(_timeCur, ctrl.roundTime - ctrl.countdown);
+		draw_surface(timerSurf, 480 - 40, 10);
+		shader_reset();
+	}
 	
     if global.server != -1 {
 	    if (ctrl.countdown <= 0) {

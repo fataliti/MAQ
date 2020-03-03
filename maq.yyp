@@ -127,6 +127,14 @@
             }
         },
         {
+            "Key": "1aed5533-f7f0-0352-b96d-f7e8da45d544",
+            "Value": {
+                "id": "d2c81efe-e7b2-dce5-c1ba-6f4816f0a4c2",
+                "resourcePath": "shaders\\sh_timer\\sh_timer.yy",
+                "resourceType": "GMShader"
+            }
+        },
+        {
             "Key": "1b63dad2-41b7-4f24-8c29-e3a4543e1d84",
             "Value": {
                 "id": "b77d4a1e-adc5-463c-8867-ece983467aa6",
