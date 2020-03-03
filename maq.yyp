@@ -815,6 +815,14 @@
             }
         },
         {
+            "Key": "916c77df-dc09-4f0f-89f3-16a7500c0723",
+            "Value": {
+                "id": "1edf5aa9-d854-4e61-9f52-95b7f078c7d4",
+                "resourcePath": "datafiles_yy\\animes.txt.yy",
+                "resourceType": "GMIncludedFile"
+            }
+        },
+        {
             "Key": "93566aad-c3b3-48a9-8fa7-9c5ee19f74ac",
             "Value": {
                 "id": "dccec038-1797-421f-82b8-b4a43f38b285",
@@ -980,6 +988,14 @@
                 "id": "8d4ed383-a9e0-4ba1-89f2-f69d9bb45c67",
                 "resourcePath": "sprites\\s_gameOver\\s_gameOver.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "ae7f4b82-4eaf-db72-13c6-53e504ffccc4",
+            "Value": {
+                "id": "e40af324-d632-eef8-2011-a5e9dda9f655",
+                "resourcePath": "scripts\\__lf_o_field_answer_create_lamblda_getVariants\\__lf_o_field_answer_create_lamblda_getVariants.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -1367,6 +1383,8 @@
         "8dee4e36-9978-2561-5c48-2c6fe820a928",
         "e728a98c-0b11-fc31-59ec-cdda274dc692",
         "86ae60ed-a929-182a-7b30-a528f351a968",
+        "53d1cded-7790-4542-f3be-5e95f0a20df6",
+        "ae7f4b82-4eaf-db72-13c6-53e504ffccc4",
         "2f4c0e68-2cd0-2cc2-2f82-9a9ecca46dc8",
         "76158d41-eeb5-49cc-abed-936b43d4307d",
         "ba95dafa-2075-2044-3bb1-9c1956db406a",

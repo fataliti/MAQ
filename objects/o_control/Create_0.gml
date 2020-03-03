@@ -1,4 +1,4 @@
-//instance_create_depth(0, 0, 0, o_text_autocomplete);
+instance_create_depth(0, 0, 0, o_text_autocomplete);
 
 if !file_exists("sound.conf"){
 	ini_open("sound.conf");

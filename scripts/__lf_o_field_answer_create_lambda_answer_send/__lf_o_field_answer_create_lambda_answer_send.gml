@@ -7,6 +7,8 @@
     buffer_write(answerBuf, buffer_string, textfield_string);
     sendHost(answerBuf);
     
-    if o_control.countdown <= 0
+    if o_control.countdown <= 0 {
     	textfield_active = false;
+    	itog = -1;
+	}
 }
