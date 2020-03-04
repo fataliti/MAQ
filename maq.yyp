@@ -1159,6 +1159,14 @@
             }
         },
         {
+            "Key": "d48d6c61-d04d-5ff3-0783-3358e1c44a27",
+            "Value": {
+                "id": "0e5181d2-5746-af51-d183-f94dd6c95870",
+                "resourcePath": "shaders\\sh_history\\sh_history.yy",
+                "resourceType": "GMShader"
+            }
+        },
+        {
             "Key": "d4d490d1-2c47-44e2-8cce-57b98cf7c490",
             "Value": {
                 "id": "f88bcdf5-51de-4ae0-a65c-9a85686cda09",
