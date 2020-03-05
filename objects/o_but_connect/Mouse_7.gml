@@ -1,7 +1,7 @@
 playSe(a_but_mainmenu);
 
 var ip = get_string("IP: ", localhost);
-var _port = port; //get_integer( "Порт: ", port);
+var _port = get_integer( "Порт: ", port);
 
 if (ip != "" && _port >= 0) {
     global.socket = network_create_socket(network_socket_tcp);
