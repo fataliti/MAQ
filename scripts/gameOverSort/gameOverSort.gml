@@ -6,6 +6,17 @@ with(o_player){
 	p++;
 }
 ds_grid_sort(grid, 1, false);
+
+if global.server != -1 {
+	var file = file_text_open_write_ue(program_directory + "LastGameResult.txt");
+	var player;
+	for(var i = 0; i<ds_grid_height(grid); i++) {
+		player = grid[# 0,i];
+		file_text_writeln_ue(file, string(i) + ". " + player.nickname + ": " + string(player.points));
+	}
+	file_text_close_ue(file);
+}
+
 for(var a = 0; a<ds_grid_height(grid); a++) {
 	if a<=2{
 		grid[# 0, a].place = a;

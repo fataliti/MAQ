@@ -5,6 +5,10 @@ for(var a = 0; a<ds_list_size(banlist); a++) {
 }
 file_text_close_ue(file);
 
+
+for (var a = 0; a < ds_list_size(connects); a++)
+	network_destroy(connects[| a]);
+
 ds_list_destroy(connects);
 ds_list_destroy(kiklist);
 ds_list_destroy(banlist);
