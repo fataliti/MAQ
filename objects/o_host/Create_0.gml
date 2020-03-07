@@ -4,6 +4,7 @@ players = ds_map_create();
 kiklist = ds_list_create();
 banlist = ds_list_create();
 
+gameMap = ds_map_create();
 
 if file_exists_ue(program_directory + "banlist.txt") {
 	var file = file_text_open_read_ue(program_directory + "banlist.txt");

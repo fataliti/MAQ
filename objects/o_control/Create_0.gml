@@ -36,7 +36,7 @@ var wDir = filename_path("sound.conf");
 #macro port 10800
 // todo: вынести размер лобби и отсчёт времени в создание игры
 #macro size 32
-#macro timer 15
+#macro timer 25
 #macro tickrate 3
 #macro avatarSize 128
 #macro nickLengMax 12

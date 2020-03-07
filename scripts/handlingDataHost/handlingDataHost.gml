@@ -18,6 +18,9 @@ switch(act){
         var player = buffer_read(buffer, buffer_u8);
 		with (o_player) {
             if (player == _id) {
+            
+            	buffer_write(buffer, buffer_u8, points);
+            	
                 nickname = buffer_read(buffer, buffer_string);
                 if buffer_read(buffer, buffer_u8) {
 					var surf = surface_create(avaSize, avaSize);

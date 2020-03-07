@@ -1031,6 +1031,14 @@
             }
         },
         {
+            "Key": "ba2c7b29-ab6e-284c-8be1-582fe7407b49",
+            "Value": {
+                "id": "6d1e814e-67d2-3bf7-8dc9-f7625066dd7d",
+                "resourcePath": "objects\\o_host_editTime\\o_host_editTime.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "ba731258-a2a3-819e-9be2-992eb7b1034b",
             "Value": {
                 "id": "ba0fc3e8-93aa-8302-f006-d7d84b3f4cf7",

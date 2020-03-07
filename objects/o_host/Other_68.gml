@@ -24,9 +24,14 @@ switch(type) {
 			sendUser(indexSocket,sendbuf);
         }
         
-        
-        
         if (!connect_break) {
+        	
+        	var reconectPoints = 0;
+        	if gameMap[? newIp] == undefined
+        		gameMap[? newIp] = reconectPoints;
+        	else 
+        		reconectPoints = gameMap[? newIp];
+        		
 			// Обновляем список подключенных у хоста
 			ds_list_add(connects, indexSocket);
 			// Инициализируем игрока и помещаем его на экран хоста
@@ -35,13 +40,14 @@ switch(type) {
 			ds_map_add(players, indexSocket, player);
 			player._id = indexSocket;
 			player.ip  = newIp;
+			player.points = reconectPoints;
 			
 			var exchangeInfo = buffer_create(16, buffer_grow, 1);
 			// Спрашиваем данные игрока
 			buffer_write(exchangeInfo, buffer_u8, ENet.information);
 			// Выдаём игроку идентификатор
 	        buffer_write(exchangeInfo, buffer_u8, player._id);
-	    	
+	    	buffer_write(exchangeInfo, buffer_u8, reconectPoints);
 	    	
 			// Тут записывается текущее состояние игры
 			buffer_write(exchangeInfo, buffer_u8, o_control.roundCurrent);

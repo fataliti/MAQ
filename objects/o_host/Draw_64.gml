@@ -26,12 +26,12 @@ if (lmb) {
 			if (point_in_rectangle(mouse_x, mouse_y,  x - coef - 3, y + 1,  x - coef - 3 + coef, y + 1 + coef)) {
 				victimId = _id;
 				act = EPlayer.pointPlus;
-				points += 0.5;
+				points++;
 			}
-			if (point_in_rectangle(mouse_x, mouse_y,  x - coef * 2 - 6, y + 1,  x - coef * 2 - 6 + coef, y + 1 + coef)) {
+			if (point_in_rectangle(mouse_x, mouse_y,  x - coef * 2 - 6, y + 1,  x - coef * 2 - 6 + coef, y + 1 + coef)) && points > 0{
 				victimId = _id;
 				act = EPlayer.pointMinus;
-				points -= 0.5;
+				points--;
 			}
 			if (point_in_rectangle(mouse_x, mouse_y, x + 163 + coef + 3, y + 1,  x + 163 + coef + 3 + coef, y + 1 + coef)) {
 				victimId = _id;

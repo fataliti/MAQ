@@ -35,5 +35,9 @@ instance_deactivate_object(self);
 ResetStatus();
 ResetMedia();
 
+with(o_player) {
+	o_host.gameMap[? ip] = points;
+}
+
 o_control.skipPlayers = 0;
 o_host.alarm[0] = 0;

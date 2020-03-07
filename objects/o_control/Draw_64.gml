@@ -16,8 +16,9 @@ with(o_player) {
 
 if room == rm_lobby {
 	draw_text(480, 25, "Время на угадывание");
-	draw_text(480, 50, string(roundTime) + " сек");
-	indent = 500 + string_length(roundTime) * 5;
+	var str = (roundTime > 0) ? string(roundTime)+ " сек": "неограниченно";
+	draw_text(480, 50, str);
+	indent = 485 + string_length(str) * 5;
 	draw_sprite(s_edit, 0, indent, 42);
 	if mouse_check_button_pressed(mb_left){
 		if point_in_rectangle(mouse_x, mouse_y, indent, 42, indent+16, 42+16) {

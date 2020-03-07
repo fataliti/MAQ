@@ -15,6 +15,7 @@ switch (act) {
         break;
     case ENet.information: 
         _id = buffer_read(buffer, buffer_u8);
+        points = buffer_read(buffer, buffer_u8);
         
         o_control.roundCurrent = buffer_read(buffer, buffer_u8);
         o_control.roundTotal = buffer_read(buffer, buffer_u8);
@@ -55,6 +56,7 @@ switch (act) {
         var me = buffer_create(128, buffer_grow, 1);
         buffer_write(me, buffer_u8, ENet.connected);
         buffer_write(me, buffer_u8, _id);
+        buffer_write(me, buffer_u8, 0);
         buffer_write(me, buffer_string, o_control.nickname);
         buffer_write(me, buffer_u8, hasAvatar);
         if hasAvatar {
@@ -75,6 +77,7 @@ switch (act) {
 
         var newPlayer = instance_create_depth(672, -30 + 55 * newId + o_scroll_player.scrolled , 0, o_player);
         newPlayer._id = newId;
+        newPlayer.points = buffer_read(buffer, buffer_u8);
         newPlayer.nickname = buffer_read(buffer, buffer_string);
         
         if buffer_read(buffer, buffer_u8) {
@@ -146,7 +149,7 @@ switch (act) {
         var player = buffer_read(buffer, buffer_u8);
         with (o_player) {
             if (_id == player) {
-                points+=0.5;
+                points++;
             }
         }
         break;
@@ -154,7 +157,7 @@ switch (act) {
         var player = buffer_read(buffer, buffer_u8);
         with (o_player) {
             if (_id == player) {
-                points-=0.5;
+                points--;
             }
         }
         break;
@@ -200,11 +203,12 @@ switch (act) {
     	var link = buffer_read(buffer, buffer_string);
     	var len  = buffer_read(buffer, buffer_u8);
     	var start= buffer_read(buffer, buffer_u8);
+    	o_control.roundTime = len;
 		GetMedia(link, len, start);
         alarm[0] = tickrate;
         break;
     case ESong.play:
-    	global.gameState = ESong.play
+    	global.gameState = ESong.play;
     	var _countdown = buffer_read(buffer, buffer_u8);
         if _countdown > 0
         	o_control.countdown = _countdown;
