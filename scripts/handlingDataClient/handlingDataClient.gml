@@ -15,7 +15,6 @@ switch (act) {
         break;
     case ENet.information: 
         _id = buffer_read(buffer, buffer_u8);
-        points = buffer_read(buffer, buffer_u8);
         
         o_control.roundCurrent = buffer_read(buffer, buffer_u8);
         o_control.roundTotal = buffer_read(buffer, buffer_u8);

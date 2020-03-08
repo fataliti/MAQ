@@ -134,6 +134,7 @@ if (string_length(nickname) > nickLengMax)
 	nickname = string_copy(nickname, 1, nickLengMax);
 ini_close();
 
+isRepair = false;
 // Данные исходящие от хоста
 roundCurrent = 0;
 roundTotal = 0;

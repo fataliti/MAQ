@@ -13,3 +13,4 @@ ds_list_destroy(connects);
 ds_list_destroy(kiklist);
 ds_list_destroy(banlist);
 ds_map_destroy(players);
+ds_map_destroy(gameMap);

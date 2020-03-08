@@ -59,6 +59,8 @@
             o_control.roundTotal = arr_stroka;
             
             file_text_close(file);
+            
+            o_host.gameMap[? "game_arr"] = game_arr;
         }
     } else {
     	script_execute(o_control.lambda_game_restore);

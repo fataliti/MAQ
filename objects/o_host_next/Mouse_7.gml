@@ -10,6 +10,8 @@ if o_control.roundCurrent == o_control.roundTotal{
 	with(o_right_answer) {instance_destroy();}
 	instance_activate_object(o_gameOver);
 	instance_deactivate_object(self);
+	
+	file_delete_ue(program_directory+"Repair.amq");
     exit;
 }
 
@@ -35,9 +37,16 @@ instance_deactivate_object(self);
 ResetStatus();
 ResetMedia();
 
-with(o_player) {
-	o_host.gameMap[? ip] = points;
-}
+
+with(o_player) { o_host.gameMap[? ip] = points; }
+o_host.gameMap[? "roundCurrent"] = o_control.roundCurrent;
+o_host.gameMap[? "roundTime"] = o_control.roundTime;
+
+var jsonGame = json_encode(o_host.gameMap);
+var file = file_text_open_write_ue(program_directory+"Repair.amq");
+file_text_writeln_ue(file, jsonGame);
+file_text_close_ue(file);
+
 
 o_control.skipPlayers = 0;
 o_host.alarm[0] = 0;

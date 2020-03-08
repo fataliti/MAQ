@@ -47,7 +47,6 @@ switch(type) {
 			buffer_write(exchangeInfo, buffer_u8, ENet.information);
 			// Выдаём игроку идентификатор
 	        buffer_write(exchangeInfo, buffer_u8, player._id);
-	    	buffer_write(exchangeInfo, buffer_u8, reconectPoints);
 	    	
 			// Тут записывается текущее состояние игры
 			buffer_write(exchangeInfo, buffer_u8, o_control.roundCurrent);
