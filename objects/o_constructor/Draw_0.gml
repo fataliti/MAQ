@@ -14,8 +14,10 @@ if coursorCollision() {
 		trace_mf0 program_directory + nameForFile trace_mf1;
 		for(var i = 0; i < array_length_1d(constList); i++) {
 			var get = constList[@ i];
-			for(var j = 0; j < array_length_1d(get); j++) {
-				file_text_writeln_ue(file, get[@ j]);
+			if get[@ EConstruct.Name] != "" {
+				for(var j = 0; j < array_length_1d(get); j++) {
+					file_text_writeln_ue(file, get[@ j]);
+				}
 			}
 		}
 		file_text_close_ue(file);
