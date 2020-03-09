@@ -44,9 +44,11 @@ switch (act) {
         
         o_player_host.nickname = buffer_read(buffer, buffer_string);
         if buffer_read(buffer, buffer_u8){
-            var surf = surface_create(avaSize,avaSize);
+        	var sw = buffer_read(buffer, buffer_u16);
+        	var sh = buffer_read(buffer, buffer_u16);
+            var surf = surface_create(sw, sh);
             buffer_set_surface(buffer, surf, 0, buffer_tell(buffer), 0);
-            o_player_host.avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 1, 0, 0);
+            o_player_host.avatar = sprite_create_from_surface(surf, 0, 0, sw, sh, 0, 1, 0, 0);
             surface_free(surf);
         }
         

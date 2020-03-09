@@ -77,13 +77,18 @@ switch(type) {
 	    	if (o_control.avatar == -1) {
 	    		buffer_write(exchangeInfo, buffer_u8, 0);
 	    	} else {
+	    		var sw = sprite_get_width(o_control.avatar);
+	    		var sh = sprite_get_height(o_control.avatar);
+	    		
 	    		buffer_write(exchangeInfo, buffer_u8, 1);
-	    		var _avatarSize = 32;
-	    		buffer_resize(exchangeInfo, buffer_tell(exchangeInfo) + _avatarSize*_avatarSize*4); 
-	    		var surf = surface_create(_avatarSize, _avatarSize);
+	    		buffer_write(exchangeInfo, buffer_u16, sw);
+	    		buffer_write(exchangeInfo, buffer_u16, sh);
+	    		
+	    		buffer_resize(exchangeInfo, buffer_tell(exchangeInfo) + sw*sh*4); 
+	    		var surf = surface_create(sw, sh);
 	    		surface_set_target(surf);
 	    		draw_clear_alpha(c_black, 0);
-	    		draw_sprite_ext(o_control.avatar, 0, 0, 0, _avatarSize / sprite_get_width(o_control.avatar), _avatarSize / sprite_get_height(o_control.avatar), 0, c_white, 1);
+	    		draw_sprite(o_control.avatar, 0, 0, 0);
 	    		surface_reset_target();
 	    		buffer_get_surface(exchangeInfo, surf, 0, buffer_tell(exchangeInfo), 0);
 	    		surface_free(surf);
