@@ -1,6 +1,6 @@
 
 if (o_control.avatar != -1) {
-	draw_sprite(o_control.avatar, 0, x, y);
+	draw_sprite_ext(o_control.avatar, 0, x, y, avatarSize/sprite_get_width(o_control.avatar) , avatarSize/sprite_get_height(o_control.avatar), 0, c_white, 1);
 } else {
 	draw_sprite(s_noavatar_big, 0, x, y);
 }

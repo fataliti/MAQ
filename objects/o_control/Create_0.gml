@@ -114,19 +114,6 @@ network_set_config(network_config_connect_timeout, 999);
 
 // Инициализация данных игрока запустившего игру
 avatar = sprite_add("avatar.png", 1, 0, 1, 0, 0);
-if (avatar != -1) {
-	if (sprite_get_width(avatar) != avatarSize && sprite_get_height(avatar) != avatarSize) {
-		var surf = surface_create(avatarSize, avatarSize);
-	    surface_set_target(surf);
-	    draw_clear_alpha(c_black, 0);
-	    draw_sprite_ext(avatar, 0, 0, 0, avatarSize / sprite_get_width(avatar), avatarSize / sprite_get_height(avatar), 0, c_white, 1);    
-	    surface_reset_target();
-	    surface_save(surf, "avatar.png");
-	    surface_free(surf);
-	    sprite_delete(avatar);
-	    avatar = sprite_add("avatar.png", 1, 0, 1, 0, 0);
-	}
-}
 
 ini_open("player.conf");
 nickname = ini_read_string("user", "nickname", "Noname_t"+string(current_minute)+"_"+string(current_second));

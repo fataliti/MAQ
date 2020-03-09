@@ -1,7 +1,7 @@
 color_mf0 c_white color_mf1;
 
 if (avatar != -1) {
-    draw_sprite(avatar, 0, x, y);
+    draw_sprite_ext(avatar, 0, x, y, 32 / sprite_get_width(avatar), 32/ sprite_get_height(avatar), 0, c_white, 1);
 } else {
     draw_sprite(s_noavatar, 0, x, y);
 }

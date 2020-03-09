@@ -63,7 +63,7 @@ switch (act) {
             var surf = surface_create(avaSize, avaSize);
             surface_set_target(surf);
             draw_clear_alpha(c_black, 0);
-            draw_sprite_ext(o_control.avatar, 0, 0, 0, avaSize / avatarSize, avaSize / avatarSize, 0, c_white, 1);
+            draw_sprite_ext(o_control.avatar, 0, 0, 0, avaSize / sprite_get_width(o_control.avatar), avaSize / sprite_get_height(o_control.avatar), 0, c_white, 1);
             surface_reset_target();
             buffer_get_surface(me, surf, 0, buffer_tell(me), 0);
             buffer_seek(me, buffer_seek_end, 0);
@@ -122,16 +122,9 @@ switch (act) {
             surface_free(avatarMap);
         }
         if o_control.avatar != -1 {
-            var myAvaSurf = surface_create(avaSize,avaSize);
-            surface_set_target(myAvaSurf);
-            draw_clear_alpha(c_black,0);
-            draw_sprite_ext(o_control.avatar, 0, 0, 0, avaSize/avatarSize, avaSize/avatarSize, 0, c_white, 1);
-            var _avatar = sprite_create_from_surface(myAvaSurf, 0, 0, avaSize, avaSize, 0, 1, 0, 0);
-            surface_reset_target();
-            surface_free(myAvaSurf);
-            with(o_player){
+        	with(o_player){
                 if _id == other._id {
-                    avatar = _avatar;
+                    avatar = sprite_duplicate(o_control.avatar);
                 }
             }
         }
