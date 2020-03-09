@@ -60,12 +60,17 @@ switch (act) {
         buffer_write(me, buffer_u8, 0);
         buffer_write(me, buffer_string, o_control.nickname);
         buffer_write(me, buffer_u8, hasAvatar);
-        if hasAvatar {
-        	buffer_resize(me, buffer_tell(me) + avaSize * avaSize * 4);
-            var surf = surface_create(avaSize, avaSize);
+        if hasAvatar {	
+        	var sw = sprite_get_width(o_control.avatar);
+			var sh = sprite_get_height(o_control.avatar);
+			buffer_write(me, buffer_u16, sw);
+	    	buffer_write(me, buffer_u16, sh);
+        	
+        	buffer_resize(me, buffer_tell(me) + sw * sh * 4);
+            var surf = surface_create(sw, sh);
             surface_set_target(surf);
             draw_clear_alpha(c_black, 0);
-            draw_sprite_ext(o_control.avatar, 0, 0, 0, avaSize / sprite_get_width(o_control.avatar), avaSize / sprite_get_height(o_control.avatar), 0, c_white, 1);
+            draw_sprite(o_control.avatar, 0, 0, 0);
             surface_reset_target();
             buffer_get_surface(me, surf, 0, buffer_tell(me), 0);
             buffer_seek(me, buffer_seek_end, 0);
@@ -82,9 +87,11 @@ switch (act) {
         newPlayer.nickname = buffer_read(buffer, buffer_string);
         
         if buffer_read(buffer, buffer_u8) {
-            var surf = surface_create(avaSize, avaSize);
+        	var sw = buffer_read(buffer, buffer_u16);
+        	var sh = buffer_read(buffer, buffer_u16);
+            var surf = surface_create(sw, sh);
             buffer_set_surface(buffer, surf, 0, buffer_tell(buffer), 0);
-            newPlayer.avatar = sprite_create_from_surface(surf, 0, 0, avaSize, avaSize, 0, 1, 0, 0);
+            newPlayer.avatar = sprite_create_from_surface(surf, 0, 0, sw, sh, 0, 1, 0, 0);
             surface_free(surf);
         }
 
@@ -105,20 +112,32 @@ switch (act) {
         var avatarCnt = buffer_read(buffer, buffer_u8);
         if avatarCnt {
             var avatarIns = [];
-            var readId;
+            var readId, avaWi, avaHe, avaNew;
             repeat(avatarCnt){
                 readId = buffer_read(buffer, buffer_u8);
+                avaWi = buffer_read(buffer, buffer_u16);
+                avaHe = buffer_read(buffer, buffer_u16);
                 with(o_player){
                     if _id == readId{
-                        avatarIns[array_length_1d(avatarIns)] = id;
+                    	avaNew = [id, avaWi, avaHe];
+                        avatarIns[array_length_1d(avatarIns)] = avaNew;//id;
                     }
                 }
             }
-            var avatarMap = surface_create(avaSize * avatarCnt, avaSize);
+            
+            var surfWi = buffer_read(buffer, buffer_u16);
+            var surfHe = buffer_read(buffer, buffer_u16);
+            
+            var avatarMap = surface_create(surfWi, surfHe);
             buffer_set_surface(buffer, avatarMap, 0, buffer_tell(buffer), 0);
             var i = 0;
+            var avaGet;
+            var pointX = 0;
             repeat(avatarCnt){
-                avatarIns[i].avatar = sprite_create_from_surface(avatarMap, avaSize * i, 0, avaSize, avaSize, 0, 1, 0, 0);
+            	avaGet = avatarIns[i];
+            	avaGet[@ 0].avatar = sprite_create_from_surface(avatarMap, pointX, 0, avaGet[@ 1], avaGet[@ 2], 0, 1, 0, 0);
+            	pointX += avaGet[@ 1];
+                //avatarIns[i].avatar = sprite_create_from_surface(avatarMap, avaSize * i, 0, avaSize, avaSize, 0, 1, 0, 0);
                 i++;
             }
             surface_free(avatarMap);
